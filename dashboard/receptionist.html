@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receptionist Dashboard | Tilz Spa by Tilda</title>
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cappuccino:'#C4A882',chocolate:'#3C2415',rosegold:'#B76E79',gold:'#D4AF6F',softrose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',warmgrey:'#9B8E82' }, fontFamily:{ serif:['Playfair Display','Georgia','serif'], sans:['Lato','Arial','sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body{font-family:'Lato',sans-serif}h1,h2,h3{font-family:'Playfair Display',serif}
+    .tab-btn{transition:all .2s}.tab-btn.active{background:#3C2415;color:#F5F0E8}
+    .section{display:none}.section.active{display:block}
+  </style>
+</head>
+<body class="bg-ivory text-chocolate min-h-screen">
+
+  <!-- LOGIN GATE -->
+  <div id="loginGate" class="fixed inset-0 z-50 bg-gradient-to-br from-chocolate to-chocolate/90 flex items-center justify-center">
+    <div class="bg-cream rounded-2xl p-10 w-full max-w-sm shadow-2xl text-center">
+      <img src="../assets/logo.png" alt="Tilz Spa" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover">
+      <h2 class="font-serif text-2xl mb-1">Receptionist</h2>
+      <p class="text-warmgrey text-xs mb-7 tracking-wide">Tilz Spa by Tilda — Front Desk</p>
+      <div id="loginErr" class="hidden mb-4 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2"></div>
+      <input id="loginEmail" type="email" placeholder="Email address" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-chocolate bg-white">
+      <input id="loginPass" type="password" placeholder="Password" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-5 focus:outline-none focus:border-chocolate bg-white">
+      <button onclick="doLogin()" class="w-full bg-chocolate text-cream py-3 rounded-lg text-sm tracking-widest uppercase hover:bg-rosegold transition-all">Sign In</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+    <div class="flex min-h-screen">
+      <aside class="w-64 bg-chocolate text-cream fixed top-0 left-0 h-full flex flex-col z-40 hidden lg:flex">
+        <div class="p-6 border-b border-cream/10">
+          <div class="flex items-center gap-3">
+            <img src="../assets/logo.png" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-serif text-sm">Tilz Spa</p>
+              <p class="text-cream/40 text-xs">Front Desk</p>
+            </div>
+          </div>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+          <button onclick="showSection('today')" class="tab-btn active w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3" id="btn-today">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Today
+          </button>
+          <button onclick="showSection('checkin')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-checkin">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Check-In
+          </button>
+          <button onclick="showSection('booking')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-booking">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            New Booking
+          </button>
+          <button onclick="showSection('walkins')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-walkins">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            Walk-Ins
+          </button>
+          <button onclick="showSection('lookup')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-lookup">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            Client Lookup
+          </button>
+          <button onclick="showSection('messages')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-messages">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+            Messages
+            <span class="ml-auto bg-rosegold text-cream text-xs w-5 h-5 rounded-full flex items-center justify-center">5</span>
+          </button>
+        </nav>
+        <div class="p-4 border-t border-cream/10">
+          <button onclick="logout()" class="text-xs text-cream/50 hover:text-cream transition-colors">← Sign Out</button>
+        </div>
+      </aside>
+
+      <main class="lg:ml-64 flex-1 p-6">
+        <!-- Mobile nav -->
+        <div class="lg:hidden flex flex-wrap gap-2 mb-6">
+          <button onclick="showSection('today')" class="px-3 py-1.5 bg-chocolate text-cream rounded-full text-xs">Today</button>
+          <button onclick="showSection('checkin')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Check-In</button>
+          <button onclick="showSection('booking')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Booking</button>
+          <button onclick="showSection('walkins')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Walk-Ins</button>
+          <button onclick="showSection('lookup')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Lookup</button>
+          <button onclick="showSection('messages')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Messages</button>
+        </div>
+
+        <!-- TODAY -->
+        <div id="sec-today" class="section active">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Today's Schedule</h1>
+            <p class="text-warmgrey text-sm" id="todayDate2"></p>
+          </div>
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            <div class="bg-white rounded-2xl p-5 text-center shadow-sm"><p class="text-xs text-warmgrey uppercase tracking-wider mb-1">Total Today</p><p class="font-serif text-2xl">10</p></div>
+            <div class="bg-green-50 rounded-2xl p-5 text-center shadow-sm"><p class="text-xs text-green-600 uppercase tracking-wider mb-1">Checked In</p><p class="font-serif text-2xl text-green-700">3</p></div>
+            <div class="bg-yellow-50 rounded-2xl p-5 text-center shadow-sm"><p class="text-xs text-yellow-600 uppercase tracking-wider mb-1">Upcoming</p><p class="font-serif text-2xl text-yellow-700">7</p></div>
+          </div>
+          <div class="space-y-3">
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="text-center w-14"><p class="text-xs text-warmgrey">9:00</p><p class="text-xs text-warmgrey">AM</p></div>
+                <div><p class="font-medium">Adaeze Okonkwo</p><p class="text-xs text-chocolate/60">Signature Spa Treatment · Fatima</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full">In Progress</span>
+                <span class="bg-rosegold/20 text-rosegold text-xs px-2 py-1 rounded-full">Spa</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="text-center w-14"><p class="text-xs text-warmgrey">10:30</p><p class="text-xs text-warmgrey">AM</p></div>
+                <div><p class="font-medium">Chukwuemeka Nwosu</p><p class="text-xs text-chocolate/60">VIP Barbing Package · Emeka</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Checked In</span>
+                <span class="bg-chocolate/10 text-chocolate text-xs px-2 py-1 rounded-full">Barbing</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="text-center w-14"><p class="text-xs text-warmgrey">11:00</p><p class="text-xs text-warmgrey">AM</p></div>
+                <div><p class="font-medium">Ngozi Adeleke</p><p class="text-xs text-chocolate/60">Luxury Bathing Ritual · Grace</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full">Waiting</span>
+                <span class="bg-rosegold/20 text-rosegold text-xs px-2 py-1 rounded-full">Spa</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="text-center w-14"><p class="text-xs text-warmgrey">1:00</p><p class="text-xs text-warmgrey">PM</p></div>
+                <div><p class="font-medium">Olumide Fashola</p><p class="text-xs text-chocolate/60">Sauna + Spa Combo · Fatima</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Upcoming</span>
+                <span class="bg-gold/20 text-gold text-xs px-2 py-1 rounded-full">Sauna</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div class="text-center w-14"><p class="text-xs text-warmgrey">2:30</p><p class="text-xs text-warmgrey">PM</p></div>
+                <div><p class="font-medium">Amaka Eze</p><p class="text-xs text-chocolate/60">Medical-Grade Pedicure · Blessing</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Upcoming</span>
+                <span class="bg-rosegold/20 text-rosegold text-xs px-2 py-1 rounded-full">Spa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHECK-IN -->
+        <div id="sec-checkin" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Client Check-In</h1>
+            <p class="text-warmgrey text-sm">Mark clients as arrived and start their treatment</p>
+          </div>
+          <div class="space-y-4 max-w-2xl">
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div><p class="font-medium">Ngozi Adeleke</p><p class="text-xs text-chocolate/60">11:00 AM · Luxury Bathing Ritual · Grace</p></div>
+              <button onclick="this.textContent='✓ Checked In'; this.className='bg-green-600 text-white text-xs px-4 py-2 rounded-full'" class="bg-chocolate text-cream text-xs px-4 py-2 rounded-full hover:bg-rosegold transition-all">Check In</button>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div><p class="font-medium">Olumide Fashola</p><p class="text-xs text-chocolate/60">1:00 PM · Sauna + Spa Combo · Fatima</p></div>
+              <button onclick="this.textContent='✓ Checked In'; this.className='bg-green-600 text-white text-xs px-4 py-2 rounded-full'" class="bg-chocolate text-cream text-xs px-4 py-2 rounded-full hover:bg-rosegold transition-all">Check In</button>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div><p class="font-medium">Amaka Eze</p><p class="text-xs text-chocolate/60">2:30 PM · Medical-Grade Pedicure · Blessing</p></div>
+              <button onclick="this.textContent='✓ Checked In'; this.className='bg-green-600 text-white text-xs px-4 py-2 rounded-full'" class="bg-chocolate text-cream text-xs px-4 py-2 rounded-full hover:bg-rosegold transition-all">Check In</button>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
+              <div><p class="font-medium">Ifeoma Obiora</p><p class="text-xs text-chocolate/60">3:30 PM · Infrared Sauna · Aisha</p></div>
+              <button onclick="this.textContent='✓ Checked In'; this.className='bg-green-600 text-white text-xs px-4 py-2 rounded-full'" class="bg-chocolate text-cream text-xs px-4 py-2 rounded-full hover:bg-rosegold transition-all">Check In</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW BOOKING -->
+        <div id="sec-booking" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">New Booking</h1>
+            <p class="text-warmgrey text-sm">Create a new appointment for a client</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm max-w-lg">
+            <div class="space-y-5">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Client Name</label>
+                <input type="text" placeholder="Enter client name" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Phone Number</label>
+                <input type="tel" placeholder="08XX XXX XXXX" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Service</label>
+                <select class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+                  <option value="">Select a service...</option>
+                  <optgroup label="Spa">
+                    <option>Luxury Bathing Ritual — ₦15K–25K</option>
+                    <option>Medical-Grade Pedicure — ₦20K–35K</option>
+                    <option>Signature Spa Treatment — ₦35K–60K</option>
+                  </optgroup>
+                  <optgroup label="Sauna">
+                    <option>Steam Sauna Session — ₦10K–15K</option>
+                    <option>Infrared Sauna — ₦15K–20K</option>
+                    <option>Sauna + Spa Combo — ₦25K–40K</option>
+                    <option>Private Sauna Room — ₦20K–30K</option>
+                  </optgroup>
+                  <optgroup label="Barbing">
+                    <option>Executive Haircut — ₦5K–8K</option>
+                    <option>Beard Grooming — ₦3K–5K</option>
+                    <option>Hot Towel Shave — ₦5K–8K</option>
+                    <option>Hair & Beard Combo — ₦8K–12K</option>
+                    <option>VIP Package — ₦15K–20K</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Date</label>
+                  <input type="date" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Time</label>
+                  <input type="time" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Assign Therapist</label>
+                <select class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+                  <option>Fatima Aliyu — Senior Therapist</option>
+                  <option>Grace Okafor — Spa Therapist</option>
+                  <option>Emeka Chukwu — Master Barber</option>
+                  <option>Blessing Nwachukwu — Pedicure Specialist</option>
+                  <option>Aisha Bello — Sauna Attendant</option>
+                </select>
+              </div>
+              <button onclick="alert('Booking created successfully! ✓')" class="w-full bg-chocolate text-cream py-3 rounded-lg text-sm tracking-widest uppercase hover:bg-rosegold transition-all">Create Booking</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- WALK-INS -->
+        <div id="sec-walkins" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Walk-In Registration</h1>
+            <p class="text-warmgrey text-sm">Register a client who has arrived without a prior booking</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm max-w-lg">
+            <div class="space-y-5">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Client Name</label>
+                <input type="text" placeholder="Enter client name" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Phone Number</label>
+                <input type="tel" placeholder="08XX XXX XXXX" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Service Requested</label>
+                <select class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory">
+                  <option value="">Select a service...</option>
+                  <option>Luxury Bathing Ritual</option>
+                  <option>Medical-Grade Pedicure</option>
+                  <option>Signature Spa Treatment</option>
+                  <option>Steam Sauna Session</option>
+                  <option>Infrared Sauna</option>
+                  <option>Executive Haircut</option>
+                  <option>VIP Barbing Package</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Notes / Preferences</label>
+                <textarea placeholder="Any special requests or notes..." rows="3" class="w-full border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory resize-none"></textarea>
+              </div>
+              <button onclick="alert('Walk-in registered successfully! ✓')" class="w-full bg-rosegold text-cream py-3 rounded-lg text-sm tracking-widest uppercase hover:bg-chocolate transition-all">Register Walk-In</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLIENT LOOKUP -->
+        <div id="sec-lookup" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Client Lookup</h1>
+            <p class="text-warmgrey text-sm">Search client history, preferences, and notes</p>
+          </div>
+          <div class="mb-6">
+            <input type="text" placeholder="Search by name or phone..." class="w-full max-w-md border border-cappuccino/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-white" oninput="filterClients(this.value)">
+          </div>
+          <div class="space-y-4" id="clientCards">
+            <div class="client-card bg-white rounded-xl p-6 shadow-sm" data-name="adaeze okonkwo">
+              <div class="flex items-start justify-between mb-3">
+                <div><p class="font-medium text-base">Adaeze Okonkwo</p><p class="text-xs text-warmgrey">0803 456 7890 · 12 visits · VIP</p></div>
+                <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-semibold">VIP</span>
+              </div>
+              <p class="text-xs text-chocolate/60 bg-softrose/20 rounded-lg px-3 py-2"><strong>Preferences:</strong> Prefers lavender oil, firm pressure. Allergic to eucalyptus. Likes quiet sessions — minimal conversation.</p>
+            </div>
+            <div class="client-card bg-white rounded-xl p-6 shadow-sm" data-name="ngozi adeleke">
+              <div class="flex items-start justify-between mb-3">
+                <div><p class="font-medium text-base">Ngozi Adeleke</p><p class="text-xs text-warmgrey">0812 345 6789 · 8 visits · VIP</p></div>
+                <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-semibold">VIP</span>
+              </div>
+              <p class="text-xs text-chocolate/60 bg-softrose/20 rounded-lg px-3 py-2"><strong>Preferences:</strong> Prefers rose-scented products. Sensitive skin — avoid strong exfoliants. Always books pedicure + bathing ritual combo.</p>
+            </div>
+            <div class="client-card bg-white rounded-xl p-6 shadow-sm" data-name="olumide fashola">
+              <div class="flex items-start justify-between mb-3">
+                <div><p class="font-medium text-base">Olumide Fashola</p><p class="text-xs text-warmgrey">0901 234 5678 · 6 visits</p></div>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span>
+              </div>
+              <p class="text-xs text-chocolate/60 bg-softrose/20 rounded-lg px-3 py-2"><strong>Preferences:</strong> Prefers sauna + spa combo. Likes extra steam time. Comes every 3 weeks — usually on Thursdays.</p>
+            </div>
+            <div class="client-card bg-white rounded-xl p-6 shadow-sm" data-name="amaka eze">
+              <div class="flex items-start justify-between mb-3">
+                <div><p class="font-medium text-base">Amaka Eze</p><p class="text-xs text-warmgrey">0705 678 9012 · 5 visits</p></div>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span>
+              </div>
+              <p class="text-xs text-chocolate/60 bg-softrose/20 rounded-lg px-3 py-2"><strong>Preferences:</strong> Medical pedicure specialist — always requests Blessing. Prefers warm water, not hot. Brings her own nail colour.</p>
+            </div>
+            <div class="client-card bg-white rounded-xl p-6 shadow-sm" data-name="chukwuemeka nwosu">
+              <div class="flex items-start justify-between mb-3">
+                <div><p class="font-medium text-base">Chukwuemeka Nwosu</p><p class="text-xs text-warmgrey">0803 567 8901 · 7 visits · VIP</p></div>
+                <span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-semibold">VIP</span>
+              </div>
+              <p class="text-xs text-chocolate/60 bg-softrose/20 rounded-lg px-3 py-2"><strong>Preferences:</strong> Always requests Emeka for barbing. Prefers classic fade with sharp line. Likes beard oil applied after grooming.</p>
+            </div>
+            <div class="client-card bg-white rounded-xl p-6 shadow-sm" data-name="ifeoma obiora">
+              <div class="flex items-start justify-between mb-3">
+                <div><p class="font-medium text-base">Ifeoma Obiora</p><p class="text-xs text-warmgrey">0816 789 0123 · 4 visits</p></div>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span>
+              </div>
+              <p class="text-xs text-chocolate/60 bg-softrose/20 rounded-lg px-3 py-2"><strong>Preferences:</strong> Infrared sauna only — does not like steam. Prefers 45-minute sessions. Comes for detox — health-focused client.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MESSAGES -->
+        <div id="sec-messages" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">WhatsApp Messages</h1>
+            <p class="text-warmgrey text-sm">5 unread messages from clients</p>
+          </div>
+          <div class="space-y-4 max-w-2xl">
+            <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-green-500">
+              <div class="flex items-start justify-between mb-2">
+                <div><p class="font-medium text-sm">Adaeze Okonkwo</p><p class="text-xs text-warmgrey">0803 456 7890 · 9:15 AM</p></div>
+                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Booking Request</span>
+              </div>
+              <p class="text-sm text-chocolate/70">"Hello Tilz Spa, I'd like to book a Signature Spa Treatment for today at 10am. Is Fatima available?"</p>
+              <a href="https://wa.me/2348034567890" target="_blank" class="mt-3 inline-block text-xs text-green-600 hover:underline">Reply on WhatsApp →</a>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-blue-400">
+              <div class="flex items-start justify-between mb-2">
+                <div><p class="font-medium text-sm">New Client</p><p class="text-xs text-warmgrey">0701 234 5678 · 10:02 AM</p></div>
+                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Price Enquiry</span>
+              </div>
+              <p class="text-sm text-chocolate/70">"Good morning, please how much is the VIP barbing package? And do I need to book in advance?"</p>
+              <a href="https://wa.me/2347012345678" target="_blank" class="mt-3 inline-block text-xs text-green-600 hover:underline">Reply on WhatsApp →</a>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-red-400">
+              <div class="flex items-start justify-between mb-2">
+                <div><p class="font-medium text-sm">Kelechi Obi</p><p class="text-xs text-warmgrey">0909 012 3456 · 11:30 AM</p></div>
+                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">Cancellation</span>
+              </div>
+              <p class="text-sm text-chocolate/70">"Hi, I'm so sorry but I need to cancel my 2pm appointment today. Something came up. Can I reschedule to Saturday?"</p>
+              <a href="https://wa.me/2349090123456" target="_blank" class="mt-3 inline-block text-xs text-green-600 hover:underline">Reply on WhatsApp →</a>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-yellow-400">
+              <div class="flex items-start justify-between mb-2">
+                <div><p class="font-medium text-sm">Babatunde Akin</p><p class="text-xs text-warmgrey">0702 345 6789 · 12:45 PM</p></div>
+                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Arrival Notice</span>
+              </div>
+              <p class="text-sm text-chocolate/70">"I'm on my way, should be there in 10 minutes for my 1pm private sauna room booking."</p>
+              <a href="https://wa.me/2347023456789" target="_blank" class="mt-3 inline-block text-xs text-green-600 hover:underline">Reply on WhatsApp →</a>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-purple-400">
+              <div class="flex items-start justify-between mb-2">
+                <div><p class="font-medium text-sm">New Client</p><p class="text-xs text-warmgrey">0815 678 9012 · 1:20 PM</p></div>
+                <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">General Enquiry</span>
+              </div>
+              <p class="text-sm text-chocolate/70">"Please do you offer bridal packages? My wedding is in June and I want to book for myself and my bridesmaids."</p>
+              <a href="https://wa.me/2348156789012" target="_blank" class="mt-3 inline-block text-xs text-green-600 hover:underline">Reply on WhatsApp →</a>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function doLogin() {
+      const e = document.getElementById('loginEmail').value.trim();
+      const p = document.getElementById('loginPass').value;
+      if ((e === 'reception@tilzspa.com' || e === 'founder@tilzspa.com') && p === 'TilzSpa@2026') {
+        sessionStorage.setItem('tilz_reception', Date.now());
+        document.getElementById('loginGate').style.display = 'none';
+        document.getElementById('dashboard').classList.remove('hidden');
+        document.getElementById('todayDate2').textContent = new Date().toLocaleDateString('en-NG', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      } else {
+        const err = document.getElementById('loginErr');
+        err.textContent = 'Invalid credentials. Please try again.';
+        err.classList.remove('hidden');
+      }
+    }
+    document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+    function logout() { sessionStorage.removeItem('tilz_reception'); location.reload(); }
+    if (sessionStorage.getItem('tilz_reception')) {
+      document.getElementById('loginGate').style.display = 'none';
+      document.getElementById('dashboard').classList.remove('hidden');
+      if(document.getElementById('todayDate2')) document.getElementById('todayDate2').textContent = new Date().toLocaleDateString('en-NG', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    }
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-cream/70'); });
+      document.getElementById('sec-' + id).classList.add('active');
+      const btn = document.getElementById('btn-' + id);
+      if (btn) { btn.classList.add('active'); btn.classList.remove('text-cream/70'); }
+    }
+    function filterClients(q) {
+      document.querySelectorAll('.client-card').forEach(c => {
+        c.style.display = c.dataset.name.includes(q.toLowerCase()) || q === '' ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

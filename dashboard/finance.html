@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Dashboard | Tilz Spa by Tilda</title>
+  <link rel="icon" type="image/png" href="../assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cappuccino:'#C4A882',chocolate:'#3C2415',rosegold:'#B76E79',gold:'#D4AF6F',softrose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',warmgrey:'#9B8E82' }, fontFamily:{ serif:['Playfair Display','Georgia','serif'], sans:['Lato','Arial','sans-serif'] } } }
+    }
+  </script>
+  <style>
+    body{font-family:'Lato',sans-serif}h1,h2,h3{font-family:'Playfair Display',serif}
+    .tab-btn{transition:all .2s}.tab-btn.active{background:#3C2415;color:#F5F0E8}
+    .section{display:none}.section.active{display:block}
+    .stat-card{transition:transform .3s}.stat-card:hover{transform:translateY(-3px)}
+  </style>
+</head>
+<body class="bg-ivory text-chocolate min-h-screen">
+
+  <!-- LOGIN GATE -->
+  <div id="loginGate" class="fixed inset-0 z-50 bg-gradient-to-br from-chocolate to-chocolate/90 flex items-center justify-center">
+    <div class="bg-cream rounded-2xl p-10 w-full max-w-sm shadow-2xl text-center">
+      <img src="../assets/logo.png" alt="Tilz Spa" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover">
+      <h2 class="font-serif text-2xl mb-1">Finance Dashboard</h2>
+      <p class="text-warmgrey text-xs mb-7 tracking-wide">Tilz Spa by Tilda — Finance Access</p>
+      <div id="loginErr" class="hidden mb-4 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2"></div>
+      <input id="loginEmail" type="email" placeholder="Email address" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-chocolate bg-white">
+      <input id="loginPass" type="password" placeholder="Password" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-5 focus:outline-none focus:border-chocolate bg-white">
+      <button onclick="doLogin()" class="w-full bg-chocolate text-cream py-3 rounded-lg text-sm tracking-widest uppercase hover:bg-rosegold transition-all">Sign In</button>
+      <p class="mt-5 text-xs text-warmgrey">Finance or Founder credentials accepted</p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+    <div class="flex min-h-screen">
+      <aside class="w-64 bg-chocolate text-cream fixed top-0 left-0 h-full flex flex-col z-40 hidden lg:flex">
+        <div class="p-6 border-b border-cream/10">
+          <div class="flex items-center gap-3">
+            <img src="../assets/logo.png" alt="" class="w-10 h-10 rounded-full object-cover">
+            <div>
+              <p class="font-serif text-sm">Tilz Spa</p>
+              <p class="text-cream/40 text-xs">Finance Dashboard</p>
+            </div>
+          </div>
+        </div>
+        <nav class="flex-1 p-4 space-y-1">
+          <button onclick="showSection('overview')" class="tab-btn active w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3" id="btn-overview">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Overview
+          </button>
+          <button onclick="showSection('transactions')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-transactions">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            Transactions
+          </button>
+          <button onclick="showSection('analytics')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-analytics">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Analytics
+          </button>
+          <button onclick="showSection('expenses')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-expenses">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            Expenses
+          </button>
+          <button onclick="showSection('reports')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-reports">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Reports
+          </button>
+        </nav>
+        <div class="p-4 border-t border-cream/10">
+          <button onclick="logout()" class="text-xs text-cream/50 hover:text-cream transition-colors">← Sign Out</button>
+        </div>
+      </aside>
+
+      <main class="lg:ml-64 flex-1 p-6">
+        <!-- Mobile nav -->
+        <div class="lg:hidden flex flex-wrap gap-2 mb-6">
+          <button onclick="showSection('overview')" class="px-3 py-1.5 bg-chocolate text-cream rounded-full text-xs">Overview</button>
+          <button onclick="showSection('transactions')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Transactions</button>
+          <button onclick="showSection('expenses')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Expenses</button>
+          <button onclick="showSection('reports')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Reports</button>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div id="sec-overview" class="section active">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Finance Overview</h1>
+            <p class="text-warmgrey text-sm">April 2026 · Tilz Spa by Tilda</p>
+          </div>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm border-l-4 border-rosegold">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Total Revenue</p>
+              <p class="font-serif text-2xl">₦1,081,000</p>
+              <p class="text-green-600 text-xs mt-1">↑ 8% vs last month</p>
+            </div>
+            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm border-l-4 border-red-400">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Total Expenses</p>
+              <p class="font-serif text-2xl">₦680,000</p>
+              <p class="text-red-500 text-xs mt-1">↑ 3% vs last month</p>
+            </div>
+            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm border-l-4 border-green-500">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Net Profit</p>
+              <p class="font-serif text-2xl text-green-700">₦401,000</p>
+              <p class="text-green-600 text-xs mt-1">37.1% margin</p>
+            </div>
+            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm border-l-4 border-yellow-400">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Outstanding</p>
+              <p class="font-serif text-2xl text-yellow-600">₦45,000</p>
+              <p class="text-chocolate/50 text-xs mt-1">3 unpaid invoices</p>
+            </div>
+          </div>
+          <!-- Payment method breakdown -->
+          <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-white rounded-2xl p-5 text-center shadow-sm">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Bank Transfer</p>
+              <p class="font-serif text-xl font-semibold">62%</p>
+              <div class="w-full bg-ivory rounded-full h-2 mt-2"><div class="bg-rosegold h-2 rounded-full" style="width:62%"></div></div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 text-center shadow-sm">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Cash</p>
+              <p class="font-serif text-xl font-semibold">24%</p>
+              <div class="w-full bg-ivory rounded-full h-2 mt-2"><div class="bg-gold h-2 rounded-full" style="width:24%"></div></div>
+            </div>
+            <div class="bg-white rounded-2xl p-5 text-center shadow-sm">
+              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">POS</p>
+              <p class="font-serif text-xl font-semibold">14%</p>
+              <div class="w-full bg-ivory rounded-full h-2 mt-2"><div class="bg-chocolate h-2 rounded-full" style="width:14%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSACTIONS -->
+        <div id="sec-transactions" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Transactions</h1>
+            <p class="text-warmgrey text-sm">12 transactions this month</p>
+          </div>
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-ivory border-b border-cappuccino/20">
+                <tr>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Date</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Client</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Service</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Amount</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Method</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 10</td><td class="px-6 py-4 font-medium">Adaeze Okonkwo</td><td class="px-6 py-4 text-chocolate/70">Signature Spa Treatment</td><td class="px-6 py-4 text-rosegold font-semibold">₦55,000</td><td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Transfer</span></td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Paid</span></td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 10</td><td class="px-6 py-4 font-medium">Chukwuemeka Nwosu</td><td class="px-6 py-4 text-chocolate/70">VIP Barbing Package</td><td class="px-6 py-4 text-rosegold font-semibold">₦18,000</td><td class="px-6 py-4"><span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Cash</span></td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Paid</span></td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 10</td><td class="px-6 py-4 font-medium">Amaka Eze</td><td class="px-6 py-4 text-chocolate/70">Medical-Grade Pedicure</td><td class="px-6 py-4 text-rosegold font-semibold">₦28,000</td><td class="px-6 py-4"><span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">POS</span></td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Paid</span></td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 9</td><td class="px-6 py-4 font-medium">Olumide Fashola</td><td class="px-6 py-4 text-chocolate/70">Sauna + Spa Combo</td><td class="px-6 py-4 text-rosegold font-semibold">₦38,000</td><td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Transfer</span></td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Paid</span></td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 9</td><td class="px-6 py-4 font-medium">Ngozi Adeleke</td><td class="px-6 py-4 text-chocolate/70">Luxury Bathing Ritual</td><td class="px-6 py-4 text-rosegold font-semibold">₦22,000</td><td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Transfer</span></td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Paid</span></td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 8</td><td class="px-6 py-4 font-medium">Ifeoma Obiora</td><td class="px-6 py-4 text-chocolate/70">Infrared Sauna</td><td class="px-6 py-4 text-rosegold font-semibold">₦18,000</td><td class="px-6 py-4"><span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Cash</span></td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Paid</span></td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 8</td><td class="px-6 py-4 font-medium">Babatunde Akin</td><td class="px-6 py-4 text-chocolate/70">Private Sauna Room</td><td class="px-6 py-4 text-yellow-600 font-semibold">₦25,000</td><td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Transfer</span></td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Pending</span></td></tr>
+                <tr class="hover:bg-ivory/50"><td class="px-6 py-4 text-chocolate/60">Apr 7</td><td class="px-6 py-4 font-medium">Kelechi Obi</td><td class="px-6 py-4 text-chocolate/70">Executive Haircut</td><td class="px-6 py-4 text-yellow-600 font-semibold">₦7,000</td><td class="px-6 py-4"><span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">Cash</span></td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Pending</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ANALYTICS -->
+        <div id="sec-analytics" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Analytics</h1>
+            <p class="text-warmgrey text-sm">Revenue trends and category breakdown</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 class="font-serif text-lg mb-5">Daily Revenue — April</h3>
+              <div class="space-y-2">
+                <div class="flex items-center gap-3"><span class="text-xs w-12 text-warmgrey">Apr 7</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bg-rosegold/60 h-3 rounded-full" style="width:30%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦72,000</span></div>
+                <div class="flex items-center gap-3"><span class="text-xs w-12 text-warmgrey">Apr 8</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bg-rosegold/70 h-3 rounded-full" style="width:45%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦108,000</span></div>
+                <div class="flex items-center gap-3"><span class="text-xs w-12 text-warmgrey">Apr 9</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bg-rosegold/80 h-3 rounded-full" style="width:55%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦132,000</span></div>
+                <div class="flex items-center gap-3"><span class="text-xs w-12 text-warmgrey">Apr 10</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bg-rosegold h-3 rounded-full" style="width:77%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦185,000</span></div>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 class="font-serif text-lg mb-5">Revenue by Category</h3>
+              <div class="space-y-4">
+                <div><div class="flex justify-between text-sm mb-1"><span>Spa Treatments</span><span class="text-rosegold font-semibold">52%</span></div><div class="w-full bg-ivory rounded-full h-3"><div class="bg-rosegold h-3 rounded-full" style="width:52%"></div></div></div>
+                <div><div class="flex justify-between text-sm mb-1"><span>Sauna Sessions</span><span class="text-gold font-semibold">26%</span></div><div class="w-full bg-ivory rounded-full h-3"><div class="bg-gold h-3 rounded-full" style="width:26%"></div></div></div>
+                <div><div class="flex justify-between text-sm mb-1"><span>Barbing Salon</span><span class="text-chocolate font-semibold">22%</span></div><div class="w-full bg-ivory rounded-full h-3"><div class="bg-chocolate h-3 rounded-full" style="width:22%"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPENSES -->
+        <div id="sec-expenses" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Expenses</h1>
+            <p class="text-warmgrey text-sm">April 2026 · Total: ₦680,000</p>
+          </div>
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-ivory border-b border-cappuccino/20">
+                <tr>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Category</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Description</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Amount</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Paid By</th>
+                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4"><span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">Rent</span></td><td class="px-6 py-4 text-chocolate/70">Monthly space rental — Wuse 2</td><td class="px-6 py-4 font-semibold">₦350,000</td><td class="px-6 py-4 text-chocolate/60">Tilda</td><td class="px-6 py-4 text-chocolate/60">Apr 1</td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">Salaries</span></td><td class="px-6 py-4 text-chocolate/70">Staff salaries — 5 employees</td><td class="px-6 py-4 font-semibold">₦480,000</td><td class="px-6 py-4 text-chocolate/60">Tilda</td><td class="px-6 py-4 text-chocolate/60">Apr 1</td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">Utilities</span></td><td class="px-6 py-4 text-chocolate/70">Electricity, water, generator fuel</td><td class="px-6 py-4 font-semibold">₦85,000</td><td class="px-6 py-4 text-chocolate/60">Tilda</td><td class="px-6 py-4 text-chocolate/60">Apr 3</td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Products</span></td><td class="px-6 py-4 text-chocolate/70">Spa oils, scrubs, barbing supplies</td><td class="px-6 py-4 font-semibold">₦65,000</td><td class="px-6 py-4 text-chocolate/60">Fatima</td><td class="px-6 py-4 text-chocolate/60">Apr 5</td></tr>
+                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4"><span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">Marketing</span></td><td class="px-6 py-4 text-chocolate/70">Instagram ads, print flyers</td><td class="px-6 py-4 font-semibold">₦45,000</td><td class="px-6 py-4 text-chocolate/60">Tilda</td><td class="px-6 py-4 text-chocolate/60">Apr 2</td></tr>
+                <tr class="hover:bg-ivory/50"><td class="px-6 py-4"><span class="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full">Equipment</span></td><td class="px-6 py-4 text-chocolate/70">Sauna maintenance service</td><td class="px-6 py-4 font-semibold">₦35,000</td><td class="px-6 py-4 text-chocolate/60">Tilda</td><td class="px-6 py-4 text-chocolate/60">Apr 8</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- REPORTS -->
+        <div id="sec-reports" class="section">
+          <div class="mb-8">
+            <h1 class="font-serif text-3xl mb-1">Reports</h1>
+            <p class="text-warmgrey text-sm">P&L Summary — April 2026</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm max-w-2xl">
+            <h3 class="font-serif text-xl mb-6 pb-4 border-b border-cappuccino/20">Profit & Loss Summary</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Total Revenue</span><span class="font-semibold text-green-700">+ ₦1,081,000</span></div>
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Rent</span><span class="text-red-600">- ₦350,000</span></div>
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Salaries</span><span class="text-red-600">- ₦480,000</span></div>
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Utilities</span><span class="text-red-600">- ₦85,000</span></div>
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Products & Supplies</span><span class="text-red-600">- ₦65,000</span></div>
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Marketing</span><span class="text-red-600">- ₦45,000</span></div>
+              <div class="flex justify-between py-2 border-b border-ivory"><span class="text-chocolate/70">Equipment & Maintenance</span><span class="text-red-600">- ₦35,000</span></div>
+              <div class="flex justify-between py-3 mt-2 bg-ivory rounded-xl px-4"><span class="font-semibold text-base">Net Profit</span><span class="font-serif text-xl font-semibold text-green-700">₦401,000</span></div>
+              <div class="flex justify-between px-4 text-sm"><span class="text-warmgrey">Profit Margin</span><span class="text-green-700 font-semibold">37.1%</span></div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function doLogin() {
+      const e = document.getElementById('loginEmail').value.trim();
+      const p = document.getElementById('loginPass').value;
+      if ((e === 'finance@tilzspa.com' || e === 'founder@tilzspa.com') && p === 'TilzSpa@2026') {
+        sessionStorage.setItem('tilz_finance', Date.now());
+        document.getElementById('loginGate').style.display = 'none';
+        document.getElementById('dashboard').classList.remove('hidden');
+      } else {
+        const err = document.getElementById('loginErr');
+        err.textContent = 'Invalid credentials. Please try again.';
+        err.classList.remove('hidden');
+      }
+    }
+    document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+    function logout() { sessionStorage.removeItem('tilz_finance'); location.reload(); }
+    if (sessionStorage.getItem('tilz_finance')) {
+      document.getElementById('loginGate').style.display = 'none';
+      document.getElementById('dashboard').classList.remove('hidden');
+    }
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-cream/70'); });
+      document.getElementById('sec-' + id).classList.add('active');
+      const btn = document.getElementById('btn-' + id);
+      if (btn) { btn.classList.add('active'); btn.classList.remove('text-cream/70'); }
+    }
+  </script>
+</body>
+</html>
