@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Login | Tilz Spa by Tilda</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cappuccino:'#C4A882', chocolate:'#3C2415', rosegold:'#B76E79',
+            gold:'#D4AF6F', softrose:'#E8C4C0', cream:'#F5F0E8', ivory:'#FAF7F2', warmgrey:'#9B8E82'
+          },
+          fontFamily: { serif:['Playfair Display','Georgia','serif'], sans:['Lato','Arial','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Lato', sans-serif; }
+    h1,h2,h3 { font-family: 'Playfair Display', serif; }
+    .shake { animation: shake .4s ease; }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)}
+      20%{transform:translateX(-8px)}
+      40%{transform:translateX(8px)}
+      60%{transform:translateX(-6px)}
+      80%{transform:translateX(6px)}
+    }
+    .fade-in { animation: fadeIn .6s ease forwards; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-chocolate via-chocolate/95 to-rosegold/30 flex items-center justify-center px-4">
+
+  <div class="fade-in w-full max-w-sm">
+
+    <!-- Card -->
+    <div class="bg-cream rounded-3xl shadow-2xl overflow-hidden">
+
+      <!-- Top band -->
+      <div class="bg-chocolate px-8 pt-10 pb-8 text-center">
+        <img src="assets/logo.png" alt="Tilz Spa" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover ring-2 ring-cappuccino/40 shadow-lg">
+        <h1 class="font-serif text-2xl text-cream mb-1">Tilz Spa</h1>
+        <p class="text-cream/50 text-xs tracking-[0.25em] uppercase">Staff Portal</p>
+      </div>
+
+      <!-- Form -->
+      <div class="px-8 py-8">
+
+        <div id="errMsg" class="hidden mb-5 text-xs text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-center"></div>
+
+        <div class="mb-4">
+          <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Email Address</label>
+          <input id="email" type="email" autocomplete="email" placeholder="yourname@tilzspa.com"
+            class="w-full border border-cappuccino/30 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory transition-colors"
+            onkeydown="if(event.key==='Enter') document.getElementById('pass').focus()">
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Password</label>
+          <div class="relative">
+            <input id="pass" type="password" autocomplete="current-password" placeholder="••••••••••••"
+              class="w-full border border-cappuccino/30 rounded-xl px-4 py-3 pr-11 text-sm focus:outline-none focus:border-chocolate bg-ivory transition-colors"
+              onkeydown="if(event.key==='Enter') doLogin()">
+            <button type="button" onclick="togglePass()" class="absolute right-3 top-1/2 -translate-y-1/2 text-warmgrey hover:text-chocolate transition-colors">
+              <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button id="loginBtn" onclick="doLogin()"
+          class="w-full bg-chocolate text-cream py-3.5 rounded-xl text-xs tracking-[0.2em] uppercase font-medium hover:bg-rosegold transition-all duration-300 flex items-center justify-center gap-2">
+          <span id="btnText">Sign In</span>
+          <svg id="btnSpinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+        </button>
+
+        <!-- Role hint (subtle) -->
+        <div class="mt-6 pt-5 border-t border-cappuccino/20">
+          <p class="text-xs text-warmgrey text-center">Sign in with your Tilz Spa staff credentials.<br>You will be directed to your dashboard automatically.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Back link -->
+    <p class="text-center mt-6 text-cream/30 text-xs">
+      <a href="index.html" class="hover:text-cream/60 transition-colors">← Back to Tilz Spa</a>
+    </p>
+
+  </div>
+
+  <script>
+    // Credential → role mapping
+    const USERS = {
+      'founder@tilzspa.com':    { pass: 'TilzSpa@2026', redirect: 'dashboard/founder.html',      label: 'Founder' },
+      'finance@tilzspa.com':    { pass: 'TilzSpa@2026', redirect: 'dashboard/finance.html',      label: 'Finance' },
+      'reception@tilzspa.com':  { pass: 'TilzSpa@2026', redirect: 'dashboard/receptionist.html', label: 'Receptionist' },
+    };
+
+    // Session key prefix
+    const SESSION_KEYS = {
+      'founder@tilzspa.com':   'tilz_founder',
+      'finance@tilzspa.com':   'tilz_finance',
+      'reception@tilzspa.com': 'tilz_reception',
+    };
+
+    function togglePass() {
+      const p = document.getElementById('pass');
+      p.type = p.type === 'password' ? 'text' : 'password';
+    }
+
+    function showError(msg) {
+      const el = document.getElementById('errMsg');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      const card = el.closest('.bg-cream');
+      card.classList.add('shake');
+      setTimeout(() => card.classList.remove('shake'), 500);
+    }
+
+    function doLogin() {
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const pass  = document.getElementById('pass').value;
+      const btn   = document.getElementById('loginBtn');
+      const txt   = document.getElementById('btnText');
+      const spin  = document.getElementById('btnSpinner');
+
+      document.getElementById('errMsg').classList.add('hidden');
+
+      if (!email) { showError('Please enter your email address.'); return; }
+      if (!pass)  { showError('Please enter your password.'); return; }
+
+      // Simulate brief loading
+      btn.disabled = true;
+      txt.textContent = 'Signing in…';
+      spin.classList.remove('hidden');
+
+      setTimeout(() => {
+        const user = USERS[email];
+
+        if (!user || user.pass !== pass) {
+          btn.disabled = false;
+          txt.textContent = 'Sign In';
+          spin.classList.add('hidden');
+          showError('Invalid email or password. Please try again.');
+          return;
+        }
+
+        // Set session
+        const key = SESSION_KEYS[email];
+        if (key) sessionStorage.setItem(key, Date.now());
+
+        // Redirect
+        txt.textContent = 'Redirecting…';
+        window.location.href = user.redirect;
+      }, 800);
+    }
+
+    // Auto-focus email field
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('email').focus();
+    });
+  </script>
+</body>
+</html>
