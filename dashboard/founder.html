@@ -57,7 +57,7 @@
           </button>
           <button onclick="showSection('appointments')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-appointments">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            Appointments
+            Calendar
           </button>
           <button onclick="showSection('revenue')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-revenue">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
@@ -173,8 +173,44 @@
             <button onclick="showCalTab('social')" id="caltab-social" class="caltab px-5 py-2 rounded-full text-sm font-medium bg-ivory text-warmgrey hover:bg-cappuccino/20">Social Media</button>
           </div>
 
+          <!-- DATE DETAIL MODAL -->
+          <div id="dateModal" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background:rgba(0,0,0,0.5)" onclick="if(event.target===this)closeDateModal()">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
+              <div id="modalHeader" class="px-6 py-5 flex items-start justify-between">
+                <div>
+                  <p id="modalDate" class="text-xs font-semibold tracking-widest uppercase mb-1" style="color:#C4A882"></p>
+                  <h3 id="modalTitle" class="font-serif text-xl"></h3>
+                </div>
+                <button onclick="closeDateModal()" class="text-warmgrey hover:text-chocolate text-xl leading-none mt-1">&times;</button>
+              </div>
+              <div id="modalBody" class="px-6 pb-6 space-y-3"></div>
+            </div>
+          </div>
+
           <!-- TAB: Appointments -->
           <div id="cal-appts" class="cal-panel">
+            <!-- Visual Calendar Grid -->
+            <div class="bg-white rounded-2xl shadow-sm mb-6 overflow-hidden">
+              <div class="flex items-center justify-between px-6 py-4 border-b border-cappuccino/20">
+                <button onclick="calPrev()" class="text-warmgrey hover:text-chocolate transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <p id="calMonthLabel" class="font-serif text-base"></p>
+                <button onclick="calNext()" class="text-warmgrey hover:text-chocolate transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+              <div class="grid grid-cols-7 text-center">
+                <div class="py-2 text-xs font-medium text-warmgrey">Sun</div>
+                <div class="py-2 text-xs font-medium text-warmgrey">Mon</div>
+                <div class="py-2 text-xs font-medium text-warmgrey">Tue</div>
+                <div class="py-2 text-xs font-medium text-warmgrey">Wed</div>
+                <div class="py-2 text-xs font-medium text-warmgrey">Thu</div>
+                <div class="py-2 text-xs font-medium text-warmgrey">Fri</div>
+                <div class="py-2 text-xs font-medium text-warmgrey">Sat</div>
+              </div>
+              <div id="calGrid" class="grid grid-cols-7 border-t border-cappuccino/10"></div>
+            </div>
             <div class="flex items-center justify-between mb-4">
               <input type="text" placeholder="Search client..." class="border border-cappuccino/30 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-chocolate bg-white" oninput="filterAppts(this.value)">
               <span class="text-xs text-warmgrey">8 appointments this week</span>
@@ -569,6 +605,112 @@
     }
 
     buildRoadmap();
+
+    // ===== VISUAL CALENDAR =====
+    // All events keyed by YYYY-MM-DD
+    const calEvents = {};
+
+    // Populate from roadmap milestones
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    roadmap.forEach(m => {
+      const [mName, mYear] = m.month.split(' ');
+      const mIdx = monthNames.indexOf(mName);
+      m.milestones.forEach(ms => {
+        const [dName, dNum] = ms.date.split(' ');
+        const d = parseInt(dNum);
+        const key = `${mYear}-${String(mIdx+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        if (!calEvents[key]) calEvents[key] = [];
+        calEvents[key].push({ type: 'roadmap', color: m.color, phase: m.phase, title: ms.title, detail: ms.detail });
+      });
+    });
+
+    // Social media weekly events (repeating)
+    const socialWeekly = [
+      { day: 1, label: 'Mon', title: 'Instagram Post', detail: 'Aesthetic content: service spotlight or behind-the-scenes. Use brand hashtags. Post 9–11am.' },
+      { day: 2, label: 'Tue', title: 'TikTok Video', detail: 'Short-form video: treatment preview, ASMR, or transformation. Target 15–30 seconds.' },
+      { day: 3, label: 'Wed', title: 'Instagram Stories', detail: 'Poll, Q&A, or client testimonial story. Engage followers with interactive sticker.' },
+      { day: 4, label: 'Thu', title: 'Twitter/X Thread', detail: 'Educational thread: self-care tips, skincare facts, or spa benefits. 3–5 tweets.' },
+      { day: 5, label: 'Fri', title: 'Instagram Reel', detail: 'Weekly highlight reel or promotional content. Include booking CTA and WhatsApp link.' },
+      { day: 6, label: 'Sat', title: 'WhatsApp Broadcast', detail: 'Send weekend availability and special offers to client broadcast list. Keep it concise.' }
+    ];
+
+    // Add social events for Apr 2026 – Mar 2027
+    for (let yr = 2026; yr <= 2027; yr++) {
+      const startM = yr === 2026 ? 3 : 0;
+      const endM   = yr === 2027 ? 2 : 11;
+      for (let mo = startM; mo <= endM; mo++) {
+        const daysInMonth = new Date(yr, mo+1, 0).getDate();
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dow = new Date(yr, mo, d).getDay(); // 0=Sun
+          const sw = socialWeekly.find(s => s.day === dow);
+          if (sw) {
+            const key = `${yr}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+            if (!calEvents[key]) calEvents[key] = [];
+            calEvents[key].push({ type: 'social', color: '#25D366', phase: 'Social', title: sw.title, detail: sw.detail });
+          }
+        }
+      }
+    }
+
+    let calYear = new Date().getFullYear();
+    let calMonth = new Date().getMonth();
+
+    function renderCal() {
+      const label = document.getElementById('calMonthLabel');
+      const grid  = document.getElementById('calGrid');
+      if (!label || !grid) return;
+      label.textContent = `${monthNames[calMonth]} ${calYear}`;
+      const firstDay = new Date(calYear, calMonth, 1).getDay();
+      const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+      const today = new Date();
+      let html = '';
+      for (let i = 0; i < firstDay; i++) html += '<div class="h-16 border-r border-b border-cappuccino/10"></div>';
+      for (let d = 1; d <= daysInMonth; d++) {
+        const key = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const evts = calEvents[key] || [];
+        const isToday = d === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear();
+        const dots = evts.slice(0,3).map(e => `<span class="w-1.5 h-1.5 rounded-full inline-block" style="background:${e.color}"></span>`).join('');
+        html += `<div class="h-16 border-r border-b border-cappuccino/10 p-1.5 cursor-pointer hover:bg-ivory/80 transition-colors ${isToday ? 'bg-cappuccino/10' : ''}" onclick="openDateModal('${key}')">
+          <p class="text-xs font-medium mb-1 ${isToday ? 'text-chocolate font-bold' : 'text-warmgrey'}">${d}</p>
+          <div class="flex flex-wrap gap-0.5">${dots}</div>
+          ${evts.length > 0 ? `<p class="text-[9px] text-warmgrey leading-tight mt-0.5 truncate">${evts[0].title}</p>` : ''}
+        </div>`;
+      }
+      grid.innerHTML = html;
+    }
+
+    function calPrev() { if (calMonth === 0) { calMonth=11; calYear--; } else calMonth--; renderCal(); }
+    function calNext() { if (calMonth === 11) { calMonth=0; calYear++; } else calMonth++; renderCal(); }
+
+    function openDateModal(key) {
+      const evts = calEvents[key] || [];
+      const [yr, mo, d] = key.split('-');
+      const dateStr = `${monthNames[parseInt(mo)-1]} ${parseInt(d)}, ${yr}`;
+      document.getElementById('modalDate').textContent = dateStr;
+      if (evts.length === 0) {
+        document.getElementById('modalTitle').textContent = 'No events';
+        document.getElementById('modalBody').innerHTML = '<p class="text-sm text-warmgrey">Nothing scheduled for this date.</p>';
+      } else {
+        document.getElementById('modalTitle').textContent = evts.length === 1 ? evts[0].title : `${evts.length} events`;
+        document.getElementById('modalBody').innerHTML = evts.map(e => `
+          <div class="rounded-xl p-4" style="background:${e.color}10;border-left:3px solid ${e.color}">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full" style="background:${e.color}20;color:${e.color}">${e.phase}</span>
+            </div>
+            <p class="font-medium text-sm mb-1">${e.title}</p>
+            <p class="text-xs text-warmgrey leading-relaxed">${e.detail}</p>
+          </div>
+        `).join('');
+      }
+      document.getElementById('dateModal').classList.remove('hidden');
+    }
+
+    function closeDateModal() {
+      document.getElementById('dateModal').classList.add('hidden');
+    }
+
+    // Init calendar on page load
+    renderCal();
   </script>
 </body>
 </html>
