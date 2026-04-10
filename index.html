@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tilz Spa by Tilda | Luxury Spa, Sauna &amp; Barbing &mdash; Wuse 2, Abuja</title>
+  <title>Tilz Spa by Tilda &mdash; Wuse 2, Abuja</title>
   <meta name="description" content="A sanctuary of calm in the heart of Wuse 2, Abuja. Luxury bathing rituals, medical-grade pedicures, signature spa treatments, private sauna, and executive barbing.">
   <link rel="icon" type="image/png" href="assets/logo.png">
+  <!-- no logo images on site -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <script>
@@ -23,9 +24,9 @@
   </script>
   <style>
     html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;color:#3C2415;background:#FAF7F2}
+    body{font-family:'Inter',sans-serif;color:#1A1A1A;background:#FAFAF8}
     h1,h2,h3{font-family:'Playfair Display',serif}
-    .nav-blur{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(250,247,242,.92)}
+    .nav-blur{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(250,250,248,.94)}
     .tab-btn{transition:all .25s;border-radius:100px;padding:8px 20px;font-size:13px;font-weight:500;border:1px solid transparent;cursor:pointer;background:transparent;color:#9B8E82}
     .tab-btn.active{background:#3C2415;color:#F5F0E8;border-color:#3C2415}
     .tab-btn:not(.active):hover{color:#3C2415;border-color:#C4A882}
@@ -42,14 +43,14 @@
 <!-- NAV -->
 <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-cap/15">
   <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-3">
-      <img src="assets/logo.png" alt="Tilz Spa" class="w-8 h-8 rounded-full object-cover">
-      <span class="font-serif text-base tracking-wide">Tilz Spa</span>
+    <a href="#" class="flex items-center">
+      <span class="font-serif text-base tracking-wide" style="color:#1A1A1A;letter-spacing:0.04em">Tilz Spa</span>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm text-grey">
       <a href="#about" class="hover:text-choc transition-colors">About</a>
       <a href="#services" class="hover:text-choc transition-colors">Services</a>
       <a href="#experience" class="hover:text-choc transition-colors">Experience</a>
+      <a href="founder.html" class="hover:text-choc transition-colors">Founder</a>
       <a href="#contact" class="hover:text-choc transition-colors">Contact</a>
     </div>
     <a href="https://wa.me/2348172371818?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tilz%20Spa." target="_blank"
@@ -60,35 +61,35 @@
 </nav>
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center bg-choc relative overflow-hidden">
-  <div class="absolute inset-0 opacity-10" style="background:radial-gradient(ellipse at 30% 50%,#C4A882 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,#B76E79 0%,transparent 50%)"></div>
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden" style="background:#F5F2EC">
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(196,168,130,0.08) 0%, transparent 70%)"></div>
   <div class="relative z-10 text-center px-6 max-w-2xl mx-auto">
-    <img src="assets/logo.png" alt="Tilz Spa" class="w-20 h-20 rounded-full object-cover mx-auto mb-8 ring-1 ring-cap/30">
-    <p class="text-cap text-xs tracking-[0.3em] uppercase mb-5">Wuse 2, Abuja</p>
-    <h1 class="font-serif text-5xl md:text-6xl text-cream leading-tight mb-6">A Sanctuary<br><em>of Calm</em></h1>
-    <p class="text-cream/55 text-base font-light leading-relaxed mb-10 max-w-md mx-auto">Luxury spa treatments, private sauna, and executive barbing — designed for those who value discretion, quality, and intentional self-care.</p>
+    <p class="text-cap text-xs tracking-[0.3em] uppercase mb-5" style="color:#C4A882">Wuse 2, Abuja</p>
+    <h1 class="font-serif mb-6" style="font-size:clamp(3rem,7vw,5.5rem);font-weight:300;letter-spacing:-0.03em;line-height:1.06;color:#1A1A1A">A Sanctuary<br><em style="color:#C4A882">of Calm</em></h1>
+    <p class="text-base font-light leading-relaxed mb-10 max-w-md mx-auto" style="color:#8A8A8A">Luxury spa treatments, private sauna, and executive barbing &mdash; for those who value discretion, quality, and intentional self-care.</p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a href="https://wa.me/2348172371818?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tilz%20Spa." target="_blank"
-        class="bg-cap text-choc px-8 py-3.5 rounded-full text-sm font-medium hover:bg-gold transition-all">
+        style="background:#1A1A1A;color:#FAFAF8;padding:13px 28px;border-radius:100px;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.03em;transition:background 0.2s">
         Book an Appointment
       </a>
-      <a href="#services" class="border border-cream/25 text-cream/80 px-8 py-3.5 rounded-full text-sm hover:border-cream/50 hover:text-cream transition-all">
+      <a href="#services"
+        style="border:1px solid rgba(26,26,26,0.2);color:rgba(26,26,26,0.6);padding:13px 28px;border-radius:100px;font-size:13px;text-decoration:none;transition:all 0.2s">
         Explore Services
       </a>
     </div>
   </div>
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <svg class="w-5 h-5 text-cream/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
+    <svg class="w-5 h-5" style="color:rgba(26,26,26,0.2)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </section>
 
 <!-- VALUES BAR -->
-<section class="bg-choc/95 py-6 border-t border-cream/5">
+<section class="py-5 border-t border-b" style="background:#EFEBE4;border-color:rgba(196,168,130,0.2)">
   <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-    <div><p class="text-cap text-xs tracking-[0.2em] uppercase">Discretion</p></div>
-    <div><p class="text-cap text-xs tracking-[0.2em] uppercase">Quality</p></div>
-    <div><p class="text-cap text-xs tracking-[0.2em] uppercase">Serenity</p></div>
-    <div><p class="text-cap text-xs tracking-[0.2em] uppercase">Refinement</p></div>
+    <div><p class="text-xs tracking-[0.2em] uppercase" style="color:#9B8070">Discretion</p></div>
+    <div><p class="text-xs tracking-[0.2em] uppercase" style="color:#9B8070">Quality</p></div>
+    <div><p class="text-xs tracking-[0.2em] uppercase" style="color:#9B8070">Serenity</p></div>
+    <div><p class="text-xs tracking-[0.2em] uppercase" style="color:#9B8070">Refinement</p></div>
   </div>
 </section>
 
@@ -294,19 +295,20 @@
   </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="py-20 px-6 bg-cream/50">
-  <div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-12 fade-in">
-    <div class="flex-shrink-0">
-      <div class="w-48 h-48 rounded-full bg-gradient-to-br from-cap to-rg flex items-center justify-center text-cream font-serif text-5xl overflow-hidden ring-4 ring-cap/20">
-        <img src="assets/founder.jpg" alt="Tilda" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentNode.innerHTML='T'">
-      </div>
+<!-- FOUNDER TEASER -->
+<section class="py-20 px-6" style="background:#1A1A1A">
+  <div class="max-w-4xl mx-auto fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+    <div style="position:relative">
+      <img src="assets/founder.jpg" alt="Tilda, Founder of Tilz Spa"
+        style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:12px;display:block">
     </div>
     <div>
-      <p class="text-rg text-xs tracking-[0.25em] uppercase mb-3">Meet the Founder</p>
-      <h2 class="font-serif text-3xl mb-4">Tilda</h2>
-      <p class="text-grey leading-relaxed mb-4">Tilz Spa was built on a simple conviction: that every person deserves a space where they are genuinely cared for. Not rushed. Not upsold. Just seen, heard, and restored.</p>
-      <p class="text-grey leading-relaxed">As a trained therapist and entrepreneur, Tilda brings both technical excellence and deep personal warmth to every aspect of the business — from the treatment room to the brand itself.</p>
+      <p style="font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#C4A882;margin-bottom:16px">Meet the Founder</p>
+      <h2 class="font-serif" style="font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;color:#FAFAF8;margin-bottom:8px">Tilda</h2>
+      <p style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(196,168,130,0.5);margin-bottom:24px">Founder &amp; Lead Therapist</p>
+      <p style="font-size:0.9375rem;line-height:1.75;color:rgba(250,250,248,0.5);margin-bottom:14px">Tilz Spa was built on a simple conviction: that every person deserves a space where they are genuinely cared for. Not rushed. Not upsold. Just restored.</p>
+      <p style="font-size:0.9375rem;line-height:1.75;color:rgba(250,250,248,0.5);margin-bottom:24px">As a trained therapist and entrepreneur, Tilda brings both technical excellence and deep personal warmth to every aspect of the business.</p>
+      <a href="founder.html" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#C4A882;text-decoration:none">Read her story &rarr;</a>
     </div>
   </div>
 </section>
@@ -354,17 +356,14 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-choc border-t border-cream/5 py-8 px-6">
-  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-3">
-      <img src="assets/logo.png" alt="Tilz Spa" class="w-6 h-6 rounded-full object-cover opacity-60">
-      <p class="text-cream/40 text-xs">&copy; 2026 Tilz Spa by Tilda. All rights reserved.</p>
-    </div>
-    <div class="flex items-center gap-6 text-cream/30 text-xs">
-      <a href="https://instagram.com/tilzspa" target="_blank" class="hover:text-cream/60 transition-colors">Instagram</a>
-      <a href="https://tiktok.com/@tilzspa" target="_blank" class="hover:text-cream/60 transition-colors">TikTok</a>
-      <a href="https://wa.me/2348172371818" target="_blank" class="hover:text-cream/60 transition-colors">WhatsApp</a>
-      <a href="login.html" class="text-cream/10 hover:text-cream/30 transition-colors text-[10px]">&middot;</a>
+<footer style="background:#0A0A0A;border-top:1px solid rgba(196,168,130,0.08);padding:28px 32px">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <p style="font-size:11px;color:rgba(250,250,248,0.2)">&copy; 2026 Tilz Spa by Tilda. All rights reserved.</p>
+    <div style="display:flex;gap:24px;align-items:center">
+      <a href="https://instagram.com/tilzspa" target="_blank" style="font-size:11px;color:rgba(250,250,248,0.25);text-decoration:none">Instagram</a>
+      <a href="https://tiktok.com/@tilzspa" target="_blank" style="font-size:11px;color:rgba(250,250,248,0.25);text-decoration:none">TikTok</a>
+      <a href="https://wa.me/2348172371818" target="_blank" style="font-size:11px;color:rgba(250,250,248,0.25);text-decoration:none">WhatsApp</a>
+      <a href="login.html" style="font-size:11px;color:rgba(250,250,248,0.3);text-decoration:none;border:1px solid rgba(250,250,248,0.12);padding:5px 14px;border-radius:100px;letter-spacing:0.04em;transition:all 0.2s" onmouseover="this.style.color='rgba(196,168,130,0.8)';this.style.borderColor='rgba(196,168,130,0.3)'" onmouseout="this.style.color='rgba(250,250,248,0.3)';this.style.borderColor='rgba(250,250,248,0.12)'">Sign In</a>
     </div>
   </div>
 </footer>
