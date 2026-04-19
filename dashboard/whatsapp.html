@@ -401,13 +401,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
   </div>
 
   <script>
-    else {
-        const err = document.getElementById('loginErr');
-        err.textContent = 'Invalid credentials. Founder access required.';
-        err.classList.remove('hidden');
-      }
-    }
-    });
+    // === Single sign-in guard ===
     function logout() { sessionStorage.removeItem('tilz_founder'); window.location.href = '../login.html'; }
     if (!sessionStorage.getItem('tilz_founder')) {
       window.location.href = '../login.html';

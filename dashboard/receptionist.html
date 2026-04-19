@@ -486,13 +486,7 @@
   </div>
 
   <script>
-    else {
-        const err = document.getElementById('loginErr');
-        err.textContent = 'Invalid credentials. Please try again.';
-        err.classList.remove('hidden');
-      }
-    }
-    });
+    // === Single sign-in guard ===
     function logout() { sessionStorage.removeItem('tilz_reception'); window.location.href = '../login.html'; }
     if (!sessionStorage.getItem('tilz_reception')) {
       window.location.href = '../login.html';
