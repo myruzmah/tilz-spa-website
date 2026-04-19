@@ -63,22 +63,8 @@
 </head>
 <body class="min-h-screen">
 
-  <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 100%)">
-    <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
-      <p class="eyebrow mb-4">Tilzspa</p>
-      <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">WhatsApp</h2>
-      <div class="divider mx-auto my-5"></div>
-      <p class="text-grey text-xs mb-8 tracking-wide">Founder Access Only</p>
-      <div id="loginErr" class="hidden mb-4 text-xs text-rg bg-rose/20 border border-rg/20 rounded-xl px-4 py-3"></div>
-      <input id="loginEmail" type="email" placeholder="Email address" class="input-box mb-3 text-left">
-      <input id="loginPass" type="password" placeholder="Password" class="input-box mb-6 text-left">
-      <button onclick="doLogin()" class="btn-primary w-full">Sign In</button>
-    </div>
-  </div>
-
   <!-- DASHBOARD -->
-  <div id="dashboard" class="hidden">
+  <div id="dashboard">
     <div class="flex min-h-screen">
 
       <!-- SIDEBAR -->
@@ -415,24 +401,16 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
   </div>
 
   <script>
-    function doLogin() {
-      const e = document.getElementById('loginEmail').value.trim();
-      const p = document.getElementById('loginPass').value;
-      if (e === 'founder@tilzspa.com' && p === 'TilzSpa@2026') {
-        sessionStorage.setItem('tilz_wa', Date.now());
-        document.getElementById('loginGate').style.display = 'none';
-        document.getElementById('dashboard').classList.remove('hidden');
-      } else {
+    else {
         const err = document.getElementById('loginErr');
         err.textContent = 'Invalid credentials. Founder access required.';
         err.classList.remove('hidden');
       }
     }
-    document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-    function logout() { sessionStorage.removeItem('tilz_wa'); location.reload(); }
-    if (sessionStorage.getItem('tilz_wa')) {
-      document.getElementById('loginGate').style.display = 'none';
-      document.getElementById('dashboard').classList.remove('hidden');
+    });
+    function logout() { sessionStorage.removeItem('tilz_founder'); window.location.href = '../login.html'; }
+    if (!sessionStorage.getItem('tilz_founder')) {
+      window.location.href = '../login.html';
     }
     function showSection(id) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));

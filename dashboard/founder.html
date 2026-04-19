@@ -68,23 +68,8 @@
 </head>
 <body class="min-h-screen">
 
-  <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 100%)">
-    <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
-      <p class="eyebrow mb-4">Tilzspa</p>
-      <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Founder</h2>
-      <div class="divider mx-auto my-5"></div>
-      <p class="text-grey text-xs mb-8 tracking-wide">Secure Access</p>
-      <div id="loginErr" class="hidden mb-4 text-xs text-rg bg-rose/20 border border-rg/20 rounded-xl px-4 py-3"></div>
-      <input id="loginEmail" type="email" placeholder="Email address" class="input-box mb-3 text-left">
-      <input id="loginPass" type="password" placeholder="Password" class="input-box mb-6 text-left">
-      <button onclick="doLogin()" class="btn-primary w-full">Sign In</button>
-      <p class="mt-6 text-[11px] text-grey tracking-wide">Use your Tilzspa founder credentials.</p>
-    </div>
-  </div>
-
   <!-- DASHBOARD -->
-  <div id="dashboard" class="hidden">
+  <div id="dashboard">
     <div class="flex min-h-screen">
 
       <!-- SIDEBAR -->
@@ -555,27 +540,20 @@
 
   <script>
     // ===== AUTH =====
-    function doLogin() {
-      const e = document.getElementById('loginEmail').value.trim();
-      const p = document.getElementById('loginPass').value;
-      if (e === 'founder@tilzspa.com' && p === 'TilzSpa@2026') {
-        sessionStorage.setItem('tilz_founder', Date.now());
-        document.getElementById('loginGate').style.display = 'none';
-        document.getElementById('dashboard').classList.remove('hidden');
-        document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-NG', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      } else {
+    else {
         const err = document.getElementById('loginErr');
         err.textContent = 'Invalid credentials. Please try again.';
         err.classList.remove('hidden');
       }
     }
-    document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-    function logout() { sessionStorage.removeItem('tilz_founder'); location.reload(); }
+    });
+    function logout() { sessionStorage.removeItem('tilz_founder'); window.location.href = '../login.html'; }
 
-    if (sessionStorage.getItem('tilz_founder')) {
-      document.getElementById('loginGate').style.display = 'none';
-      document.getElementById('dashboard').classList.remove('hidden');
-      document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-NG', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    if (!sessionStorage.getItem('tilz_founder')) {
+      window.location.href = '../login.html';
+    } else {
+      document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-NG', {weekday:'long',year:'numeric',month:'long',day:'numeric'
+    });
     }
 
     // ===== NAV =====
