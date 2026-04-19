@@ -4,182 +4,301 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tilzspa &mdash; Phase 1 Delivery | HAMZURY</title>
+  <meta name="description" content="Phase 1 handover for Tilzspa by HAMZURY. Website, staff dashboards, brand kit, content calendar, print collateral, and ongoing social media plan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:"Montserrat",ui-sans-serif,system-ui,sans-serif;background:#F7F5F0;color:#2A2A22;-webkit-font-smoothing:antialiased}
-    nav{position:sticky;top:0;z-index:50;background:rgba(247,245,240,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,42,34,0.1);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
-    .nav-brand{font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1A2E1E;text-decoration:none}
-    .btn-sm{background:#1A2E1E;color:#F7F5F0;font-size:12px;font-weight:500;padding:8px 18px;border-radius:100px;text-decoration:none}
-    .hero{background:#1A2E1E;padding:80px 32px 72px;text-align:center;position:relative;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(196,164,90,0.12) 0%,transparent 70%)}
-    .eyebrow{font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#C4A45A;margin-bottom:16px;position:relative}
-    .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:300;letter-spacing:-0.03em;color:#F7F5F0;line-height:1.1;margin-bottom:20px;position:relative}
-    .hero h1 strong{font-weight:600}
-    .hero-sub{font-size:0.9375rem;color:rgba(247,245,240,0.5);line-height:1.7;max-width:520px;margin:0 auto 36px;position:relative}
-    .hero-meta{display:inline-flex;align-items:center;gap:20px;background:rgba(247,245,240,0.06);border:1px solid rgba(247,245,240,0.1);border-radius:100px;padding:10px 24px;position:relative}
-    .hero-meta span{font-size:11px;color:rgba(247,245,240,0.35)}
-    .hero-meta strong{font-size:11px;color:rgba(247,245,240,0.7);font-weight:500}
-    .sep{width:1px;height:14px;background:rgba(247,245,240,0.1)}
-    .container{max-width:900px;margin:0 auto;padding:0 24px}
-    .status{background:#E8F5E9;border:1px solid rgba(46,125,50,0.25);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;margin:40px auto;max-width:900px}
-    .dot{width:8px;height:8px;border-radius:50%;background:#2E7D32;flex-shrink:0}
-    .status p{font-size:13px;color:#1A2E1E}
-    .status a{color:#1A2E1E;font-weight:500}
-    .section{padding:56px 0;border-top:1px solid rgba(42,42,34,0.1)}
-    .label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#C4A45A;margin-bottom:10px}
-    .section h2{font-size:1.4rem;font-weight:500;letter-spacing:-0.02em;margin-bottom:6px}
-    .desc{font-size:0.875rem;color:#6B6B5A;line-height:1.65;margin-bottom:28px}
-    .grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-    .card{background:#fff;border:1px solid rgba(42,42,34,0.1);border-radius:10px;padding:20px;transition:box-shadow 0.2s,border-color 0.2s}
-    .card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.06);border-color:rgba(196,164,90,0.35)}
-    .card-num{font-size:10px;font-weight:600;letter-spacing:0.15em;color:#C4A45A;margin-bottom:8px}
-    .card h3{font-size:0.875rem;font-weight:600;margin-bottom:5px}
-    .card p{font-size:0.8125rem;color:#6B6B5A;line-height:1.6}
-    .badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:100px;margin-top:10px}
-    .badge-done{background:#E8F5E9;color:#2E7D32}
-    .badge-live{background:#E3F2FD;color:#1565C0}
-    .list{display:flex;flex-direction:column;gap:8px}
-    .item{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid rgba(42,42,34,0.1);border-radius:10px;padding:14px 18px;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s}
-    .item:hover{border-color:rgba(196,164,90,0.4);box-shadow:0 2px 12px rgba(0,0,0,0.05)}
-    .item-left{display:flex;align-items:center;gap:12px}
-    .ico{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .ico-pdf{background:#FFEBEE}
-    .ico-web{background:#E8F5E9}
-    .ico-dash{background:#E3F2FD}
-    .item-name{font-size:13px;font-weight:500;color:#2A2A22}
-    .item-sub{font-size:11px;color:#6B6B5A;margin-top:1px}
-    .arr{font-size:12px;color:#6B6B5A}
-    .step-list{display:flex;flex-direction:column;gap:10px}
-    .step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(42,42,34,0.1);border-radius:10px;padding:16px 18px}
-    .step-n{width:28px;height:28px;border-radius:50%;background:#1A2E1E;color:#F7F5F0;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-    .step h4{font-size:13px;font-weight:600;margin-bottom:3px}
-    .step p{font-size:12px;color:#6B6B5A;line-height:1.55}
-    footer{background:#1A2E1E;padding:40px 32px;margin-top:80px}
-    .footer-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-    .f-brand{font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(247,245,240,0.9)}
-    .f-tag{font-size:11px;color:rgba(247,245,240,0.3);margin-top:3px}
-    .f-links{display:flex;gap:20px}
-    .f-links a{font-size:11px;color:rgba(247,245,240,0.3);text-decoration:none}
-    .f-links a:hover{color:rgba(247,245,240,0.7)}
+    body{font-family:'Montserrat',system-ui,sans-serif;background:#F5EDE1;color:#1C1410;-webkit-font-smoothing:antialiased;line-height:1.6}
+    h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif}
+    a{color:inherit}
+    .italic-accent{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#B87A5C}
+    .divider{width:40px;height:1px;background:#B87A5C}
+
+    nav{position:sticky;top:0;z-index:50;background:rgba(245,237,225,0.94);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(184,122,92,0.15);padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-left{display:flex;align-items:center;gap:14px}
+    .nav-brand{font-family:'Playfair Display',serif;font-size:15px;font-weight:400;letter-spacing:0.04em;color:#1C1410;text-decoration:none}
+    .nav-sep{color:rgba(28,20,16,0.15);font-size:18px}
+    .nav-sub{font-size:11px;color:#B8A590;letter-spacing:0.08em;text-transform:uppercase}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .nav-link{font-size:12px;color:#B8A590;text-decoration:none;letter-spacing:0.02em;transition:color .2s}
+    .nav-link:hover{color:#3B2A20}
+    .btn-pill{display:inline-block;background:#3B2A20;color:#F5EDE1;font-size:12px;font-weight:500;padding:9px 20px;border-radius:100px;text-decoration:none;letter-spacing:0.03em;transition:background .2s}
+    .btn-pill:hover{background:#B87A5C}
+
+    .hero{background:#3B2A20;padding:100px 32px 96px;text-align:center;position:relative;overflow:hidden;color:#F5EDE1}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(184,122,92,0.18) 0%,transparent 70%);pointer-events:none}
+    .hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:#B87A5C;margin-bottom:22px;position:relative;z-index:1}
+    .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:200;letter-spacing:-0.035em;line-height:1.06;margin-bottom:24px;position:relative;z-index:1}
+    .hero h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:#B87A5C;font-weight:400}
+    .hero-sub{font-size:15px;color:rgba(245,237,225,0.55);line-height:1.75;max-width:540px;margin:0 auto 40px;position:relative;z-index:1}
+    .hero-meta{display:inline-flex;align-items:center;gap:22px;border:1px solid rgba(184,122,92,0.25);border-radius:100px;padding:11px 26px;position:relative;z-index:1}
+    .hero-meta span{font-size:10px;color:rgba(245,237,225,0.45);letter-spacing:0.12em;text-transform:uppercase}
+    .hero-meta strong{font-size:11px;color:#B87A5C;font-weight:500;letter-spacing:0.06em}
+    .hero-sep{width:1px;height:14px;background:rgba(184,122,92,0.25)}
+
+    .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+    .status{margin:48px auto;max-width:960px;padding:0 24px}
+    .status-inner{background:#fff;border:1px solid rgba(184,122,92,0.25);border-radius:20px;padding:22px 28px;display:flex;align-items:center;gap:16px}
+    .status-dot{width:10px;height:10px;border-radius:50%;background:#B87A5C;flex-shrink:0;box-shadow:0 0 0 4px rgba(184,122,92,0.15)}
+    .status p{font-size:13px;color:#1C1410;line-height:1.55}
+    .status strong{color:#3B2A20;font-weight:500}
+    .status a{color:#B87A5C;font-weight:500;text-decoration:none;border-bottom:1px solid rgba(184,122,92,0.35)}
+    .status a:hover{color:#3B2A20;border-bottom-color:#3B2A20}
+
+    section.block{padding:72px 0;border-top:1px solid rgba(184,122,92,0.18)}
+    section.block:first-of-type{border-top:none}
+    .block-header{margin-bottom:38px}
+    .block-header h2{font-size:clamp(1.75rem,3.5vw,2.4rem);font-weight:300;letter-spacing:-0.025em;margin-top:14px;color:#1C1410}
+    .block-header .divider{margin:18px 0 14px}
+    .block-header p.desc{font-size:14px;color:rgba(28,20,16,0.6);line-height:1.75;max-width:580px}
+
+    .grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+    .card{background:#fff;border:1px solid rgba(184,122,92,0.18);border-radius:20px;padding:24px;transition:transform .3s,box-shadow .3s,border-color .3s}
+    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(59,42,32,.08);border-color:rgba(184,122,92,0.4)}
+    .card-num{font-size:10px;font-weight:500;letter-spacing:0.22em;color:#B87A5C;margin-bottom:12px;text-transform:uppercase}
+    .card h3{font-size:15px;font-weight:500;margin-bottom:6px;color:#1C1410;letter-spacing:-0.005em}
+    .card p{font-size:12.5px;color:rgba(28,20,16,0.58);line-height:1.65}
+    .pill{display:inline-block;font-size:9px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-top:14px}
+    .pill-live{background:rgba(184,122,92,0.15);color:#B87A5C}
+    .pill-done{background:rgba(59,42,32,0.08);color:#3B2A20}
+    .pill-soon{background:rgba(184,165,144,0.18);color:#6E6158}
+
+    .list{display:flex;flex-direction:column;gap:10px}
+    .item{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid rgba(184,122,92,0.18);border-radius:16px;padding:16px 20px;text-decoration:none;transition:border-color .25s,box-shadow .25s,transform .25s}
+    .item:hover{border-color:rgba(184,122,92,0.5);box-shadow:0 10px 30px rgba(59,42,32,.06);transform:translateY(-1px)}
+    .item-left{display:flex;align-items:center;gap:14px}
+    .ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ico-pdf{background:rgba(184,122,92,0.12)}
+    .ico-web{background:rgba(59,42,32,0.08)}
+    .ico-dash{background:rgba(184,122,92,0.18)}
+    .ico-canva{background:rgba(184,122,92,0.1)}
+    .ico svg{color:#B87A5C}
+    .item-name{font-size:13px;font-weight:500;color:#1C1410}
+    .item-sub{font-size:11.5px;color:rgba(28,20,16,0.5);margin-top:2px;letter-spacing:0.01em}
+    .item-cred{font-family:'Montserrat',monospace;font-size:10.5px;color:#B87A5C;margin-top:3px;letter-spacing:0.04em}
+    .arr{font-size:12px;color:#B87A5C;letter-spacing:0.15em;font-weight:500}
+
+    .step-list{display:flex;flex-direction:column;gap:12px}
+    .step{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid rgba(184,122,92,0.18);border-radius:16px;padding:20px 22px}
+    .step-n{width:32px;height:32px;border-radius:50%;background:#3B2A20;color:#F5EDE1;font-family:'Playfair Display',serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .step h4{font-size:14px;font-weight:500;margin-bottom:5px;color:#1C1410}
+    .step p{font-size:12.5px;color:rgba(28,20,16,0.6);line-height:1.65}
+
+    .empty-doc{background:rgba(255,255,255,0.5);border:1px dashed rgba(184,122,92,0.35);border-radius:16px;padding:18px 22px;display:flex;align-items:center;gap:14px}
+    .empty-doc p{font-size:12.5px;color:rgba(28,20,16,0.55);line-height:1.6}
+    .empty-doc .ico{background:rgba(184,122,92,0.08)}
+
+    footer{background:#0A0A0A;padding:44px 32px;margin-top:96px}
+    .footer-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .f-brand{font-size:13px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,246,240,0.85)}
+    .f-tag{font-size:11px;color:rgba(250,246,240,0.35);margin-top:4px}
+    .f-links{display:flex;gap:22px}
+    .f-links a{font-size:11px;color:rgba(250,246,240,0.35);text-decoration:none;transition:color .2s;letter-spacing:0.02em}
+    .f-links a:hover{color:rgba(250,246,240,0.75)}
   </style>
 </head>
 <body>
 
 <nav>
-  <div style="display:flex;align-items:center;gap:14px">
-    <a href="https://hamzury.com" target="_blank" class="nav-brand">HAMZURY</a>
-    <span style="color:rgba(42,42,34,0.15);font-size:18px">|</span>
-    <span style="font-size:12px;color:#6B6B5A">Client Delivery &mdash; Tilzspa</span>
+  <div class="nav-left">
+    <a href="https://hamzury.com" target="_blank" class="nav-brand" style="font-family:'Montserrat';font-weight:600;letter-spacing:0.14em;font-size:12px;text-transform:uppercase">HAMZURY</a>
+    <span class="nav-sep">|</span>
+    <span class="nav-sub">Tilzspa &middot; Delivery</span>
   </div>
-  <div style="display:flex;align-items:center;gap:14px">
-    <a href="https://hamzury.com" target="_blank" style="font-size:12px;color:#6B6B5A;text-decoration:none">hamzury.com</a>
-    <a href="index.html" class="btn-sm">View Site</a>
+  <div class="nav-right">
+    <a href="https://tilzspa.ng" target="_blank" class="nav-link">tilzspa.ng</a>
+    <a href="index.html" class="btn-pill">View Site</a>
   </div>
 </nav>
 
-<div class="hero">
-  <p class="eyebrow">Phase 1 Delivery</p>
-  <h1><strong>Tilzspa</strong><br>is live.</h1>
-  <p class="hero-sub">Everything built, deployed, and handed over. Full summary of what was delivered, what is live, and what comes next.</p>
+<section class="hero">
+  <p class="hero-eyebrow">Phase 1 Delivery &middot; April 2026</p>
+  <h1><strong>Tilzspa</strong> <em>is live.</em></h1>
+  <p class="hero-sub">Website deployed, staff dashboards operational, brand kit locked, print collateral ready, 30&#8209;day social calendar scheduled. Full handover below.</p>
   <div class="hero-meta">
-    <div><span>Client &nbsp;</span><strong>Tilzspa</strong></div>
-    <div class="sep"></div>
-    <div><span>Delivered &nbsp;</span><strong>April 2026</strong></div>
-    <div class="sep"></div>
-    <div><span>By &nbsp;</span><strong>HAMZURY</strong></div>
+    <div><span>Client</span> <strong>Tilzspa</strong></div>
+    <div class="hero-sep"></div>
+    <div><span>Live at</span> <strong>tilzspa.ng</strong></div>
+    <div class="hero-sep"></div>
+    <div><span>By</span> <strong>HAMZURY</strong></div>
+  </div>
+</section>
+
+<div class="status">
+  <div class="status-inner">
+    <div class="status-dot"></div>
+    <p><strong>All systems live.</strong> Website at <a href="https://tilzspa.ng" target="_blank">tilzspa.ng</a>. Four staff dashboards operational. Brand Kit in Canva. Instagram ready for launch week.</p>
   </div>
 </div>
 
 <div class="container">
-  <div class="status">
-    <div class="dot"></div>
-    <p><strong>All systems live.</strong> Website deployed at <a href="https://myruzmah.github.io/tilz-spa-website/" target="_blank">myruzmah.github.io/tilz-spa-website</a>. All 3 dashboards operational.</p>
-  </div>
 
-  <div class="section">
-    <p class="label">What Was Built</p>
-    <h2>Phase 1 Deliverables</h2>
-    <p class="desc">11 items delivered across public website, internal dashboards, and brand infrastructure.</p>
+  <!-- PHASE 1 DELIVERABLES -->
+  <section class="block" id="deliverables">
+    <div class="block-header">
+      <p class="eyebrow">What Was Built</p>
+      <h2>Phase 1 Deliverables</h2>
+      <div class="divider"></div>
+      <p class="desc">Everything shipped across website, staff tools, brand system, print collateral, and social media infrastructure.</p>
+    </div>
     <div class="grid3">
-      <div class="card"><p class="card-num">01</p><h3>Public Website</h3><p>Minimalist luxury site with 3 service tabs (Spa, Sauna, Barbing), About, Experience, Contact, and Founder sections.</p><span class="badge badge-live">Live</span></div>
-      <div class="card"><p class="card-num">02</p><h3>Founder Page</h3><p>Dedicated standalone page for Tilda with her photo, story, values, and brand philosophy.</p><span class="badge badge-live">Live</span></div>
-      <div class="card"><p class="card-num">03</p><h3>Unified Staff Login</h3><p>Single login page with role-based redirect to Founder, Finance, or Receptionist dashboard.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">04</p><h3>Founder Dashboard</h3><p>Full operational dashboard with KPIs, interactive calendar with roadmap popups, social media plan, revenue charts, client list, staff, and inventory.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">05</p><h3>Finance Dashboard</h3><p>Revenue tracker, expense log, profit summary, and financial KPIs with chart visualisations.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">06</p><h3>Receptionist Dashboard</h3><p>Appointment management, client check-in, booking form, and daily schedule view.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">07</p><h3>WhatsApp Automation</h3><p>Template manager and automation flow builder for booking confirmations, reminders, and follow-ups.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">08</p><h3>Year Roadmap (Calendar)</h3><p>12-month roadmap Apr 2026 to Mar 2027 embedded in the Founder Dashboard calendar with clickable date popups.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">09</p><h3>Social Media Calendar</h3><p>Full content calendar with posting schedule, content pillars, hashtag strategy, and launch week plan.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">10</p><h3>Brand Document Library</h3><p>All 5 brand documents accessible from the dashboard with direct PDF download links.</p><span class="badge badge-done">Done</span></div>
-      <div class="card"><p class="card-num">11</p><h3>GitHub Pages Deployment</h3><p>Permanent public hosting. Auto-updates on every push. No hosting fees.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><p class="card-num">01</p><h3>Public Website</h3><p>Minimal luxury marketing site &mdash; hero, services, experience, founder, contact. Deployed to tilzspa.ng.</p><span class="pill pill-live">Live</span></div>
+      <div class="card"><p class="card-num">02</p><h3>Founder Page</h3><p>Standalone story page for Tilda &mdash; background, values, philosophy, photo.</p><span class="pill pill-live">Live</span></div>
+      <div class="card"><p class="card-num">03</p><h3>Staff Login Portal</h3><p>Single sign-in with role routing to Founder, Finance, Receptionist, or WhatsApp dashboard.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">04</p><h3>Founder Dashboard</h3><p>KPIs, interactive year roadmap, social media plan, revenue charts, client directory, staff performance, inventory.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">05</p><h3>Finance Dashboard</h3><p>Revenue tracking, expense log, P&amp;L summary, payment method breakdown.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">06</p><h3>Receptionist Dashboard</h3><p>Daily schedule, check&#8209;in, walk&#8209;in registration, new booking, client lookup, WhatsApp inbox.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">07</p><h3>WhatsApp Automation</h3><p>Seven-step setup guide, five message templates, automation rules, message log, API status.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">08</p><h3>Tilzspa Brand Kit</h3><p>Full Canva brand kit &mdash; rose gold palette, Playfair + Montserrat + Cormorant Garamond fonts, logo uploaded.</p><span class="pill pill-live">Live</span></div>
+      <div class="card"><p class="card-num">09</p><h3>Instagram Template Suite</h3><p>Six master templates: Statement, Italic Quote, Countdown, plus Carousel Cover / Interior / Closing slides.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">10</p><h3>30&#8209;Day Content Calendar</h3><p>Daily captions, image specs, hashtag rotations, and story prompts from tease week to launch day.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">11</p><h3>Print Collateral Suite</h3><p>Letterhead, compliment card, staff ID card, and branded social banner &mdash; ready to print or post.</p><span class="pill pill-done">Done</span></div>
+      <div class="card"><p class="card-num">12</p><h3>Live Hosting &middot; tilzspa.ng</h3><p>Deployed on AfeesHost shared hosting. Annual renewal 15 April. Domain, SSL, and DNS live.</p><span class="pill pill-live">Live</span></div>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <p class="label">Live Assets</p>
-    <h2>Access Everything</h2>
-    <p class="desc">All pages and dashboards are live and accessible below.</p>
+  <!-- DASHBOARDS -->
+  <section class="block" id="dashboards">
+    <div class="block-header">
+      <p class="eyebrow">Internal Tools</p>
+      <h2>Staff Dashboards</h2>
+      <div class="divider"></div>
+      <p class="desc">Four role-based dashboards. All use the same password. Change any of these from the staff login page after first sign&#8209;in.</p>
+    </div>
     <div class="list">
-      <a href="index.html" class="item"><div class="item-left"><div class="ico ico-web"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></div><div><p class="item-name">Public Website</p><p class="item-sub">index.html</p></div></div><span class="arr">&#8594;</span></a>
-      <a href="founder.html" class="item"><div class="item-left"><div class="ico ico-web"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><p class="item-name">Founder Page &mdash; Tilda</p><p class="item-sub">founder.html</p></div></div><span class="arr">&#8594;</span></a>
-      <a href="login.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="1.5"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div><div><p class="item-name">Staff Login</p><p class="item-sub">login.html &mdash; Founder / Finance / Receptionist</p></div></div><span class="arr">&#8594;</span></a>
-      <a href="dashboard/founder.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div><p class="item-name">Founder Dashboard</p><p class="item-sub">founder@tilzspa.com / TilzSpa@2026</p></div></div><span class="arr">&#8594;</span></a>
-      <a href="dashboard/finance.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><p class="item-name">Finance Dashboard</p><p class="item-sub">finance@tilzspa.com / TilzSpa@2026</p></div></div><span class="arr">&#8594;</span></a>
-      <a href="dashboard/receptionist.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><div><p class="item-name">Receptionist Dashboard</p><p class="item-sub">reception@tilzspa.com / TilzSpa@2026</p></div></div><span class="arr">&#8594;</span></a>
+      <a href="login.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div><div><p class="item-name">Staff Login Portal</p><p class="item-sub">Single gateway &mdash; auto&#8209;redirects to the right dashboard based on email</p></div></div><span class="arr">OPEN &rarr;</span></a>
+      <a href="dashboard/founder.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div><p class="item-name">Founder Dashboard &middot; Tilda</p><p class="item-sub">Overview, calendar, revenue, clients, staff, inventory, WhatsApp</p><p class="item-cred">founder@tilzspa.com &middot; TilzSpa@2026</p></div></div><span class="arr">OPEN &rarr;</span></a>
+      <a href="dashboard/receptionist.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><div><p class="item-name">Receptionist Dashboard</p><p class="item-sub">Today&rsquo;s schedule, check&#8209;in, walk&#8209;ins, bookings, clients, messages</p><p class="item-cred">reception@tilzspa.com &middot; TilzSpa@2026</p></div></div><span class="arr">OPEN &rarr;</span></a>
+      <a href="dashboard/finance.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><p class="item-name">Accounts Dashboard</p><p class="item-sub">Revenue, expenses, analytics, P&amp;L statement</p><p class="item-cred">finance@tilzspa.com &middot; TilzSpa@2026</p></div></div><span class="arr">OPEN &rarr;</span></a>
+      <a href="dashboard/whatsapp.html" class="item"><div class="item-left"><div class="ico ico-dash"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></div><div><p class="item-name">WhatsApp Automation &middot; Founder</p><p class="item-sub">Setup guide, message templates, automation rules, logs, API status</p><p class="item-cred">founder@tilzspa.com &middot; TilzSpa@2026</p></div></div><span class="arr">OPEN &rarr;</span></a>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <p class="label">Brand Documents</p>
-    <h2>Document Library</h2>
-    <p class="desc">All 5 brand documents produced for Tilzspa. Click to open or download.</p>
+  <!-- BRAND KIT + COLLATERAL -->
+  <section class="block" id="brand">
+    <div class="block-header">
+      <p class="eyebrow">Brand System</p>
+      <h2>Brand Kit &amp; Collateral</h2>
+      <div class="divider"></div>
+      <p class="desc">Everything lives in Canva under the <em class="italic-accent">Tilzspa Brand Kit</em> &mdash; palette, fonts, logo, and ready&#8209;to&#8209;edit templates.</p>
+    </div>
     <div class="list">
-      <a href="docs/brand-guidelines.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Brand Guidelines</p><p class="item-sub">Colours, typography, logo usage, tone of voice</p></div></div><span class="arr">&#8595; PDF</span></a>
-      <a href="docs/brand-strategy.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Brand Strategy</p><p class="item-sub">Positioning, target audience, competitive landscape</p></div></div><span class="arr">&#8595; PDF</span></a>
-      <a href="docs/launch-growth-plan.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Launch &amp; Growth Plan</p><p class="item-sub">12-month roadmap, milestones, revenue targets</p></div></div><span class="arr">&#8595; PDF</span></a>
-      <a href="docs/operations-manual.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Operations Manual</p><p class="item-sub">SOPs, staff protocols, opening/closing procedures</p></div></div><span class="arr">&#8595; PDF</span></a>
-      <a href="docs/social-media-kit.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Social Media Kit</p><p class="item-sub">Content calendar, posting schedule, hashtag strategy</p></div></div><span class="arr">&#8595; PDF</span></a>
+      <a href="https://www.canva.com/brand/kAHHTiGpHvA" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div><div><p class="item-name">Tilzspa Brand Kit &middot; Canva</p><p class="item-sub">7 colours (rose gold &middot; chocolate &middot; cream &middot; nude &middot; ivory &middot; taupe &middot; espresso) &middot; Playfair + Montserrat + Cormorant Garamond &middot; logo uploaded</p></div></div><span class="arr">OPEN &rarr;</span></a>
+      <a href="https://www.canva.com/d/Si5fS152to8MVjK" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Letterhead &middot; A4 Portrait</p><p class="item-sub">For invoices, client correspondence, official letters</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/RE1G8K1J-QBKcov" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div><div><p class="item-name">Compliment Card</p><p class="item-sub">"With our compliments" &mdash; slipped into a client&rsquo;s bag after treatment</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/7t_BVEThuAMbZWq" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><p class="item-name">Staff ID Card</p><p class="item-sub">CR80 lanyard size &mdash; name, role, photo slot, staff ID number</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/iPRNtaA8SG5LdKV" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div><div><p class="item-name">Social Banner &middot; FB / LinkedIn Cover</p><p class="item-sub">Wide horizontal banner &mdash; doubles as email header and web hero</p></div></div><span class="arr">EDIT &rarr;</span></a>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <p class="label">Handover</p>
-    <h2>Your Next Steps</h2>
-    <p class="desc">To get the most out of what was built, here is what to do first.</p>
+  <!-- SOCIAL MEDIA -->
+  <section class="block" id="social">
+    <div class="block-header">
+      <p class="eyebrow">Content &amp; Distribution</p>
+      <h2>Social Media</h2>
+      <div class="divider"></div>
+      <p class="desc">Six Instagram templates, thirty days of captions, three rotating hashtag sets, and a story prompt for every day until launch. Schedule via <em class="italic-accent">Canva Content Planner</em> once Instagram is connected.</p>
+    </div>
+    <div class="list">
+      <a href="https://www.canva.com/d/kYefP9FRUcU9eDu" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="3"/></svg></div><div><p class="item-name">Template &middot; Statement</p><p class="item-sub">Cream + rose gold &middot; reused for ~20 of the 30 pre-launch posts</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/xmgeZe1zxZ4-6Sk" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="3"/></svg></div><div><p class="item-name">Template &middot; Italic Quote</p><p class="item-sub">Chocolate + rose gold italic &middot; philosophy and feeling posts</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/n0if1zMxVxp7WLU" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="3"/></svg></div><div><p class="item-name">Template &middot; Countdown</p><p class="item-sub">Giant rose-gold numeral on chocolate &middot; launch week</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/J35wBiOMMwBNo1B" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></div><div><p class="item-name">Carousel &middot; Cover Slide</p><p class="item-sub">First slide &mdash; invites swipe</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/JQ9eoCO4tAbxro8" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></div><div><p class="item-name">Carousel &middot; Interior Slide</p><p class="item-sub">Slides 2&ndash;5 &mdash; one service per slide</p></div></div><span class="arr">EDIT &rarr;</span></a>
+      <a href="https://www.canva.com/d/yuN9-KOurMKkVyU" target="_blank" class="item"><div class="item-left"><div class="ico ico-canva"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg></div><div><p class="item-name">Carousel &middot; Closing Slide</p><p class="item-sub">Final CTA &mdash; Book on WhatsApp</p></div></div><span class="arr">EDIT &rarr;</span></a>
+    </div>
+    <div style="margin-top:20px;padding:18px 22px;background:rgba(184,122,92,0.06);border-radius:16px">
+      <p style="font-size:12px;color:rgba(28,20,16,0.65);line-height:1.7"><strong style="color:#3B2A20;font-weight:500">Content Plan &middot; </strong>The full 30&#8209;day caption + hashtag + story schedule sits in the Founder Dashboard under <em class="italic-accent">Calendar &rarr; Social Media</em>. Post times are 8&nbsp;PM WAT daily. Opening offer details go live from Day 21.</p>
+    </div>
+  </section>
+
+  <!-- BRAND DOCUMENTS -->
+  <section class="block" id="docs">
+    <div class="block-header">
+      <p class="eyebrow">Strategy Documents</p>
+      <h2>Brand &amp; Operations Library</h2>
+      <div class="divider"></div>
+      <p class="desc">Five foundational PDFs produced during Phase 1. These carry the original brand direction &mdash; Tilzspa-rebranded versions are scheduled for Phase 2.</p>
+    </div>
+    <div class="list">
+      <a href="docs/brand-guidelines.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Brand Guidelines</p><p class="item-sub">Colours, typography, logo usage, tone of voice</p></div></div><span class="arr">PDF &darr;</span></a>
+      <a href="docs/brand-strategy.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Brand Strategy</p><p class="item-sub">Positioning, target audience, competitive landscape</p></div></div><span class="arr">PDF &darr;</span></a>
+      <a href="docs/launch-growth-plan.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Launch &amp; Growth Plan</p><p class="item-sub">12&#8209;month roadmap, milestones, revenue targets</p></div></div><span class="arr">PDF &darr;</span></a>
+      <a href="docs/operations-manual.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Operations Manual</p><p class="item-sub">SOPs, staff protocols, opening/closing procedures</p></div></div><span class="arr">PDF &darr;</span></a>
+      <a href="docs/social-media-kit.pdf" target="_blank" class="item"><div class="item-left"><div class="ico ico-pdf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p class="item-name">Social Media Kit</p><p class="item-sub">Content calendar, posting schedule, hashtag strategy</p></div></div><span class="arr">PDF &darr;</span></a>
+    </div>
+  </section>
+
+  <!-- REGISTRATION & TAX -->
+  <section class="block" id="registration">
+    <div class="block-header">
+      <p class="eyebrow">Legal &amp; Compliance</p>
+      <h2>Registration &amp; Tax Documents</h2>
+      <div class="divider"></div>
+      <p class="desc">Space reserved for CAC certificate, TIN, and any other statutory filings. Hand over the PDFs and they slot in here.</p>
+    </div>
+    <div class="list">
+      <div class="empty-doc"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B87A5C" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p><strong style="color:#3B2A20;font-weight:500">CAC Certificate</strong> &mdash; Corporate Affairs Commission registration</p><p style="color:rgba(28,20,16,0.4);font-size:11px;margin-top:3px">Awaiting upload</p></div></div>
+      <div class="empty-doc"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B87A5C" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p><strong style="color:#3B2A20;font-weight:500">TIN Certificate</strong> &mdash; Federal Inland Revenue Service</p><p style="color:rgba(28,20,16,0.4);font-size:11px;margin-top:3px">Awaiting upload</p></div></div>
+      <div class="empty-doc"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B87A5C" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><div><p><strong style="color:#3B2A20;font-weight:500">Business Premises Permit &amp; other compliance</strong> &mdash; Abuja FCT trade licences</p><p style="color:rgba(28,20,16,0.4);font-size:11px;margin-top:3px">Awaiting upload</p></div></div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="block" id="next">
+    <div class="block-header">
+      <p class="eyebrow">Handover</p>
+      <h2>Your Next Steps</h2>
+      <div class="divider"></div>
+      <p class="desc">Four things to do this week. The rest runs on the rails HAMZURY has built.</p>
+    </div>
     <div class="step-list">
-      <div class="step"><div class="step-n">1</div><div><h4>Log in to your Founder Dashboard</h4><p>Go to the login page and sign in with founder@tilzspa.com / TilzSpa@2026. Explore the calendar, roadmap, and social media plan.</p></div></div>
-      <div class="step"><div class="step-n">2</div><div><h4>Share the website with your first clients</h4><p>The site is live at myruzmah.github.io/tilz-spa-website &mdash; share it on WhatsApp, Instagram bio, and Google Business.</p></div></div>
-      <div class="step"><div class="step-n">3</div><div><h4>Purchase your domain (tilzspa.ng)</h4><p>Register tilzspa.ng on DomainKing.ng (~17,500 NGN/yr) and contact HAMZURY to connect it to the live site.</p></div></div>
-      <div class="step"><div class="step-n">4</div><div><h4>Follow the social media calendar</h4><p>Your first 30 days of content are planned. Log in to Founder Dashboard then Calendar then Social Media tab to see the full schedule.</p></div></div>
+      <div class="step"><div class="step-n">1</div><div><h4>Log in to the Founder Dashboard</h4><p>Open <a href="login.html" style="color:#B87A5C">login.html</a> with <code style="font-family:Montserrat;color:#B87A5C">founder@tilzspa.com</code> / <code style="font-family:Montserrat;color:#B87A5C">TilzSpa@2026</code>. Walk through Calendar, Roadmap, Clients, Staff, and the Social Media plan.</p></div></div>
+      <div class="step"><div class="step-n">2</div><div><h4>Connect Instagram to Canva Content Planner</h4><p>Open Canva &rarr; Content Planner &rarr; Connect social. Sign in to the Tilzspa Instagram Business account once. From then on, every design can be scheduled directly.</p></div></div>
+      <div class="step"><div class="step-n">3</div><div><h4>Schedule the first week of posts</h4><p>Open the Statement template, duplicate, paste Day 1&rsquo;s caption from the content plan, schedule 8 PM. Repeat for Days 2&ndash;7 in one sitting.</p></div></div>
+      <div class="step"><div class="step-n">4</div><div><h4>Print the collateral</h4><p>Export the Letterhead, Compliment Card, Staff ID and Banner as PDFs from Canva and send them to your preferred printer. Recommend thick cream card stock (300gsm) for the compliment card.</p></div></div>
     </div>
-  </div>
+  </section>
 
-  <div class="section">
-    <p class="label">Phase 2 Options</p>
-    <h2>What's Next</h2>
-    <p class="desc">Ready to scale? These are the recommended next steps for Tilzspa.</p>
-    <div class="grid3">
-      <div class="card"><h3>Custom Domain Setup</h3><p style="margin-top:6px">Connect tilzspa.ng or tilzspa.com to the live site with SSL and DNS configuration.</p></div>
-      <div class="card"><h3>Online Booking System</h3><p style="margin-top:6px">Real-time appointment booking with calendar sync, WhatsApp confirmation, and payment integration.</p></div>
-      <div class="card"><h3>WhatsApp Automation (Live)</h3><p style="margin-top:6px">Connect the automation dashboard to a real WhatsApp Business API for automated booking flows.</p></div>
-      <div class="card"><h3>Client CRM</h3><p style="margin-top:6px">Full client database with visit history, preferences, birthday reminders, and loyalty tracking.</p></div>
-      <div class="card"><h3>Instagram Content Pack</h3><p style="margin-top:6px">30 branded content templates, captions, and a 3-month posting calendar ready to publish.</p></div>
-      <div class="card"><h3>Monthly Retainer</h3><p style="margin-top:6px">Ongoing support, updates, new features, and priority access to HAMZURY systems team.</p></div>
+  <!-- ONGOING -->
+  <section class="block" id="ongoing">
+    <div class="block-header">
+      <p class="eyebrow">Phase 2 &middot; Ongoing</p>
+      <h2>Social Media Management</h2>
+      <div class="divider"></div>
+      <p class="desc">Website and brand work are wrapped. From here, HAMZURY continues as Tilzspa&rsquo;s social media partner &mdash; content, scheduling, replies, analytics.</p>
     </div>
-  </div>
+    <div class="grid3">
+      <div class="card"><h3>Weekly Content Production</h3><p style="margin-top:6px">Three feed posts + daily stories per week. Written, designed, scheduled.</p></div>
+      <div class="card"><h3>Monthly Calendar Review</h3><p style="margin-top:6px">Adjust pillars based on what resonates &mdash; BTS, transformations, promo, founder voice.</p></div>
+      <div class="card"><h3>Comment &amp; DM Replies</h3><p style="margin-top:6px">Optional Phase 2B &mdash; ManyChat auto&#8209;reply flows for price, booking, service questions.</p><span class="pill pill-soon">Optional</span></div>
+      <div class="card"><h3>Performance Reports</h3><p style="margin-top:6px">Monthly report on reach, bookings attributed, top-performing content, and recommendations.</p></div>
+      <div class="card"><h3>Tilzspa-Branded PDFs</h3><p style="margin-top:6px">Rebrand the five strategy PDFs in the rose&#8209;gold system. Scheduled for May.</p><span class="pill pill-soon">Scheduled</span></div>
+      <div class="card"><h3>Launch Week Boost</h3><p style="margin-top:6px">Dedicated launch-week support &mdash; daily feed + stories, live coverage, first-client content.</p></div>
+    </div>
+  </section>
+
 </div>
 
 <footer>
   <div class="footer-inner">
-    <div><p class="f-brand">HAMZURY</p><p class="f-tag">Structure for ambitious businesses.</p></div>
+    <div>
+      <p class="f-brand">HAMZURY</p>
+      <p class="f-tag">Structure for ambitious businesses.</p>
+    </div>
     <div class="f-links">
       <a href="https://hamzury.com" target="_blank">hamzury.com</a>
+      <a href="https://tilzspa.ng" target="_blank">tilzspa.ng</a>
       <a href="index.html">View Site</a>
       <a href="login.html">Staff Login</a>
     </div>
   </div>
 </footer>
+
 </body>
 </html>
