@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Sign In &mdash; Tilzspar</title>
+  <title>Staff Sign In &mdash; Tilzspa</title>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
@@ -12,8 +12,8 @@
       theme: {
         extend: {
           colors: {
-            choc:'#3B2A20', cap:'#C9A96E', rg:'#C9A96E',
-            gold:'#C9A96E', rose:'#E8D4C1', cream:'#F5EDE1', ivory:'#FAF6F0', grey:'#B8A590'
+            choc:'#3B2A20', cap:'#B87A5C', rg:'#B87A5C',
+            gold:'#B87A5C', rose:'#E8D4C1', cream:'#F5EDE1', ivory:'#FAF6F0', grey:'#B8A590'
           },
           fontFamily: {
             serif:['Playfair Display','Georgia','serif'],
@@ -26,12 +26,12 @@
   <style>
     body{font-family:'Montserrat',system-ui,sans-serif;color:#1C1410;-webkit-font-smoothing:antialiased}
     h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
-    .divider{width:40px;height:1px;background:#C9A96E}
-    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E}
-    .input-box{width:100%;background:#fff;border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
+    .divider{width:40px;height:1px;background:#B87A5C}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#B87A5C}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(184,122,92,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
     .input-box:focus{outline:none;border-color:#3B2A20}
     .btn-primary{background:#3B2A20;color:#F5EDE1;padding:14px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
-    .btn-primary:hover{background:#C9A96E}
+    .btn-primary:hover{background:#B87A5C}
     .btn-primary:disabled{opacity:0.7;cursor:not-allowed}
     .shake{animation:shake .4s ease}
     @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
@@ -39,7 +39,7 @@
     @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center px-4" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 55%,rgba(201,169,110,0.25) 100%)">
+<body class="min-h-screen flex items-center justify-center px-4" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 55%,rgba(184,122,92,0.25) 100%)">
 
   <div class="fade-in w-full max-w-sm">
 
@@ -48,7 +48,7 @@
 
       <!-- Header -->
       <div class="px-10 pt-12 pb-8 text-center">
-        <p class="eyebrow mb-4">Tilzspar</p>
+        <p class="eyebrow mb-4">Tilzspa</p>
         <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Staff Portal</h2>
         <div class="divider mx-auto my-5"></div>
         <p class="text-grey text-xs tracking-wide">Sign in with your staff credentials.</p>
@@ -85,7 +85,7 @@
           </svg>
         </button>
 
-        <div class="mt-8 pt-6" style="border-top:1px solid rgba(201,169,110,0.2)">
+        <div class="mt-8 pt-6" style="border-top:1px solid rgba(184,122,92,0.2)">
           <p class="text-xs text-grey text-center leading-relaxed">You&rsquo;ll be directed to your dashboard automatically.</p>
         </div>
 
@@ -94,7 +94,7 @@
 
     <!-- Back link -->
     <p class="text-center mt-8">
-      <a href="index.html" class="inline-block text-[11px] tracking-wide transition-colors" style="color:rgba(245,237,225,0.35)" onmouseover="this.style.color='rgba(245,237,225,0.65)'" onmouseout="this.style.color='rgba(245,237,225,0.35)'">&larr; Back to Tilzspar</a>
+      <a href="index.html" class="inline-block text-[11px] tracking-wide transition-colors" style="color:rgba(245,237,225,0.35)" onmouseover="this.style.color='rgba(245,237,225,0.65)'" onmouseout="this.style.color='rgba(245,237,225,0.35)'">&larr; Back to Tilzspa</a>
     </p>
 
   </div>

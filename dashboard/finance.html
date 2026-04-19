@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accounts &mdash; Tilzspar</title>
+  <title>Accounts &mdash; Tilzspa</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
@@ -12,8 +12,8 @@
       theme: {
         extend: {
           colors: {
-            choc:'#3B2A20',cap:'#C9A96E',rg:'#C9A96E',
-            gold:'#C9A96E',rose:'#E8D4C1',cream:'#F5EDE1',ivory:'#FAF6F0',grey:'#B8A590'
+            choc:'#3B2A20',cap:'#B87A5C',rg:'#B87A5C',
+            gold:'#B87A5C',rose:'#E8D4C1',cream:'#F5EDE1',ivory:'#FAF6F0',grey:'#B8A590'
           },
           fontFamily: {
             serif: ['Playfair Display','Georgia','serif'],
@@ -30,28 +30,28 @@
     .nav-btn:hover{color:#F5EDE1;background:rgba(245,237,225,0.05)}
     .nav-btn.active{background:#F5EDE1;color:#3B2A20}
     .section{display:none}.section.active{display:block}
-    .divider{width:40px;height:1px;background:#C9A96E}
+    .divider{width:40px;height:1px;background:#B87A5C}
     .card{background:#fff;border-radius:20px;transition:transform .3s,box-shadow .3s}
     .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(59,42,32,.08)}
     .pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
     .pill-choc{background:rgba(59,42,32,0.08);color:#3B2A20}
-    .pill-cap{background:rgba(201,169,110,0.18);color:#8F7846}
-    .pill-rg{background:rgba(201,169,110,0.15);color:#C9A96E}
-    .pill-gold{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-cap{background:rgba(184,122,92,0.18);color:#8F7846}
+    .pill-rg{background:rgba(184,122,92,0.15);color:#B87A5C}
+    .pill-gold{background:rgba(184,122,92,0.18);color:#8F7846}
     .pill-grey{background:rgba(184,165,144,0.15);color:#6E6158}
-    .input-box{width:100%;background:#fff;border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(184,122,92,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
     .input-box:focus{outline:none;border-color:#3B2A20}
     .btn-primary{background:#3B2A20;color:#F5EDE1;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer}
-    .btn-primary:hover{background:#C9A96E}
-    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E}
+    .btn-primary:hover{background:#B87A5C}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#B87A5C}
     .stat-num{font-family:'Playfair Display',Georgia,serif;font-weight:200;letter-spacing:-0.03em;color:#1C1410}
-    .bar{height:3px;border-radius:100px;background:rgba(201,169,110,0.15);overflow:hidden}
-    .bar>span{display:block;height:100%;background:#C9A96E;border-radius:100px}
+    .bar{height:3px;border-radius:100px;background:rgba(184,122,92,0.15);overflow:hidden}
+    .bar>span{display:block;height:100%;background:#B87A5C;border-radius:100px}
     .tbl{width:100%;border-collapse:collapse;font-size:13px}
-    .tbl th{text-align:left;padding:18px 24px;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C9A96E;border-bottom:1px solid rgba(201,169,110,0.2)}
-    .tbl td{padding:18px 24px;border-bottom:1px solid rgba(201,169,110,0.12);color:#1C1410}
+    .tbl th{text-align:left;padding:18px 24px;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#B87A5C;border-bottom:1px solid rgba(184,122,92,0.2)}
+    .tbl td{padding:18px 24px;border-bottom:1px solid rgba(184,122,92,0.12);color:#1C1410}
     .tbl tr:last-child td{border-bottom:none}
-    .tbl tr:hover td{background:rgba(201,169,110,0.04)}
+    .tbl tr:hover td{background:rgba(184,122,92,0.04)}
   </style>
 </head>
 <body class="min-h-screen">
@@ -59,7 +59,7 @@
   <!-- LOGIN GATE -->
   <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 100%)">
     <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
-      <p class="eyebrow mb-4">Tilzspar</p>
+      <p class="eyebrow mb-4">Tilzspa</p>
       <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Accounts</h2>
       <div class="divider mx-auto my-5"></div>
       <p class="text-grey text-xs mb-8 tracking-wide">Finance &middot; Staff Access</p>
@@ -78,7 +78,7 @@
       <!-- SIDEBAR -->
       <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3B2A20">
         <div class="p-7 border-b border-cream/10">
-          <p class="eyebrow mb-2" style="color:rgba(201,169,110,0.7)">Tilzspar</p>
+          <p class="eyebrow mb-2" style="color:rgba(184,122,92,0.7)">Tilzspa</p>
           <p class="font-serif text-cream text-lg" style="font-weight:400">Accounts</p>
         </div>
         <nav class="flex-1 p-4 space-y-1">
@@ -125,7 +125,7 @@
           <div class="mb-10">
             <p class="eyebrow mb-3">April 2026</p>
             <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Finance Overview</h1>
-            <p class="text-grey text-sm">Tilzspar.</p>
+            <p class="text-grey text-sm">Tilzspa.</p>
           </div>
 
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
@@ -168,7 +168,7 @@
                   <p class="text-sm text-grey">Cash</p>
                   <p class="stat-num text-2xl">24%</p>
                 </div>
-                <div class="bar"><span style="width:24%;background:#C9A96E"></span></div>
+                <div class="bar"><span style="width:24%;background:#B87A5C"></span></div>
               </div>
               <div>
                 <div class="flex justify-between items-baseline mb-3">
@@ -254,7 +254,7 @@
                 </div>
                 <div>
                   <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Sauna Sessions</span><span class="stat-num text-xl">26%</span></div>
-                  <div class="bar"><span style="width:26%;background:#C9A96E"></span></div>
+                  <div class="bar"><span style="width:26%;background:#B87A5C"></span></div>
                 </div>
                 <div>
                   <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Barbing Salon</span><span class="stat-num text-xl">22%</span></div>
@@ -303,35 +303,35 @@
             <p class="text-grey text-sm">April 2026 summary.</p>
           </div>
           <div class="card p-10 max-w-2xl">
-            <div class="flex items-start justify-between mb-8 pb-6" style="border-bottom:1px solid rgba(201,169,110,0.2)">
+            <div class="flex items-start justify-between mb-8 pb-6" style="border-bottom:1px solid rgba(184,122,92,0.2)">
               <div>
                 <p class="eyebrow mb-2">Month Close</p>
                 <h3 class="font-serif text-2xl" style="font-weight:400">April 2026</h3>
               </div>
-              <p class="text-xs text-grey tracking-wide">Tilzspar</p>
+              <p class="text-xs text-grey tracking-wide">Tilzspa</p>
             </div>
             <div class="space-y-0">
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(184,122,92,0.1)">
                 <span class="text-sm">Total Revenue</span>
                 <span class="stat-num text-lg">+ &#8358;1,081,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(184,122,92,0.1)">
                 <span class="text-sm text-grey">Rent</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;350,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(184,122,92,0.1)">
                 <span class="text-sm text-grey">Salaries</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;480,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(184,122,92,0.1)">
                 <span class="text-sm text-grey">Utilities</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;85,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(184,122,92,0.1)">
                 <span class="text-sm text-grey">Products &amp; Supplies</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;65,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(184,122,92,0.1)">
                 <span class="text-sm text-grey">Marketing</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;45,000</span>
               </div>
@@ -340,7 +340,7 @@
                 <span class="text-sm text-choc/70">&minus; &#8358;35,000</span>
               </div>
             </div>
-            <div class="mt-8 pt-6" style="border-top:1px solid #C9A96E">
+            <div class="mt-8 pt-6" style="border-top:1px solid #B87A5C">
               <div class="flex justify-between items-baseline mb-2">
                 <span class="eyebrow">Net Profit</span>
                 <span class="stat-num text-3xl">&#8358;401,000</span>
