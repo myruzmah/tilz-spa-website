@@ -3,238 +3,301 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Founder Dashboard | Tilz Spa by Tilda</title>
+  <title>Founder &mdash; Tilz Spa by Tilda</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { cappuccino:'#C4A882',chocolate:'#3C2415',rosegold:'#B76E79',gold:'#D4AF6F',softrose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',warmgrey:'#9B8E82' }, fontFamily:{ serif:['Playfair Display','Georgia','serif'], sans:['Lato','Arial','sans-serif'] } } }
+      theme: {
+        extend: {
+          colors: {
+            choc:'#3C2415',cap:'#C4A882',rg:'#B76E79',
+            gold:'#D4AF6F',rose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',grey:'#9B8E82'
+          },
+          fontFamily: {
+            serif: ['Playfair Display','Georgia','serif'],
+            sans: ['Inter','system-ui','sans-serif']
+          }
+        }
+      }
     }
   </script>
   <style>
-    body{font-family:'Lato',sans-serif}h1,h2,h3{font-family:'Playfair Display',serif}
-    .tab-btn{transition:all .2s}.tab-btn.active{background:#3C2415;color:#F5F0E8}
+    body{font-family:'Inter',system-ui,sans-serif;color:#1A1A1A;background:#FAFAF8;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
+    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,240,232,0.55);width:100%;text-align:left;background:transparent;border:none;cursor:pointer}
+    .nav-btn:hover{color:#F5F0E8;background:rgba(245,240,232,0.05)}
+    .nav-btn.active{background:#F5F0E8;color:#3C2415}
     .section{display:none}.section.active{display:block}
-    .stat-card{transition:transform .3s}.stat-card:hover{transform:translateY(-3px)}
-    .bar{transition:width 1s ease}
+    .divider{width:40px;height:1px;background:#C4A882}
+    .card{background:#fff;border-radius:20px;transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(60,36,21,.08)}
+    .pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+    .pill-choc{background:rgba(60,36,21,0.08);color:#3C2415}
+    .pill-cap{background:rgba(196,168,130,0.18);color:#8A7456}
+    .pill-rg{background:rgba(183,110,121,0.15);color:#B76E79}
+    .pill-gold{background:rgba(212,175,111,0.18);color:#A8873F}
+    .pill-grey{background:rgba(155,142,130,0.15);color:#6B6159}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(196,168,130,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
+    .input-box:focus{outline:none;border-color:#3C2415}
+    .btn-primary{background:#3C2415;color:#F5F0E8;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer;display:inline-block;text-decoration:none}
+    .btn-primary:hover{background:#B76E79}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C4A882}
+    .stat-num{font-family:'Playfair Display',Georgia,serif;font-weight:200;letter-spacing:-0.03em;color:#1A1A1A}
+    .bar{height:3px;border-radius:100px;background:rgba(196,168,130,0.15);overflow:hidden}
+    .bar>span{display:block;height:100%;background:#C4A882;border-radius:100px;transition:width 1s ease}
+    .tbl{width:100%;border-collapse:collapse;font-size:13px}
+    .tbl th{text-align:left;padding:18px 24px;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C4A882;border-bottom:1px solid rgba(196,168,130,0.2)}
+    .tbl td{padding:18px 24px;border-bottom:1px solid rgba(196,168,130,0.12);color:#1A1A1A}
+    .tbl tr:last-child td{border-bottom:none}
+    .tbl tr:hover td{background:rgba(196,168,130,0.04)}
+    .caltab{padding:10px 22px;border-radius:100px;font-size:12px;font-weight:500;letter-spacing:0.02em;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
+    .caltab.active{background:#3C2415;color:#F5F0E8}
+    .caltab:not(.active){background:transparent;color:#9B8E82;border:1px solid rgba(196,168,130,0.3)}
+    .caltab:not(.active):hover{color:#3C2415;border-color:#C4A882}
+    .cal-cell{height:70px;border-right:1px solid rgba(196,168,130,0.1);border-bottom:1px solid rgba(196,168,130,0.1);padding:6px 8px;cursor:pointer;transition:background .2s}
+    .cal-cell:hover{background:rgba(196,168,130,0.05)}
+    .cal-cell.today{background:rgba(196,168,130,0.12)}
+    .milestone-row{padding:18px 24px;display:flex;align-items:flex-start;gap:16px;cursor:pointer;transition:background .2s;border-bottom:1px solid rgba(196,168,130,0.1)}
+    .milestone-row:last-child{border-bottom:none}
+    .milestone-row:hover{background:rgba(196,168,130,0.04)}
+    .milestone-detail{display:none}
+    .milestone-detail.open{display:block}
   </style>
 </head>
-<body class="bg-ivory text-chocolate min-h-screen">
+<body class="min-h-screen">
 
   <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 bg-gradient-to-br from-chocolate to-chocolate/90 flex items-center justify-center">
-    <div class="bg-cream rounded-2xl p-10 w-full max-w-sm shadow-2xl text-center">
-      <img src="../assets/logo.png" alt="Tilz Spa" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover">
-      <h2 class="font-serif text-2xl mb-1">Founder Dashboard</h2>
-      <p class="text-warmgrey text-xs mb-7 tracking-wide">Tilz Spa by Tilda — Secure Access</p>
-      <div id="loginErr" class="hidden mb-4 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2"></div>
-      <input id="loginEmail" type="email" placeholder="Email address" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-chocolate bg-white">
-      <input id="loginPass" type="password" placeholder="Password" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-5 focus:outline-none focus:border-chocolate bg-white">
-      <button onclick="doLogin()" class="w-full bg-chocolate text-cream py-3 rounded-lg text-sm tracking-widest uppercase hover:bg-rosegold transition-all">Sign In</button>
-      <p class="mt-5 text-xs text-warmgrey">Use your Tilz Spa founder credentials</p>
+  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3C2415 0%,rgba(60,36,21,0.95) 100%)">
+    <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
+      <p class="eyebrow mb-4">Tilz Spa</p>
+      <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Founder</h2>
+      <div class="divider mx-auto my-5"></div>
+      <p class="text-grey text-xs mb-8 tracking-wide">Secure Access</p>
+      <div id="loginErr" class="hidden mb-4 text-xs text-rg bg-rose/20 border border-rg/20 rounded-xl px-4 py-3"></div>
+      <input id="loginEmail" type="email" placeholder="Email address" class="input-box mb-3 text-left">
+      <input id="loginPass" type="password" placeholder="Password" class="input-box mb-6 text-left">
+      <button onclick="doLogin()" class="btn-primary w-full">Sign In</button>
+      <p class="mt-6 text-[11px] text-grey tracking-wide">Use your Tilz Spa founder credentials.</p>
     </div>
   </div>
 
   <!-- DASHBOARD -->
   <div id="dashboard" class="hidden">
-    <!-- Sidebar -->
     <div class="flex min-h-screen">
-      <aside class="w-64 bg-chocolate text-cream fixed top-0 left-0 h-full flex flex-col z-40 hidden lg:flex">
-        <div class="p-6 border-b border-cream/10">
-          <div class="flex items-center gap-3">
-            <img src="../assets/logo.png" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div>
-              <p class="font-serif text-sm">Tilz Spa</p>
-              <p class="text-cream/40 text-xs">Founder Dashboard</p>
-            </div>
-          </div>
+
+      <!-- SIDEBAR -->
+      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3C2415">
+        <div class="p-7 border-b border-cream/10">
+          <p class="eyebrow mb-2" style="color:rgba(196,168,130,0.7)">Tilz Spa</p>
+          <p class="font-serif text-cream text-lg" style="font-weight:400">Founder</p>
         </div>
         <nav class="flex-1 p-4 space-y-1">
-          <button onclick="showSection('overview')" class="tab-btn active w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3" id="btn-overview">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/></svg>
+          <button onclick="showSection('overview')" class="nav-btn active" id="btn-overview">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/></svg>
             Overview
           </button>
-          <button onclick="showSection('appointments')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-appointments">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <button onclick="showSection('appointments')" class="nav-btn" id="btn-appointments">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             Calendar
           </button>
-          <button onclick="showSection('revenue')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-revenue">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <button onclick="showSection('revenue')" class="nav-btn" id="btn-revenue">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
             Revenue
           </button>
-          <button onclick="showSection('clients')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-clients">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <button onclick="showSection('clients')" class="nav-btn" id="btn-clients">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             Clients
           </button>
-          <button onclick="showSection('staff')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-staff">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <button onclick="showSection('staff')" class="nav-btn" id="btn-staff">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             Staff
           </button>
-          <button onclick="showSection('inventory')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-inventory">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <button onclick="showSection('inventory')" class="nav-btn" id="btn-inventory">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
             Inventory
           </button>
-          <a href="whatsapp.html" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10">
+          <a href="whatsapp.html" class="nav-btn">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
         </nav>
-        <div class="p-4 border-t border-cream/10">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 rounded-full bg-rosegold flex items-center justify-center text-white text-xs font-bold">T</div>
-            <div><p class="text-xs font-medium">Tilda</p><p class="text-cream/40 text-xs">Founder & CEO</p></div>
+        <div class="p-5 border-t border-cream/10">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-full flex items-center justify-center font-serif text-sm" style="background:rgba(196,168,130,0.25);color:#C4A882">T</div>
+            <div>
+              <p class="text-xs font-medium text-cream">Tilda</p>
+              <p class="text-[10px] text-cream/40 tracking-wide">Founder &amp; CEO</p>
+            </div>
           </div>
-          <button onclick="logout()" class="w-full text-left text-xs text-cream/50 hover:text-cream transition-colors px-2 py-1">← Sign Out</button>
+          <button onclick="logout()" class="text-[11px] text-cream/40 hover:text-cream/80 tracking-wide transition-colors">Sign Out</button>
         </div>
       </aside>
 
-      <!-- Main content -->
-      <main class="lg:ml-64 flex-1 p-6">
-        <!-- Mobile header -->
-        <div class="lg:hidden flex items-center justify-between mb-6 bg-chocolate text-cream px-4 py-3 rounded-xl">
-          <span class="font-serif text-sm">Founder Dashboard</span>
-          <div class="flex gap-2 text-xs">
-            <button onclick="showSection('overview')" class="px-3 py-1 bg-cream/20 rounded-full">Overview</button>
-            <button onclick="showSection('appointments')" class="px-3 py-1 bg-cream/20 rounded-full">Appts</button>
-            <button onclick="showSection('clients')" class="px-3 py-1 bg-cream/20 rounded-full">Clients</button>
-          </div>
+      <!-- MAIN -->
+      <main class="lg:ml-64 flex-1 px-6 md:px-10 py-10">
+
+        <!-- Mobile nav -->
+        <div class="lg:hidden flex flex-wrap gap-2 mb-8 overflow-x-auto">
+          <button onclick="showSection('overview')" class="pill pill-choc">Overview</button>
+          <button onclick="showSection('appointments')" class="pill pill-cap">Calendar</button>
+          <button onclick="showSection('revenue')" class="pill pill-cap">Revenue</button>
+          <button onclick="showSection('clients')" class="pill pill-cap">Clients</button>
+          <button onclick="showSection('staff')" class="pill pill-cap">Staff</button>
+          <button onclick="showSection('inventory')" class="pill pill-cap">Inventory</button>
         </div>
 
         <!-- OVERVIEW -->
-        <div id="sec-overview" class="section active">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Good morning, Tilda ✦</h1>
-            <p class="text-warmgrey text-sm">Here's your business at a glance — <span id="todayDate"></span></p>
-          </div>
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Today's Revenue</p>
-              <p class="font-serif text-2xl font-semibold">₦185,000</p>
-              <p class="text-green-600 text-xs mt-1">↑ 12% vs yesterday</p>
-            </div>
-            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Appointments</p>
-              <p class="font-serif text-2xl font-semibold">12</p>
-              <p class="text-chocolate/50 text-xs mt-1">8 confirmed · 4 pending</p>
-            </div>
-            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Active Clients</p>
-              <p class="font-serif text-2xl font-semibold">48</p>
-              <p class="text-green-600 text-xs mt-1">↑ 3 new this week</p>
-            </div>
-            <div class="stat-card bg-white rounded-2xl p-6 shadow-sm">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Avg Rating</p>
-              <p class="font-serif text-2xl font-semibold">4.9 ★</p>
-              <p class="text-chocolate/50 text-xs mt-1">Based on 36 reviews</p>
-            </div>
-          </div>
-          <!-- Monthly revenue bars -->
-          <div class="bg-white rounded-2xl p-6 shadow-sm mb-6">
-            <h3 class="font-serif text-lg mb-5">Monthly Revenue Overview</h3>
-            <div class="space-y-3">
-              <div class="flex items-center gap-3"><span class="text-xs w-8 text-warmgrey">Jan</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bar bg-rosegold h-3 rounded-full" style="width:55%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦1.32M</span></div>
-              <div class="flex items-center gap-3"><span class="text-xs w-8 text-warmgrey">Feb</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bar bg-rosegold h-3 rounded-full" style="width:62%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦1.49M</span></div>
-              <div class="flex items-center gap-3"><span class="text-xs w-8 text-warmgrey">Mar</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bar bg-rosegold h-3 rounded-full" style="width:78%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦1.87M</span></div>
-              <div class="flex items-center gap-3"><span class="text-xs w-8 text-warmgrey">Apr</span><div class="flex-1 bg-ivory rounded-full h-3"><div class="bar bg-gold h-3 rounded-full" style="width:45%"></div></div><span class="text-xs text-chocolate/60 w-20 text-right">₦1.08M</span></div>
-            </div>
-          </div>
-          <!-- Service breakdown -->
-          <div class="grid md:grid-cols-3 gap-5">
-            <div class="bg-softrose/20 rounded-2xl p-5 text-center">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Spa Revenue</p>
-              <p class="font-serif text-xl font-semibold">52%</p>
-              <div class="w-full bg-ivory rounded-full h-2 mt-2"><div class="bg-rosegold h-2 rounded-full" style="width:52%"></div></div>
-            </div>
-            <div class="bg-gold/10 rounded-2xl p-5 text-center">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Sauna Revenue</p>
-              <p class="font-serif text-xl font-semibold">26%</p>
-              <div class="w-full bg-ivory rounded-full h-2 mt-2"><div class="bg-gold h-2 rounded-full" style="width:26%"></div></div>
-            </div>
-            <div class="bg-chocolate/5 rounded-2xl p-5 text-center">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Barbing Revenue</p>
-              <p class="font-serif text-xl font-semibold">22%</p>
-              <div class="w-full bg-ivory rounded-full h-2 mt-2"><div class="bg-chocolate h-2 rounded-full" style="width:22%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CALENDAR (Appointments + Roadmap + Social Media) -->
-        <div id="sec-appointments" class="section">
-          <div class="mb-6">
-            <h1 class="font-serif text-3xl mb-1">Calendar</h1>
-            <p class="text-warmgrey text-sm">Appointments, Year Roadmap &amp; Social Media Plan</p>
+        <section id="sec-overview" class="section active">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Morning Briefing</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Good morning, Tilda</h1>
+            <p class="text-grey text-sm">Your business at a glance &middot; <span id="todayDate"></span></p>
           </div>
 
-          <!-- Calendar Tabs -->
-          <div class="flex gap-2 mb-6">
-            <button onclick="showCalTab('appts')" id="caltab-appts" class="caltab active px-5 py-2 rounded-full text-sm font-medium bg-chocolate text-cream">Appointments</button>
-            <button onclick="showCalTab('roadmap')" id="caltab-roadmap" class="caltab px-5 py-2 rounded-full text-sm font-medium bg-ivory text-warmgrey hover:bg-cappuccino/20">Year Roadmap</button>
-            <button onclick="showCalTab('social')" id="caltab-social" class="caltab px-5 py-2 rounded-full text-sm font-medium bg-ivory text-warmgrey hover:bg-cappuccino/20">Social Media</button>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <div class="card p-7">
+              <p class="eyebrow mb-4">Today&rsquo;s Revenue</p>
+              <p class="stat-num text-3xl mb-2">&#8358;185,000</p>
+              <p class="text-xs text-grey">&uarr; 12% vs yesterday</p>
+            </div>
+            <div class="card p-7">
+              <p class="eyebrow mb-4">Appointments</p>
+              <p class="stat-num text-3xl mb-2">12</p>
+              <p class="text-xs text-grey">8 confirmed &middot; 4 pending</p>
+            </div>
+            <div class="card p-7">
+              <p class="eyebrow mb-4">Active Clients</p>
+              <p class="stat-num text-3xl mb-2">48</p>
+              <p class="text-xs text-grey">&uarr; 3 new this week</p>
+            </div>
+            <div class="card p-7">
+              <p class="eyebrow mb-4">Avg Rating</p>
+              <p class="stat-num text-3xl mb-2">4.9</p>
+              <p class="text-xs text-grey">Based on 36 reviews</p>
+            </div>
           </div>
 
-          <!-- DATE DETAIL MODAL -->
-          <div id="dateModal" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background:rgba(0,0,0,0.5)" onclick="if(event.target===this)closeDateModal()">
-            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden">
-              <div id="modalHeader" class="px-6 py-5 flex items-start justify-between">
-                <div>
-                  <p id="modalDate" class="text-xs font-semibold tracking-widest uppercase mb-1" style="color:#C4A882"></p>
-                  <h3 id="modalTitle" class="font-serif text-xl"></h3>
-                </div>
-                <button onclick="closeDateModal()" class="text-warmgrey hover:text-chocolate text-xl leading-none mt-1">&times;</button>
+          <div class="card p-8 mb-6">
+            <p class="eyebrow mb-1">2026</p>
+            <h3 class="font-serif text-xl mb-8" style="font-weight:400">Monthly Revenue</h3>
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-xs text-grey tracking-wide">Jan</span><span class="text-sm font-medium">&#8358;1.32M</span></div>
+                <div class="bar"><span style="width:55%"></span></div>
               </div>
-              <div id="modalBody" class="px-6 pb-6 space-y-3"></div>
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-xs text-grey tracking-wide">Feb</span><span class="text-sm font-medium">&#8358;1.49M</span></div>
+                <div class="bar"><span style="width:62%"></span></div>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-xs text-grey tracking-wide">Mar</span><span class="text-sm font-medium">&#8358;1.87M</span></div>
+                <div class="bar"><span style="width:78%"></span></div>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-xs text-grey tracking-wide">Apr</span><span class="text-sm font-medium">&#8358;1.08M</span></div>
+                <div class="bar"><span style="width:45%;background:#D4AF6F"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-5">
+            <div class="card p-7">
+              <p class="eyebrow mb-3">Spa</p>
+              <p class="stat-num text-2xl mb-3">52%</p>
+              <div class="bar"><span style="width:52%"></span></div>
+            </div>
+            <div class="card p-7">
+              <p class="eyebrow mb-3">Sauna</p>
+              <p class="stat-num text-2xl mb-3">26%</p>
+              <div class="bar"><span style="width:26%;background:#D4AF6F"></span></div>
+            </div>
+            <div class="card p-7">
+              <p class="eyebrow mb-3">Barbing</p>
+              <p class="stat-num text-2xl mb-3">22%</p>
+              <div class="bar"><span style="width:22%;background:#3C2415"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CALENDAR -->
+        <section id="sec-appointments" class="section">
+          <div class="mb-8">
+            <p class="eyebrow mb-3">Schedule</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Calendar</h1>
+            <p class="text-grey text-sm">Appointments, year roadmap, and social media plan.</p>
+          </div>
+
+          <div class="flex gap-3 mb-8 flex-wrap">
+            <button onclick="showCalTab('appts')" id="caltab-appts" class="caltab active">Appointments</button>
+            <button onclick="showCalTab('roadmap')" id="caltab-roadmap" class="caltab">Year Roadmap</button>
+            <button onclick="showCalTab('social')" id="caltab-social" class="caltab">Social Media</button>
+          </div>
+
+          <!-- DATE MODAL -->
+          <div id="dateModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4" style="background:rgba(10,10,10,0.55)" onclick="if(event.target===this)closeDateModal()">
+            <div class="card w-full max-w-lg overflow-hidden" style="box-shadow:0 40px 100px rgba(0,0,0,0.3)">
+              <div class="px-7 py-6 flex items-start justify-between gap-4" style="border-bottom:1px solid rgba(196,168,130,0.2)">
+                <div>
+                  <p id="modalDate" class="eyebrow mb-1"></p>
+                  <h3 id="modalTitle" class="font-serif text-xl" style="font-weight:400"></h3>
+                </div>
+                <button onclick="closeDateModal()" aria-label="Close" class="text-grey hover:text-choc text-2xl leading-none">&times;</button>
+              </div>
+              <div id="modalBody" class="px-7 py-6 space-y-3 max-h-96 overflow-y-auto"></div>
             </div>
           </div>
 
           <!-- TAB: Appointments -->
           <div id="cal-appts" class="cal-panel">
-            <!-- Visual Calendar Grid -->
-            <div class="bg-white rounded-2xl shadow-sm mb-6 overflow-hidden">
-              <div class="flex items-center justify-between px-6 py-4 border-b border-cappuccino/20">
-                <button onclick="calPrev()" class="text-warmgrey hover:text-chocolate transition-colors">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            <div class="card mb-6 overflow-hidden">
+              <div class="flex items-center justify-between px-6 py-4" style="border-bottom:1px solid rgba(196,168,130,0.2)">
+                <button onclick="calPrev()" aria-label="Previous month" class="text-grey hover:text-choc transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
                 </button>
-                <p id="calMonthLabel" class="font-serif text-base"></p>
-                <button onclick="calNext()" class="text-warmgrey hover:text-chocolate transition-colors">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                <p id="calMonthLabel" class="font-serif text-base" style="font-weight:400;letter-spacing:-0.01em"></p>
+                <button onclick="calNext()" aria-label="Next month" class="text-grey hover:text-choc transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </button>
               </div>
               <div class="grid grid-cols-7 text-center">
-                <div class="py-2 text-xs font-medium text-warmgrey">Sun</div>
-                <div class="py-2 text-xs font-medium text-warmgrey">Mon</div>
-                <div class="py-2 text-xs font-medium text-warmgrey">Tue</div>
-                <div class="py-2 text-xs font-medium text-warmgrey">Wed</div>
-                <div class="py-2 text-xs font-medium text-warmgrey">Thu</div>
-                <div class="py-2 text-xs font-medium text-warmgrey">Fri</div>
-                <div class="py-2 text-xs font-medium text-warmgrey">Sat</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Sun</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Mon</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Tue</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Wed</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Thu</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Fri</div>
+                <div class="py-3 text-[10px] tracking-[0.2em] uppercase text-cap">Sat</div>
               </div>
-              <div id="calGrid" class="grid grid-cols-7 border-t border-cappuccino/10"></div>
+              <div id="calGrid" class="grid grid-cols-7" style="border-top:1px solid rgba(196,168,130,0.1)"></div>
             </div>
-            <div class="flex items-center justify-between mb-4">
-              <input type="text" placeholder="Search client..." class="border border-cappuccino/30 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-chocolate bg-white" oninput="filterAppts(this.value)">
-              <span class="text-xs text-warmgrey">8 appointments this week</span>
+
+            <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
+              <input type="text" placeholder="Search client&hellip;" class="input-box max-w-xs" oninput="filterAppts(this.value)">
+              <span class="text-xs text-grey tracking-wide">8 appointments this week</span>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-              <table class="w-full text-sm">
-                <thead class="bg-ivory border-b border-cappuccino/20">
+
+            <div class="card overflow-x-auto">
+              <table class="tbl">
+                <thead>
                   <tr>
-                    <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Client</th>
-                    <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Service</th>
-                    <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Date &amp; Time</th>
-                    <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Therapist</th>
-                    <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Status</th>
+                    <th>Client</th>
+                    <th>Service</th>
+                    <th>Date &amp; Time</th>
+                    <th>Therapist</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody id="apptTable">
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Adaeze Okonkwo</td><td class="px-6 py-4 text-chocolate/70">Signature Spa Treatment</td><td class="px-6 py-4 text-chocolate/60">Apr 10 · 10:00 AM</td><td class="px-6 py-4 text-chocolate/60">Fatima</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Confirmed</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Chukwuemeka Nwosu</td><td class="px-6 py-4 text-chocolate/70">VIP Barbing Package</td><td class="px-6 py-4 text-chocolate/60">Apr 10 · 11:30 AM</td><td class="px-6 py-4 text-chocolate/60">Emeka</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Confirmed</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Ngozi Adeleke</td><td class="px-6 py-4 text-chocolate/70">Luxury Bathing Ritual</td><td class="px-6 py-4 text-chocolate/60">Apr 10 · 1:00 PM</td><td class="px-6 py-4 text-chocolate/60">Grace</td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full">Pending</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Olumide Fashola</td><td class="px-6 py-4 text-chocolate/70">Sauna + Spa Combo</td><td class="px-6 py-4 text-chocolate/60">Apr 10 · 2:30 PM</td><td class="px-6 py-4 text-chocolate/60">Fatima</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Confirmed</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Amaka Eze</td><td class="px-6 py-4 text-chocolate/70">Medical-Grade Pedicure</td><td class="px-6 py-4 text-chocolate/60">Apr 10 · 3:00 PM</td><td class="px-6 py-4 text-chocolate/60">Blessing</td><td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full">Completed</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Babatunde Akin</td><td class="px-6 py-4 text-chocolate/70">Private Sauna Room</td><td class="px-6 py-4 text-chocolate/60">Apr 11 · 9:00 AM</td><td class="px-6 py-4 text-chocolate/60">Fatima</td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full">Pending</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Ifeoma Obiora</td><td class="px-6 py-4 text-chocolate/70">Infrared Sauna</td><td class="px-6 py-4 text-chocolate/60">Apr 11 · 11:00 AM</td><td class="px-6 py-4 text-chocolate/60">Grace</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Confirmed</span></td></tr>
-                  <tr class="hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Kelechi Obi</td><td class="px-6 py-4 text-chocolate/70">Executive Haircut</td><td class="px-6 py-4 text-chocolate/60">Apr 11 · 2:00 PM</td><td class="px-6 py-4 text-chocolate/60">Emeka</td><td class="px-6 py-4"><span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full">Cancelled</span></td></tr>
+                  <tr><td class="font-medium">Adaeze Okonkwo</td><td class="text-grey">Signature Spa Treatment</td><td class="text-grey">Apr 10 &middot; 10:00 AM</td><td class="text-grey">Fatima</td><td><span class="pill pill-choc">Confirmed</span></td></tr>
+                  <tr><td class="font-medium">Chukwuemeka Nwosu</td><td class="text-grey">VIP Barbing Package</td><td class="text-grey">Apr 10 &middot; 11:30 AM</td><td class="text-grey">Emeka</td><td><span class="pill pill-choc">Confirmed</span></td></tr>
+                  <tr><td class="font-medium">Ngozi Adeleke</td><td class="text-grey">Luxury Bathing Ritual</td><td class="text-grey">Apr 10 &middot; 1:00 PM</td><td class="text-grey">Grace</td><td><span class="pill pill-gold">Pending</span></td></tr>
+                  <tr><td class="font-medium">Olumide Fashola</td><td class="text-grey">Sauna + Spa Combo</td><td class="text-grey">Apr 10 &middot; 2:30 PM</td><td class="text-grey">Fatima</td><td><span class="pill pill-choc">Confirmed</span></td></tr>
+                  <tr><td class="font-medium">Amaka Eze</td><td class="text-grey">Medical&#8209;Grade Pedicure</td><td class="text-grey">Apr 10 &middot; 3:00 PM</td><td class="text-grey">Blessing</td><td><span class="pill pill-cap">Completed</span></td></tr>
+                  <tr><td class="font-medium">Babatunde Akin</td><td class="text-grey">Private Sauna Room</td><td class="text-grey">Apr 11 &middot; 9:00 AM</td><td class="text-grey">Fatima</td><td><span class="pill pill-gold">Pending</span></td></tr>
+                  <tr><td class="font-medium">Ifeoma Obiora</td><td class="text-grey">Infrared Sauna</td><td class="text-grey">Apr 11 &middot; 11:00 AM</td><td class="text-grey">Grace</td><td><span class="pill pill-choc">Confirmed</span></td></tr>
+                  <tr><td class="font-medium">Kelechi Obi</td><td class="text-grey">Executive Haircut</td><td class="text-grey">Apr 11 &middot; 2:00 PM</td><td class="text-grey">Emeka</td><td><span class="pill pill-rg">Cancelled</span></td></tr>
                 </tbody>
               </table>
             </div>
@@ -242,221 +305,256 @@
 
           <!-- TAB: Year Roadmap -->
           <div id="cal-roadmap" class="cal-panel hidden">
-            <p class="text-xs text-warmgrey mb-5">Click any milestone to view details. Roadmap covers Apr 2026 &rarr; Mar 2027 + Year 2 vision.</p>
-            <div class="space-y-4" id="roadmapList">
-              <!-- Months injected by JS -->
-            </div>
+            <p class="text-xs text-grey mb-6 tracking-wide">Click any milestone to view details. Apr 2026 &rarr; Mar 2027 plus Year 2 vision.</p>
+            <div class="space-y-5" id="roadmapList"></div>
           </div>
 
           <!-- TAB: Social Media -->
           <div id="cal-social" class="cal-panel hidden">
             <div class="grid md:grid-cols-2 gap-5 mb-6">
-              <div class="bg-white rounded-2xl p-5 shadow-sm">
-                <p class="text-xs text-warmgrey uppercase tracking-wider mb-3">Content Pillars</p>
-                <div class="space-y-2">
-                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-rosegold flex-shrink-0"></span><span class="text-sm">Behind the Scenes (30%)</span></div>
-                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-gold flex-shrink-0"></span><span class="text-sm">Client Transformations (25%)</span></div>
-                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-chocolate flex-shrink-0"></span><span class="text-sm">Education &amp; Tips (20%)</span></div>
-                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-cappuccino flex-shrink-0"></span><span class="text-sm">Promotions &amp; Offers (15%)</span></div>
-                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-softrose flex-shrink-0"></span><span class="text-sm">Founder &amp; Brand Story (10%)</span></div>
+              <div class="card p-7">
+                <p class="eyebrow mb-4">Content Pillars</p>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full flex-shrink-0" style="background:#B76E79"></span><span class="text-sm">Behind the Scenes &middot; <span class="text-grey">30%</span></span></div>
+                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full flex-shrink-0" style="background:#D4AF6F"></span><span class="text-sm">Client Transformations &middot; <span class="text-grey">25%</span></span></div>
+                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full flex-shrink-0" style="background:#3C2415"></span><span class="text-sm">Education &amp; Tips &middot; <span class="text-grey">20%</span></span></div>
+                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full flex-shrink-0" style="background:#C4A882"></span><span class="text-sm">Promotions &amp; Offers &middot; <span class="text-grey">15%</span></span></div>
+                  <div class="flex items-center gap-3"><span class="w-2 h-2 rounded-full flex-shrink-0" style="background:#E8C4C0"></span><span class="text-sm">Founder &amp; Brand Story &middot; <span class="text-grey">10%</span></span></div>
                 </div>
               </div>
-              <div class="bg-white rounded-2xl p-5 shadow-sm">
-                <p class="text-xs text-warmgrey uppercase tracking-wider mb-3">Weekly Posting Schedule</p>
-                <div class="space-y-2 text-sm">
-                  <div class="flex justify-between"><span class="font-medium">Monday</span><span class="text-chocolate/60">Motivation / Brand Story</span></div>
-                  <div class="flex justify-between"><span class="font-medium">Wednesday</span><span class="text-chocolate/60">Service Spotlight / Tutorial</span></div>
-                  <div class="flex justify-between"><span class="font-medium">Friday</span><span class="text-chocolate/60">Client Result / Testimonial</span></div>
-                  <div class="flex justify-between"><span class="font-medium">Saturday</span><span class="text-chocolate/60">Weekend Promo / Booking CTA</span></div>
-                  <div class="flex justify-between"><span class="font-medium">Stories</span><span class="text-chocolate/60">Daily — behind the scenes</span></div>
+              <div class="card p-7">
+                <p class="eyebrow mb-4">Weekly Schedule</p>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between"><span class="font-medium">Monday</span><span class="text-grey">Motivation / Brand Story</span></div>
+                  <div class="flex justify-between"><span class="font-medium">Wednesday</span><span class="text-grey">Service Spotlight / Tutorial</span></div>
+                  <div class="flex justify-between"><span class="font-medium">Friday</span><span class="text-grey">Client Result / Testimonial</span></div>
+                  <div class="flex justify-between"><span class="font-medium">Saturday</span><span class="text-grey">Weekend Promo / Booking CTA</span></div>
+                  <div class="flex justify-between"><span class="font-medium">Stories</span><span class="text-grey">Daily &mdash; behind the scenes</span></div>
                 </div>
               </div>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-              <div class="px-6 py-4 border-b border-cappuccino/20">
-                <p class="font-medium text-sm">April 2026 — Launch Week Content Plan</p>
+
+            <div class="card overflow-hidden">
+              <div class="px-7 py-5" style="border-bottom:1px solid rgba(196,168,130,0.2)">
+                <p class="eyebrow mb-1">April 2026</p>
+                <h3 class="font-serif text-lg" style="font-weight:400">Launch Week Content Plan</h3>
               </div>
-              <table class="w-full text-sm">
-                <thead class="bg-ivory">
-                  <tr>
-                    <th class="text-left px-6 py-3 text-xs uppercase tracking-wider text-warmgrey">Date</th>
-                    <th class="text-left px-6 py-3 text-xs uppercase tracking-wider text-warmgrey">Platform</th>
-                    <th class="text-left px-6 py-3 text-xs uppercase tracking-wider text-warmgrey">Content</th>
-                    <th class="text-left px-6 py-3 text-xs uppercase tracking-wider text-warmgrey">Pillar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-3">Apr 14</td><td class="px-6 py-3">Instagram + TikTok</td><td class="px-6 py-3">Grand Opening Reel — spa walkthrough</td><td class="px-6 py-3"><span class="bg-rosegold/20 text-rosegold text-xs px-2 py-0.5 rounded-full">BTS</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-3">Apr 16</td><td class="px-6 py-3">Instagram</td><td class="px-6 py-3">Meet Tilda — Founder Story post</td><td class="px-6 py-3"><span class="bg-softrose/40 text-rosegold text-xs px-2 py-0.5 rounded-full">Founder</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-3">Apr 18</td><td class="px-6 py-3">Instagram + WhatsApp</td><td class="px-6 py-3">Opening Offer — 20% off first visit</td><td class="px-6 py-3"><span class="bg-gold/20 text-gold text-xs px-2 py-0.5 rounded-full">Promo</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-3">Apr 21</td><td class="px-6 py-3">TikTok</td><td class="px-6 py-3">Sauna session ASMR video</td><td class="px-6 py-3"><span class="bg-rosegold/20 text-rosegold text-xs px-2 py-0.5 rounded-full">BTS</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-3">Apr 23</td><td class="px-6 py-3">Instagram</td><td class="px-6 py-3">First client testimonial post</td><td class="px-6 py-3"><span class="bg-chocolate/10 text-chocolate text-xs px-2 py-0.5 rounded-full">Social Proof</span></td></tr>
-                  <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-3">Apr 25</td><td class="px-6 py-3">Instagram + TikTok</td><td class="px-6 py-3">Barbing salon reveal reel</td><td class="px-6 py-3"><span class="bg-rosegold/20 text-rosegold text-xs px-2 py-0.5 rounded-full">BTS</span></td></tr>
-                  <tr class="hover:bg-ivory/50"><td class="px-6 py-3">Apr 28</td><td class="px-6 py-3">All platforms</td><td class="px-6 py-3">Week 1 recap — results &amp; bookings</td><td class="px-6 py-3"><span class="bg-softrose/40 text-rosegold text-xs px-2 py-0.5 rounded-full">Founder</span></td></tr>
-                </tbody>
-              </table>
+              <div class="overflow-x-auto">
+                <table class="tbl">
+                  <thead>
+                    <tr><th>Date</th><th>Platform</th><th>Content</th><th>Pillar</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="text-grey">Apr 14</td><td class="text-grey">Instagram + TikTok</td><td>Grand Opening Reel &mdash; spa walkthrough</td><td><span class="pill pill-rg">BTS</span></td></tr>
+                    <tr><td class="text-grey">Apr 16</td><td class="text-grey">Instagram</td><td>Meet Tilda &mdash; Founder Story post</td><td><span class="pill pill-rg">Founder</span></td></tr>
+                    <tr><td class="text-grey">Apr 18</td><td class="text-grey">Instagram + WhatsApp</td><td>Opening Offer &mdash; 20% off first visit</td><td><span class="pill pill-gold">Promo</span></td></tr>
+                    <tr><td class="text-grey">Apr 21</td><td class="text-grey">TikTok</td><td>Sauna session ASMR video</td><td><span class="pill pill-rg">BTS</span></td></tr>
+                    <tr><td class="text-grey">Apr 23</td><td class="text-grey">Instagram</td><td>First client testimonial post</td><td><span class="pill pill-choc">Social Proof</span></td></tr>
+                    <tr><td class="text-grey">Apr 25</td><td class="text-grey">Instagram + TikTok</td><td>Barbing salon reveal reel</td><td><span class="pill pill-rg">BTS</span></td></tr>
+                    <tr><td class="text-grey">Apr 28</td><td class="text-grey">All platforms</td><td>Week 1 recap &mdash; results &amp; bookings</td><td><span class="pill pill-rg">Founder</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="mt-4 bg-ivory rounded-xl p-4">
-              <p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Hashtag Strategy</p>
-              <p class="text-sm text-chocolate/70 leading-relaxed">#TilzSpa #TilzSpaAbuja #LuxurySpaAbuja #SpaInAbuja #WellnessAbuja #SaunaAbuja #AbujaSpa #NigerianWellness #SelfCareAbuja #TilzByTilda #SpaDay #LuxuryWellness #AbujaBusiness #Wuse2Abuja</p>
+
+            <div class="card mt-6 p-6" style="background:rgba(196,168,130,0.06)">
+              <p class="eyebrow mb-3">Hashtag Strategy</p>
+              <p class="text-sm text-grey leading-relaxed">#TilzSpa #TilzSpaAbuja #LuxurySpaAbuja #SpaInAbuja #WellnessAbuja #SaunaAbuja #AbujaSpa #NigerianWellness #SelfCareAbuja #TilzByTilda #SpaDay #LuxuryWellness #AbujaBusiness #Wuse2Abuja</p>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- REVENUE -->
-        <div id="sec-revenue" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Revenue</h1>
-            <p class="text-warmgrey text-sm">Financial performance by service category</p>
+        <section id="sec-revenue" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Financial</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Revenue</h1>
+            <p class="text-grey text-sm">Performance by service category.</p>
           </div>
-          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-            <div class="bg-white rounded-2xl p-6 shadow-sm"><p class="text-xs text-warmgrey uppercase tracking-wider mb-2">This Month</p><p class="font-serif text-2xl">₦1.08M</p></div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm"><p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Last Month</p><p class="font-serif text-2xl">₦1.87M</p></div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm"><p class="text-xs text-warmgrey uppercase tracking-wider mb-2">YTD Revenue</p><p class="font-serif text-2xl">₦5.76M</p></div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm"><p class="text-xs text-warmgrey uppercase tracking-wider mb-2">Outstanding</p><p class="font-serif text-2xl text-red-600">₦45,000</p></div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+            <div class="card p-7"><p class="eyebrow mb-4">This Month</p><p class="stat-num text-3xl">&#8358;1.08M</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">Last Month</p><p class="stat-num text-3xl">&#8358;1.87M</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">YTD Revenue</p><p class="stat-num text-3xl">&#8358;5.76M</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">Outstanding</p><p class="stat-num text-3xl">&#8358;45,000</p></div>
           </div>
-          <div class="bg-white rounded-2xl p-6 shadow-sm">
-            <h3 class="font-serif text-lg mb-5">Revenue by Service</h3>
-            <div class="space-y-4">
-              <div><div class="flex justify-between text-sm mb-1"><span>Spa Treatments</span><span class="text-rosegold font-semibold">₦562,000 (52%)</span></div><div class="w-full bg-ivory rounded-full h-3"><div class="bg-rosegold h-3 rounded-full" style="width:52%"></div></div></div>
-              <div><div class="flex justify-between text-sm mb-1"><span>Sauna Sessions</span><span class="text-gold font-semibold">₦281,000 (26%)</span></div><div class="w-full bg-ivory rounded-full h-3"><div class="bg-gold h-3 rounded-full" style="width:26%"></div></div></div>
-              <div><div class="flex justify-between text-sm mb-1"><span>Barbing Salon</span><span class="text-chocolate font-semibold">₦238,000 (22%)</span></div><div class="w-full bg-ivory rounded-full h-3"><div class="bg-chocolate h-3 rounded-full" style="width:22%"></div></div></div>
+
+          <div class="card p-8">
+            <p class="eyebrow mb-1">Breakdown</p>
+            <h3 class="font-serif text-xl mb-8" style="font-weight:400">Revenue by Service</h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Spa Treatments</span><span class="text-sm font-medium">&#8358;562,000 &middot; 52%</span></div>
+                <div class="bar"><span style="width:52%"></span></div>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Sauna Sessions</span><span class="text-sm font-medium">&#8358;281,000 &middot; 26%</span></div>
+                <div class="bar"><span style="width:26%;background:#D4AF6F"></span></div>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Barbing Salon</span><span class="text-sm font-medium">&#8358;238,000 &middot; 22%</span></div>
+                <div class="bar"><span style="width:22%;background:#3C2415"></span></div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- CLIENTS -->
-        <div id="sec-clients" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Client Database</h1>
-            <p class="text-warmgrey text-sm">48 registered clients · 12 VIP members</p>
+        <section id="sec-clients" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Directory</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Clients</h1>
+            <p class="text-grey text-sm">48 registered &middot; 12 VIP members.</p>
           </div>
-          <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-            <table class="w-full text-sm">
-              <thead class="bg-ivory border-b border-cappuccino/20">
+          <div class="card overflow-x-auto">
+            <table class="tbl">
+              <thead>
                 <tr>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Client</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Phone</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Visits</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Total Spent</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Last Visit</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Status</th>
+                  <th>Client</th>
+                  <th>Phone</th>
+                  <th>Visits</th>
+                  <th>Total Spent</th>
+                  <th>Last Visit</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Adaeze Okonkwo</td><td class="px-6 py-4 text-chocolate/60">0803 456 7890</td><td class="px-6 py-4">12</td><td class="px-6 py-4 text-rosegold font-semibold">₦480,000</td><td class="px-6 py-4 text-chocolate/60">Apr 10, 2026</td><td class="px-6 py-4"><span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-semibold">VIP</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Ngozi Adeleke</td><td class="px-6 py-4 text-chocolate/60">0812 345 6789</td><td class="px-6 py-4">8</td><td class="px-6 py-4 text-rosegold font-semibold">₦320,000</td><td class="px-6 py-4 text-chocolate/60">Apr 10, 2026</td><td class="px-6 py-4"><span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-semibold">VIP</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Olumide Fashola</td><td class="px-6 py-4 text-chocolate/60">0901 234 5678</td><td class="px-6 py-4">6</td><td class="px-6 py-4 text-chocolate/70">₦195,000</td><td class="px-6 py-4 text-chocolate/60">Apr 10, 2026</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Amaka Eze</td><td class="px-6 py-4 text-chocolate/60">0705 678 9012</td><td class="px-6 py-4">5</td><td class="px-6 py-4 text-chocolate/70">₦175,000</td><td class="px-6 py-4 text-chocolate/60">Apr 10, 2026</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Ifeoma Obiora</td><td class="px-6 py-4 text-chocolate/60">0816 789 0123</td><td class="px-6 py-4">4</td><td class="px-6 py-4 text-chocolate/70">₦140,000</td><td class="px-6 py-4 text-chocolate/60">Apr 9, 2026</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Babatunde Akin</td><td class="px-6 py-4 text-chocolate/60">0702 345 6789</td><td class="px-6 py-4">3</td><td class="px-6 py-4 text-chocolate/70">₦95,000</td><td class="px-6 py-4 text-chocolate/60">Apr 8, 2026</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">Active</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Chukwuemeka Nwosu</td><td class="px-6 py-4 text-chocolate/60">0803 567 8901</td><td class="px-6 py-4">7</td><td class="px-6 py-4 text-rosegold font-semibold">₦245,000</td><td class="px-6 py-4 text-chocolate/60">Apr 10, 2026</td><td class="px-6 py-4"><span class="bg-gold/20 text-gold text-xs px-3 py-1 rounded-full font-semibold">VIP</span></td></tr>
-                <tr class="hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Kelechi Obi</td><td class="px-6 py-4 text-chocolate/60">0909 012 3456</td><td class="px-6 py-4">2</td><td class="px-6 py-4 text-chocolate/70">₦55,000</td><td class="px-6 py-4 text-chocolate/60">Apr 5, 2026</td><td class="px-6 py-4"><span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">New</span></td></tr>
+                <tr><td class="font-medium">Adaeze Okonkwo</td><td class="text-grey">0803 456 7890</td><td>12</td><td class="font-medium">&#8358;480,000</td><td class="text-grey">Apr 10, 2026</td><td><span class="pill pill-gold">VIP</span></td></tr>
+                <tr><td class="font-medium">Ngozi Adeleke</td><td class="text-grey">0812 345 6789</td><td>8</td><td class="font-medium">&#8358;320,000</td><td class="text-grey">Apr 10, 2026</td><td><span class="pill pill-gold">VIP</span></td></tr>
+                <tr><td class="font-medium">Olumide Fashola</td><td class="text-grey">0901 234 5678</td><td>6</td><td>&#8358;195,000</td><td class="text-grey">Apr 10, 2026</td><td><span class="pill pill-cap">Regular</span></td></tr>
+                <tr><td class="font-medium">Amaka Eze</td><td class="text-grey">0705 678 9012</td><td>5</td><td>&#8358;175,000</td><td class="text-grey">Apr 10, 2026</td><td><span class="pill pill-cap">Regular</span></td></tr>
+                <tr><td class="font-medium">Ifeoma Obiora</td><td class="text-grey">0816 789 0123</td><td>4</td><td>&#8358;140,000</td><td class="text-grey">Apr 9, 2026</td><td><span class="pill pill-cap">Regular</span></td></tr>
+                <tr><td class="font-medium">Babatunde Akin</td><td class="text-grey">0702 345 6789</td><td>3</td><td>&#8358;95,000</td><td class="text-grey">Apr 8, 2026</td><td><span class="pill pill-cap">Regular</span></td></tr>
+                <tr><td class="font-medium">Chukwuemeka Nwosu</td><td class="text-grey">0803 567 8901</td><td>7</td><td class="font-medium">&#8358;245,000</td><td class="text-grey">Apr 10, 2026</td><td><span class="pill pill-gold">VIP</span></td></tr>
+                <tr><td class="font-medium">Kelechi Obi</td><td class="text-grey">0909 012 3456</td><td>2</td><td>&#8358;55,000</td><td class="text-grey">Apr 5, 2026</td><td><span class="pill pill-grey">New</span></td></tr>
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
 
         <!-- STAFF -->
-        <div id="sec-staff" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Staff</h1>
-            <p class="text-warmgrey text-sm">5 team members · Performance overview</p>
+        <section id="sec-staff" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Team</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Staff</h1>
+            <p class="text-grey text-sm">Five team members. Performance overview.</p>
           </div>
+
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="bg-white rounded-2xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-full bg-rosegold/30 flex items-center justify-center font-serif text-lg text-rosegold">F</div>
-                <div><p class="font-medium">Fatima Aliyu</p><p class="text-xs text-warmgrey">Senior Therapist</p></div>
+            <div class="card p-7">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg" style="background:rgba(183,110,121,0.2);color:#B76E79">F</div>
+                <div>
+                  <p class="font-medium text-sm">Fatima Aliyu</p>
+                  <p class="text-xs text-grey">Senior Therapist</p>
+                </div>
               </div>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span class="text-chocolate/60">Rating</span><span class="text-gold font-semibold">4.9 ★</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Clients Served</span><span>124</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Revenue Generated</span><span class="text-rosegold font-semibold">₦1.24M</span></div>
-              </div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-full bg-softrose/50 flex items-center justify-center font-serif text-lg text-rosegold">G</div>
-                <div><p class="font-medium">Grace Okafor</p><p class="text-xs text-warmgrey">Spa Therapist</p></div>
-              </div>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span class="text-chocolate/60">Rating</span><span class="text-gold font-semibold">4.8 ★</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Clients Served</span><span>98</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Revenue Generated</span><span class="text-rosegold font-semibold">₦980,000</span></div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-grey">Rating</span><span>4.9</span></div>
+                <div class="flex justify-between"><span class="text-grey">Clients Served</span><span>124</span></div>
+                <div class="flex justify-between"><span class="text-grey">Revenue</span><span class="font-medium">&#8358;1.24M</span></div>
               </div>
             </div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-full bg-chocolate/10 flex items-center justify-center font-serif text-lg text-chocolate">E</div>
-                <div><p class="font-medium">Emeka Chukwu</p><p class="text-xs text-warmgrey">Master Barber</p></div>
+
+            <div class="card p-7">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg" style="background:rgba(232,196,192,0.4);color:#B76E79">G</div>
+                <div>
+                  <p class="font-medium text-sm">Grace Okafor</p>
+                  <p class="text-xs text-grey">Spa Therapist</p>
+                </div>
               </div>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span class="text-chocolate/60">Rating</span><span class="text-gold font-semibold">4.9 ★</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Clients Served</span><span>156</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Revenue Generated</span><span class="text-rosegold font-semibold">₦780,000</span></div>
-              </div>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center font-serif text-lg text-gold">B</div>
-                <div><p class="font-medium">Blessing Nwachukwu</p><p class="text-xs text-warmgrey">Pedicure Specialist</p></div>
-              </div>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span class="text-chocolate/60">Rating</span><span class="text-gold font-semibold">4.7 ★</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Clients Served</span><span>87</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Revenue Generated</span><span class="text-rosegold font-semibold">₦609,000</span></div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-grey">Rating</span><span>4.8</span></div>
+                <div class="flex justify-between"><span class="text-grey">Clients Served</span><span>98</span></div>
+                <div class="flex justify-between"><span class="text-grey">Revenue</span><span class="font-medium">&#8358;980,000</span></div>
               </div>
             </div>
-            <div class="bg-white rounded-2xl p-6 shadow-sm">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-12 h-12 rounded-full bg-cappuccino/20 flex items-center justify-center font-serif text-lg text-cappuccino">A</div>
-                <div><p class="font-medium">Aisha Bello</p><p class="text-xs text-warmgrey">Sauna Attendant</p></div>
+
+            <div class="card p-7">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg" style="background:rgba(60,36,21,0.1);color:#3C2415">E</div>
+                <div>
+                  <p class="font-medium text-sm">Emeka Chukwu</p>
+                  <p class="text-xs text-grey">Master Barber</p>
+                </div>
               </div>
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between"><span class="text-chocolate/60">Rating</span><span class="text-gold font-semibold">4.8 ★</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Clients Served</span><span>72</span></div>
-                <div class="flex justify-between"><span class="text-chocolate/60">Revenue Generated</span><span class="text-rosegold font-semibold">₦432,000</span></div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-grey">Rating</span><span>4.9</span></div>
+                <div class="flex justify-between"><span class="text-grey">Clients Served</span><span>156</span></div>
+                <div class="flex justify-between"><span class="text-grey">Revenue</span><span class="font-medium">&#8358;780,000</span></div>
+              </div>
+            </div>
+
+            <div class="card p-7">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg" style="background:rgba(212,175,111,0.2);color:#A8873F">B</div>
+                <div>
+                  <p class="font-medium text-sm">Blessing Nwachukwu</p>
+                  <p class="text-xs text-grey">Pedicure Specialist</p>
+                </div>
+              </div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-grey">Rating</span><span>4.7</span></div>
+                <div class="flex justify-between"><span class="text-grey">Clients Served</span><span>87</span></div>
+                <div class="flex justify-between"><span class="text-grey">Revenue</span><span class="font-medium">&#8358;609,000</span></div>
+              </div>
+            </div>
+
+            <div class="card p-7">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg" style="background:rgba(196,168,130,0.25);color:#8A7456">A</div>
+                <div>
+                  <p class="font-medium text-sm">Aisha Bello</p>
+                  <p class="text-xs text-grey">Sauna Attendant</p>
+                </div>
+              </div>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-grey">Rating</span><span>4.8</span></div>
+                <div class="flex justify-between"><span class="text-grey">Clients Served</span><span>72</span></div>
+                <div class="flex justify-between"><span class="text-grey">Revenue</span><span class="font-medium">&#8358;432,000</span></div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- INVENTORY -->
-        <div id="sec-inventory" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Inventory</h1>
-            <p class="text-warmgrey text-sm">Product stock levels and reorder alerts</p>
+        <section id="sec-inventory" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Stock</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Inventory</h1>
+            <p class="text-grey text-sm">Product stock levels and reorder alerts.</p>
           </div>
-          <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-            <table class="w-full text-sm">
-              <thead class="bg-ivory border-b border-cappuccino/20">
+
+          <div class="card overflow-x-auto">
+            <table class="tbl">
+              <thead>
                 <tr>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Product</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Category</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Stock</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Reorder Level</th>
-                  <th class="text-left px-6 py-4 text-xs uppercase tracking-wider text-warmgrey">Status</th>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Stock</th>
+                  <th>Reorder Level</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Lavender Essential Oil</td><td class="px-6 py-4 text-chocolate/60">Spa</td><td class="px-6 py-4">24 units</td><td class="px-6 py-4 text-chocolate/60">10 units</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">In Stock</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Shea Butter Lotion</td><td class="px-6 py-4 text-chocolate/60">Spa</td><td class="px-6 py-4">8 units</td><td class="px-6 py-4 text-chocolate/60">10 units</td><td class="px-6 py-4"><span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full">Reorder Now</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Eucalyptus Steam Oil</td><td class="px-6 py-4 text-chocolate/60">Sauna</td><td class="px-6 py-4">15 units</td><td class="px-6 py-4 text-chocolate/60">8 units</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">In Stock</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Premium Shaving Cream</td><td class="px-6 py-4 text-chocolate/60">Barbing</td><td class="px-6 py-4">6 units</td><td class="px-6 py-4 text-chocolate/60">8 units</td><td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full">Low Stock</span></td></tr>
-                <tr class="border-b border-ivory hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Exfoliating Scrub</td><td class="px-6 py-4 text-chocolate/60">Spa</td><td class="px-6 py-4">18 units</td><td class="px-6 py-4 text-chocolate/60">10 units</td><td class="px-6 py-4"><span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">In Stock</span></td></tr>
-                <tr class="hover:bg-ivory/50"><td class="px-6 py-4 font-medium">Beard Conditioning Oil</td><td class="px-6 py-4 text-chocolate/60">Barbing</td><td class="px-6 py-4">3 units</td><td class="px-6 py-4 text-chocolate/60">6 units</td><td class="px-6 py-4"><span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full">Reorder Now</span></td></tr>
+                <tr><td class="font-medium">Lavender Essential Oil</td><td class="text-grey">Spa</td><td>24 units</td><td class="text-grey">10 units</td><td><span class="pill pill-choc">In Stock</span></td></tr>
+                <tr><td class="font-medium">Shea Butter Lotion</td><td class="text-grey">Spa</td><td>8 units</td><td class="text-grey">10 units</td><td><span class="pill pill-rg">Reorder Now</span></td></tr>
+                <tr><td class="font-medium">Eucalyptus Steam Oil</td><td class="text-grey">Sauna</td><td>15 units</td><td class="text-grey">8 units</td><td><span class="pill pill-choc">In Stock</span></td></tr>
+                <tr><td class="font-medium">Premium Shaving Cream</td><td class="text-grey">Barbing</td><td>6 units</td><td class="text-grey">8 units</td><td><span class="pill pill-gold">Low Stock</span></td></tr>
+                <tr><td class="font-medium">Exfoliating Scrub</td><td class="text-grey">Spa</td><td>18 units</td><td class="text-grey">10 units</td><td><span class="pill pill-choc">In Stock</span></td></tr>
+                <tr><td class="font-medium">Beard Conditioning Oil</td><td class="text-grey">Barbing</td><td>3 units</td><td class="text-grey">6 units</td><td><span class="pill pill-rg">Reorder Now</span></td></tr>
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
 
       </main>
     </div>
   </div>
 
   <script>
-    // Auth
+    // ===== AUTH =====
     function doLogin() {
       const e = document.getElementById('loginEmail').value.trim();
       const p = document.getElementById('loginPass').value;
@@ -474,42 +572,37 @@
     document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
     function logout() { sessionStorage.removeItem('tilz_founder'); location.reload(); }
 
-    // Check session
     if (sessionStorage.getItem('tilz_founder')) {
       document.getElementById('loginGate').style.display = 'none';
       document.getElementById('dashboard').classList.remove('hidden');
       document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-NG', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
     }
 
-    // Navigation
+    // ===== NAV =====
     function showSection(id) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-cream/70'); });
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('sec-' + id).classList.add('active');
       const btn = document.getElementById('btn-' + id);
-      if (btn) { btn.classList.add('active'); btn.classList.remove('text-cream/70'); }
+      if (btn) btn.classList.add('active');
     }
 
-    // Filter appointments
+    // ===== APPT SEARCH =====
     function filterAppts(q) {
       const rows = document.querySelectorAll('#apptTable tr');
       rows.forEach(r => { r.style.display = r.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none'; });
     }
 
-    // Calendar tab switching
+    // ===== CAL TAB SWITCH =====
     function showCalTab(id) {
       document.querySelectorAll('.cal-panel').forEach(p => p.classList.add('hidden'));
-      document.querySelectorAll('.caltab').forEach(b => {
-        b.classList.remove('bg-chocolate','text-cream');
-        b.classList.add('bg-ivory','text-warmgrey');
-      });
+      document.querySelectorAll('.caltab').forEach(b => b.classList.remove('active'));
       document.getElementById('cal-' + id).classList.remove('hidden');
       const btn = document.getElementById('caltab-' + id);
-      btn.classList.add('bg-chocolate','text-cream');
-      btn.classList.remove('bg-ivory','text-warmgrey');
+      if (btn) btn.classList.add('active');
     }
 
-    // Roadmap data
+    // ===== ROADMAP DATA =====
     const roadmap = [
       { month: 'April 2026', phase: 'Launch', color: '#B76E79', milestones: [
         { date: 'Apr 10', title: 'Website Goes Live', detail: 'Public website, Founder page, and all dashboards deployed on GitHub Pages. Staff login activated.' },
@@ -523,7 +616,7 @@
         { date: 'May 20', title: 'Instagram 500 Followers', detail: 'Target: 500 Instagram followers. Run a giveaway: free spa session for 1 winner who follows and tags 2 friends.' }
       ]},
       { month: 'June 2026', phase: 'Growth', color: '#C4A882', milestones: [
-        { date: 'Jun 1', title: 'Monthly Revenue Target: ₦2M', detail: 'Scale to ₦2M monthly revenue through consistent bookings, upselling combos, and repeat clients.' },
+        { date: 'Jun 1', title: 'Monthly Revenue Target: \u20A62M', detail: 'Scale to \u20A62M monthly revenue through consistent bookings, upselling combos, and repeat clients.' },
         { date: 'Jun 15', title: 'Couples Package Launch', detail: 'Launch Couples Spa Package officially. Market via Instagram and WhatsApp. Target Valentine and anniversary bookings.' },
         { date: 'Jun 30', title: 'Q1 Business Review', detail: 'Full review of Q1 performance: revenue, client retention, staff ratings, inventory. Adjust strategy for Q3.' }
       ]},
@@ -533,7 +626,7 @@
         { date: 'Jul 25', title: 'TikTok 1,000 Followers', detail: 'Target: 1,000 TikTok followers. Post 3x per week: sauna ASMR, barbing transformations, spa rituals.' }
       ]},
       { month: 'August 2026', phase: 'Scale', color: '#D4AF6F', milestones: [
-        { date: 'Aug 1', title: 'Monthly Revenue Target: ₦3M', detail: 'Scale to ₦3M monthly through corporate clients, bridal bookings, and repeat VIP clients.' },
+        { date: 'Aug 1', title: 'Monthly Revenue Target: \u20A63M', detail: 'Scale to \u20A63M monthly through corporate clients, bridal bookings, and repeat VIP clients.' },
         { date: 'Aug 10', title: 'Staff Training Review', detail: 'Conduct mid-year staff performance review. Identify training needs. Consider hiring 1 additional therapist.' },
         { date: 'Aug 20', title: 'Online Booking System', detail: 'Launch real-time online booking system. Integrate with WhatsApp for automated confirmations and reminders.' }
       ]},
@@ -542,7 +635,7 @@
         { date: 'Sep 15', title: '200 Registered Clients', detail: 'Target: 200 registered clients in the database. Segment by service preference for targeted marketing.' }
       ]},
       { month: 'October 2026', phase: 'Expand', color: '#3C2415', milestones: [
-        { date: 'Oct 1', title: 'Monthly Revenue Target: ₦4M', detail: 'Scale to ₦4M monthly. Review service pricing. Consider premium membership tiers.' },
+        { date: 'Oct 1', title: 'Monthly Revenue Target: \u20A64M', detail: 'Scale to \u20A64M monthly. Review service pricing. Consider premium membership tiers.' },
         { date: 'Oct 10', title: 'tilzspa.ng Domain Live', detail: 'Custom domain tilzspa.ng connected to the website. Update all marketing materials and social bios.' },
         { date: 'Oct 20', title: 'Q2 Business Review', detail: 'Full review of Q2 performance. Assess expansion readiness. Consider second location research.' }
       ]},
@@ -552,7 +645,7 @@
       ]},
       { month: 'December 2026', phase: 'Expand', color: '#3C2415', milestones: [
         { date: 'Dec 1', title: 'Festive Season Campaign', detail: 'Launch Christmas and New Year spa packages. Gift vouchers available. Target corporate gifting market.' },
-        { date: 'Dec 15', title: 'Year-End Revenue Target: ₦30M', detail: 'Target cumulative revenue of ₦30M for 2026. Review P&L, plan 2027 budget and expansion strategy.' },
+        { date: 'Dec 15', title: 'Year-End Revenue Target: \u20A630M', detail: 'Target cumulative revenue of \u20A630M for 2026. Review P&L, plan 2027 budget and expansion strategy.' },
         { date: 'Dec 31', title: 'Year 1 Complete', detail: 'Celebrate Year 1 of Tilz Spa. Full annual review. Set Year 2 targets. Recognise top-performing staff.' }
       ]},
       { month: 'January 2027', phase: 'Year 2', color: '#1A1A1A', milestones: [
@@ -567,28 +660,28 @@
       ]}
     ];
 
-    // Build roadmap
+    // ===== BUILD ROADMAP =====
     function buildRoadmap() {
       const container = document.getElementById('roadmapList');
       if (!container) return;
       container.innerHTML = roadmap.map(m => `
-        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <div class="flex items-center gap-3 px-6 py-4 border-b border-cappuccino/20" style="background:${m.color}10">
-            <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:${m.color}"></span>
-            <span class="font-medium text-sm">${m.month}</span>
-            <span class="text-xs px-2 py-0.5 rounded-full ml-auto" style="background:${m.color}20;color:${m.color}">${m.phase}</span>
+        <div class="card overflow-hidden">
+          <div class="flex items-center gap-3 px-6 py-5" style="border-bottom:1px solid rgba(196,168,130,0.2)">
+            <span class="w-2 h-2 rounded-full flex-shrink-0" style="background:${m.color}"></span>
+            <span class="font-serif text-base" style="font-weight:400">${m.month}</span>
+            <span class="pill ml-auto" style="background:${hexToRgba(m.color, 0.15)};color:${m.color}">${m.phase}</span>
           </div>
-          <div class="divide-y divide-ivory">
+          <div>
             ${m.milestones.map(ms => `
-              <div class="px-6 py-4 flex items-start gap-4 cursor-pointer hover:bg-ivory/60 transition-colors" onclick="toggleMilestone(this)">
+              <div class="milestone-row" onclick="toggleMilestone(this)">
                 <div class="flex-shrink-0 mt-0.5">
-                  <span class="text-xs font-medium px-2 py-1 rounded-md" style="background:${m.color}15;color:${m.color}">${ms.date}</span>
+                  <span class="text-[11px] tracking-wide font-medium px-2.5 py-1 rounded-full" style="background:${hexToRgba(m.color, 0.12)};color:${m.color}">${ms.date}</span>
                 </div>
-                <div class="flex-1">
+                <div class="flex-1 min-w-0">
                   <p class="text-sm font-medium">${ms.title}</p>
-                  <p class="text-xs text-warmgrey mt-1 milestone-detail hidden leading-relaxed">${ms.detail}</p>
+                  <p class="text-xs text-grey mt-2 milestone-detail leading-relaxed">${ms.detail}</p>
                 </div>
-                <svg class="w-4 h-4 text-warmgrey flex-shrink-0 mt-0.5 milestone-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                <svg class="w-4 h-4 text-grey flex-shrink-0 mt-0.5 milestone-arrow transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
               </div>
             `).join('')}
           </div>
@@ -596,27 +689,33 @@
       `).join('');
     }
 
+    function hexToRgba(hex, a) {
+      const h = hex.replace('#','');
+      const r = parseInt(h.substring(0,2),16);
+      const g = parseInt(h.substring(2,4),16);
+      const b = parseInt(h.substring(4,6),16);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+
     function toggleMilestone(row) {
       const detail = row.querySelector('.milestone-detail');
       const arrow = row.querySelector('.milestone-arrow');
-      const isOpen = !detail.classList.contains('hidden');
-      detail.classList.toggle('hidden', isOpen);
+      const isOpen = detail.classList.contains('open');
+      detail.classList.toggle('open', !isOpen);
       arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
     }
 
     buildRoadmap();
 
     // ===== VISUAL CALENDAR =====
-    // All events keyed by YYYY-MM-DD
     const calEvents = {};
-
-    // Populate from roadmap milestones
     const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
     roadmap.forEach(m => {
       const [mName, mYear] = m.month.split(' ');
       const mIdx = monthNames.indexOf(mName);
       m.milestones.forEach(ms => {
-        const [dName, dNum] = ms.date.split(' ');
+        const [, dNum] = ms.date.split(' ');
         const d = parseInt(dNum);
         const key = `${mYear}-${String(mIdx+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
         if (!calEvents[key]) calEvents[key] = [];
@@ -624,24 +723,22 @@
       });
     });
 
-    // Social media weekly events (repeating)
     const socialWeekly = [
-      { day: 1, label: 'Mon', title: 'Instagram Post', detail: 'Aesthetic content: service spotlight or behind-the-scenes. Use brand hashtags. Post 9–11am.' },
-      { day: 2, label: 'Tue', title: 'TikTok Video', detail: 'Short-form video: treatment preview, ASMR, or transformation. Target 15–30 seconds.' },
+      { day: 1, label: 'Mon', title: 'Instagram Post', detail: 'Aesthetic content: service spotlight or behind-the-scenes. Use brand hashtags. Post 9\u201311am.' },
+      { day: 2, label: 'Tue', title: 'TikTok Video', detail: 'Short-form video: treatment preview, ASMR, or transformation. Target 15\u201330 seconds.' },
       { day: 3, label: 'Wed', title: 'Instagram Stories', detail: 'Poll, Q&A, or client testimonial story. Engage followers with interactive sticker.' },
-      { day: 4, label: 'Thu', title: 'Twitter/X Thread', detail: 'Educational thread: self-care tips, skincare facts, or spa benefits. 3–5 tweets.' },
+      { day: 4, label: 'Thu', title: 'Twitter/X Thread', detail: 'Educational thread: self-care tips, skincare facts, or spa benefits. 3\u20135 tweets.' },
       { day: 5, label: 'Fri', title: 'Instagram Reel', detail: 'Weekly highlight reel or promotional content. Include booking CTA and WhatsApp link.' },
       { day: 6, label: 'Sat', title: 'WhatsApp Broadcast', detail: 'Send weekend availability and special offers to client broadcast list. Keep it concise.' }
     ];
 
-    // Add social events for Apr 2026 – Mar 2027
     for (let yr = 2026; yr <= 2027; yr++) {
       const startM = yr === 2026 ? 3 : 0;
       const endM   = yr === 2027 ? 2 : 11;
       for (let mo = startM; mo <= endM; mo++) {
         const daysInMonth = new Date(yr, mo+1, 0).getDate();
         for (let d = 1; d <= daysInMonth; d++) {
-          const dow = new Date(yr, mo, d).getDay(); // 0=Sun
+          const dow = new Date(yr, mo, d).getDay();
           const sw = socialWeekly.find(s => s.day === dow);
           if (sw) {
             const key = `${yr}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -664,16 +761,16 @@
       const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
       const today = new Date();
       let html = '';
-      for (let i = 0; i < firstDay; i++) html += '<div class="h-16 border-r border-b border-cappuccino/10"></div>';
+      for (let i = 0; i < firstDay; i++) html += '<div class="cal-cell" style="cursor:default"></div>';
       for (let d = 1; d <= daysInMonth; d++) {
         const key = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
         const evts = calEvents[key] || [];
         const isToday = d === today.getDate() && calMonth === today.getMonth() && calYear === today.getFullYear();
         const dots = evts.slice(0,3).map(e => `<span class="w-1.5 h-1.5 rounded-full inline-block" style="background:${e.color}"></span>`).join('');
-        html += `<div class="h-16 border-r border-b border-cappuccino/10 p-1.5 cursor-pointer hover:bg-ivory/80 transition-colors ${isToday ? 'bg-cappuccino/10' : ''}" onclick="openDateModal('${key}')">
-          <p class="text-xs font-medium mb-1 ${isToday ? 'text-chocolate font-bold' : 'text-warmgrey'}">${d}</p>
-          <div class="flex flex-wrap gap-0.5">${dots}</div>
-          ${evts.length > 0 ? `<p class="text-[9px] text-warmgrey leading-tight mt-0.5 truncate">${evts[0].title}</p>` : ''}
+        html += `<div class="cal-cell ${isToday ? 'today' : ''}" onclick="openDateModal('${key}')">
+          <p class="text-xs mb-1 ${isToday ? 'font-medium text-choc' : 'text-grey'}">${d}</p>
+          <div class="flex flex-wrap gap-0.5 mb-0.5">${dots}</div>
+          ${evts.length > 0 ? `<p class="text-[9px] text-grey leading-tight truncate">${evts[0].title}</p>` : ''}
         </div>`;
       }
       grid.innerHTML = html;
@@ -689,16 +786,14 @@
       document.getElementById('modalDate').textContent = dateStr;
       if (evts.length === 0) {
         document.getElementById('modalTitle').textContent = 'No events';
-        document.getElementById('modalBody').innerHTML = '<p class="text-sm text-warmgrey">Nothing scheduled for this date.</p>';
+        document.getElementById('modalBody').innerHTML = '<p class="text-sm text-grey">Nothing scheduled for this date.</p>';
       } else {
         document.getElementById('modalTitle').textContent = evts.length === 1 ? evts[0].title : `${evts.length} events`;
         document.getElementById('modalBody').innerHTML = evts.map(e => `
-          <div class="rounded-xl p-4" style="background:${e.color}10;border-left:3px solid ${e.color}">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full" style="background:${e.color}20;color:${e.color}">${e.phase}</span>
-            </div>
-            <p class="font-medium text-sm mb-1">${e.title}</p>
-            <p class="text-xs text-warmgrey leading-relaxed">${e.detail}</p>
+          <div class="rounded-[14px] p-5" style="background:${hexToRgba(e.color, 0.08)};border-left:2px solid ${e.color}">
+            <span class="pill mb-2" style="background:${hexToRgba(e.color, 0.18)};color:${e.color}">${e.phase}</span>
+            <p class="font-medium text-sm mb-2 mt-2">${e.title}</p>
+            <p class="text-xs text-grey leading-relaxed">${e.detail}</p>
           </div>
         `).join('');
       }
@@ -709,7 +804,6 @@
       document.getElementById('dateModal').classList.add('hidden');
     }
 
-    // Init calendar on page load
     renderCal();
   </script>
 </body>

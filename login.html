@@ -3,71 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff Login | Tilz Spa by Tilda</title>
+  <title>Staff Sign In &mdash; Tilz Spa by Tilda</title>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            cappuccino:'#C4A882', chocolate:'#3C2415', rosegold:'#B76E79',
-            gold:'#D4AF6F', softrose:'#E8C4C0', cream:'#F5F0E8', ivory:'#FAF7F2', warmgrey:'#9B8E82'
+            choc:'#3C2415', cap:'#C4A882', rg:'#B76E79',
+            gold:'#D4AF6F', rose:'#E8C4C0', cream:'#F5F0E8', ivory:'#FAF7F2', grey:'#9B8E82'
           },
-          fontFamily: { serif:['Playfair Display','Georgia','serif'], sans:['Lato','Arial','sans-serif'] }
+          fontFamily: {
+            serif:['Playfair Display','Georgia','serif'],
+            sans:['Inter','system-ui','sans-serif']
+          }
         }
       }
     }
   </script>
   <style>
-    body { font-family: 'Lato', sans-serif; }
-    h1,h2,h3 { font-family: 'Playfair Display', serif; }
-    .shake { animation: shake .4s ease; }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)}
-      20%{transform:translateX(-8px)}
-      40%{transform:translateX(8px)}
-      60%{transform:translateX(-6px)}
-      80%{transform:translateX(6px)}
-    }
-    .fade-in { animation: fadeIn .6s ease forwards; }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+    body{font-family:'Inter',system-ui,sans-serif;color:#1A1A1A;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
+    .divider{width:40px;height:1px;background:#C4A882}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C4A882}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(196,168,130,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
+    .input-box:focus{outline:none;border-color:#3C2415}
+    .btn-primary{background:#3C2415;color:#F5F0E8;padding:14px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;width:100%}
+    .btn-primary:hover{background:#B76E79}
+    .btn-primary:disabled{opacity:0.7;cursor:not-allowed}
+    .shake{animation:shake .4s ease}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+    .fade-in{animation:fadeIn .7s ease forwards}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-chocolate via-chocolate/95 to-rosegold/30 flex items-center justify-center px-4">
+<body class="min-h-screen flex items-center justify-center px-4" style="background:linear-gradient(135deg,#3C2415 0%,rgba(60,36,21,0.95) 55%,rgba(183,110,121,0.25) 100%)">
 
   <div class="fade-in w-full max-w-sm">
 
     <!-- Card -->
-    <div class="bg-cream rounded-3xl shadow-2xl overflow-hidden">
+    <div class="bg-cream rounded-[20px] overflow-hidden" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
 
-      <!-- Top band -->
-      <div class="bg-chocolate px-8 pt-10 pb-8 text-center">
-        <img src="assets/logo.png" alt="Tilz Spa" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover ring-2 ring-cappuccino/40 shadow-lg">
-        <h1 class="font-serif text-2xl text-cream mb-1">Tilz Spa</h1>
-        <p class="text-cream/50 text-xs tracking-[0.25em] uppercase">Staff Portal</p>
+      <!-- Header -->
+      <div class="px-10 pt-12 pb-8 text-center">
+        <p class="eyebrow mb-4">Tilz Spa</p>
+        <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Staff Portal</h2>
+        <div class="divider mx-auto my-5"></div>
+        <p class="text-grey text-xs tracking-wide">Sign in with your staff credentials.</p>
       </div>
 
       <!-- Form -->
-      <div class="px-8 py-8">
+      <div class="px-10 pb-10">
 
-        <div id="errMsg" class="hidden mb-5 text-xs text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-center"></div>
+        <div id="errMsg" class="hidden mb-5 text-xs text-rg border border-rg/20 rounded-xl px-4 py-3 text-center" style="background:rgba(232,196,192,0.2)"></div>
 
         <div class="mb-4">
-          <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Email Address</label>
-          <input id="email" type="email" autocomplete="email" placeholder="yourname@tilzspa.com"
-            class="w-full border border-cappuccino/30 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-chocolate bg-ivory transition-colors"
-            onkeydown="if(event.key==='Enter') document.getElementById('pass').focus()">
+          <label class="eyebrow block mb-3">Email Address</label>
+          <input id="email" type="email" autocomplete="email" placeholder="yourname@tilzspa.com" class="input-box" onkeydown="if(event.key==='Enter') document.getElementById('pass').focus()">
         </div>
 
-        <div class="mb-6">
-          <label class="block text-xs uppercase tracking-wider text-warmgrey mb-2">Password</label>
+        <div class="mb-7">
+          <label class="eyebrow block mb-3">Password</label>
           <div class="relative">
-            <input id="pass" type="password" autocomplete="current-password" placeholder="••••••••••••"
-              class="w-full border border-cappuccino/30 rounded-xl px-4 py-3 pr-11 text-sm focus:outline-none focus:border-chocolate bg-ivory transition-colors"
-              onkeydown="if(event.key==='Enter') doLogin()">
-            <button type="button" onclick="togglePass()" class="absolute right-3 top-1/2 -translate-y-1/2 text-warmgrey hover:text-chocolate transition-colors">
+            <input id="pass" type="password" autocomplete="current-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" class="input-box pr-12" onkeydown="if(event.key==='Enter') doLogin()">
+            <button type="button" onclick="togglePass()" aria-label="Toggle password visibility" class="absolute right-4 top-1/2 -translate-y-1/2 text-grey hover:text-choc transition-colors">
               <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -76,26 +77,24 @@
           </div>
         </div>
 
-        <button id="loginBtn" onclick="doLogin()"
-          class="w-full bg-chocolate text-cream py-3.5 rounded-xl text-xs tracking-[0.2em] uppercase font-medium hover:bg-rosegold transition-all duration-300 flex items-center justify-center gap-2">
+        <button id="loginBtn" onclick="doLogin()" class="btn-primary">
           <span id="btnText">Sign In</span>
           <svg id="btnSpinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
           </svg>
         </button>
 
-        <!-- Role hint (subtle) -->
-        <div class="mt-6 pt-5 border-t border-cappuccino/20">
-          <p class="text-xs text-warmgrey text-center">Sign in with your Tilz Spa staff credentials.<br>You will be directed to your dashboard automatically.</p>
+        <div class="mt-8 pt-6" style="border-top:1px solid rgba(196,168,130,0.2)">
+          <p class="text-xs text-grey text-center leading-relaxed">You&rsquo;ll be directed to your dashboard automatically.</p>
         </div>
 
       </div>
     </div>
 
     <!-- Back link -->
-    <p class="text-center mt-6 text-cream/30 text-xs">
-      <a href="index.html" class="hover:text-cream/60 transition-colors">← Back to Tilz Spa</a>
+    <p class="text-center mt-8">
+      <a href="index.html" class="inline-block text-[11px] tracking-wide transition-colors" style="color:rgba(245,240,232,0.35)" onmouseover="this.style.color='rgba(245,240,232,0.65)'" onmouseout="this.style.color='rgba(245,240,232,0.35)'">&larr; Back to Tilz Spa</a>
     </p>
 
   </div>
@@ -141,9 +140,8 @@
       if (!email) { showError('Please enter your email address.'); return; }
       if (!pass)  { showError('Please enter your password.'); return; }
 
-      // Simulate brief loading
       btn.disabled = true;
-      txt.textContent = 'Signing in…';
+      txt.textContent = 'Signing in\u2026';
       spin.classList.remove('hidden');
 
       setTimeout(() => {
@@ -157,17 +155,14 @@
           return;
         }
 
-        // Set session
         const key = SESSION_KEYS[email];
         if (key) sessionStorage.setItem(key, Date.now());
 
-        // Redirect
-        txt.textContent = 'Redirecting…';
+        txt.textContent = 'Redirecting\u2026';
         window.location.href = user.redirect;
       }, 800);
     }
 
-    // Auto-focus email field
     window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('email').focus();
     });

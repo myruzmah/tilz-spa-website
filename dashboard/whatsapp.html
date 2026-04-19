@@ -3,283 +3,412 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhatsApp Automation | Tilz Spa by Tilda</title>
+  <title>WhatsApp &mdash; Tilz Spa by Tilda</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { cappuccino:'#C4A882',chocolate:'#3C2415',rosegold:'#B76E79',gold:'#D4AF6F',softrose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',warmgrey:'#9B8E82' }, fontFamily:{ serif:['Playfair Display','Georgia','serif'], sans:['Lato','Arial','sans-serif'] } } }
+      theme: {
+        extend: {
+          colors: {
+            choc:'#3C2415',cap:'#C4A882',rg:'#B76E79',
+            gold:'#D4AF6F',rose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',grey:'#9B8E82'
+          },
+          fontFamily: {
+            serif: ['Playfair Display','Georgia','serif'],
+            sans: ['Inter','system-ui','sans-serif']
+          }
+        }
+      }
     }
   </script>
   <style>
-    body{font-family:'Lato',sans-serif}h1,h2,h3{font-family:'Playfair Display',serif}
-    .tab-btn{transition:all .2s}.tab-btn.active{background:#3C2415;color:#F5F0E8}
+    body{font-family:'Inter',system-ui,sans-serif;color:#1A1A1A;background:#FAFAF8;-webkit-font-smoothing:antialiased}
+    h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
+    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,240,232,0.55)}
+    .nav-btn:hover{color:#F5F0E8;background:rgba(245,240,232,0.05)}
+    .nav-btn.active{background:#F5F0E8;color:#3C2415}
     .section{display:none}.section.active{display:block}
-    .toggle{position:relative;display:inline-block;width:44px;height:24px}
+    .divider{width:40px;height:1px;background:#C4A882}
+    .card{background:#fff;border-radius:20px;transition:transform .3s,box-shadow .3s}
+    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(60,36,21,.08)}
+    .pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
+    .pill-choc{background:rgba(60,36,21,0.08);color:#3C2415}
+    .pill-cap{background:rgba(196,168,130,0.18);color:#8A7456}
+    .pill-rg{background:rgba(183,110,121,0.15);color:#B76E79}
+    .pill-gold{background:rgba(212,175,111,0.18);color:#A8873F}
+    .pill-grey{background:rgba(155,142,130,0.15);color:#6B6159}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(196,168,130,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
+    .input-box:focus{outline:none;border-color:#3C2415}
+    .tmpl{width:100%;background:#FAF7F2;border:1px solid rgba(196,168,130,0.2);border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.7;color:rgba(60,36,21,0.75);font-family:'Inter',sans-serif;resize:none;transition:border-color .2s}
+    .tmpl:focus{outline:none;border-color:#3C2415}
+    .btn-primary{background:#3C2415;color:#F5F0E8;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer;display:inline-block;text-decoration:none}
+    .btn-primary:hover{background:#B76E79}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C4A882}
+    .step-num{width:36px;height:36px;border-radius:100px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;flex-shrink:0}
+    .step-done{background:rgba(60,36,21,0.08);color:#3C2415}
+    .step-active{background:rgba(196,168,130,0.2);color:#8A7456}
+    .step-pending{background:rgba(155,142,130,0.12);color:#9B8E82}
+    /* Toggle switch — minimal */
+    .toggle{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0}
     .toggle input{opacity:0;width:0;height:0}
-    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:24px;transition:.3s}
-    .slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:white;border-radius:50%;transition:.3s}
+    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(155,142,130,0.3);border-radius:24px;transition:.3s}
+    .slider:before{position:absolute;content:"";height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
     input:checked+.slider{background:#3C2415}
     input:checked+.slider:before{transform:translateX(20px)}
+    .dot{width:8px;height:8px;border-radius:100px;background:#D4AF6F;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
   </style>
 </head>
-<body class="bg-ivory text-chocolate min-h-screen">
+<body class="min-h-screen">
 
   <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 bg-gradient-to-br from-chocolate to-chocolate/90 flex items-center justify-center">
-    <div class="bg-cream rounded-2xl p-10 w-full max-w-sm shadow-2xl text-center">
-      <img src="../assets/logo.png" alt="Tilz Spa" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover">
-      <h2 class="font-serif text-2xl mb-1">WhatsApp Automation</h2>
-      <p class="text-warmgrey text-xs mb-7 tracking-wide">Tilz Spa by Tilda — Founder Access</p>
-      <div id="loginErr" class="hidden mb-4 text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2"></div>
-      <input id="loginEmail" type="email" placeholder="Email address" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-3 focus:outline-none focus:border-chocolate bg-white">
-      <input id="loginPass" type="password" placeholder="Password" class="w-full border border-cappuccino/40 rounded-lg px-4 py-3 text-sm mb-5 focus:outline-none focus:border-chocolate bg-white">
-      <button onclick="doLogin()" class="w-full bg-chocolate text-cream py-3 rounded-lg text-sm tracking-widest uppercase hover:bg-rosegold transition-all">Sign In</button>
+  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3C2415 0%,rgba(60,36,21,0.95) 100%)">
+    <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
+      <p class="eyebrow mb-4">Tilz Spa</p>
+      <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">WhatsApp</h2>
+      <div class="divider mx-auto my-5"></div>
+      <p class="text-grey text-xs mb-8 tracking-wide">Founder Access Only</p>
+      <div id="loginErr" class="hidden mb-4 text-xs text-rg bg-rose/20 border border-rg/20 rounded-xl px-4 py-3"></div>
+      <input id="loginEmail" type="email" placeholder="Email address" class="input-box mb-3 text-left">
+      <input id="loginPass" type="password" placeholder="Password" class="input-box mb-6 text-left">
+      <button onclick="doLogin()" class="btn-primary w-full">Sign In</button>
     </div>
   </div>
 
   <!-- DASHBOARD -->
   <div id="dashboard" class="hidden">
     <div class="flex min-h-screen">
-      <aside class="w-64 bg-chocolate text-cream fixed top-0 left-0 h-full flex flex-col z-40 hidden lg:flex">
-        <div class="p-6 border-b border-cream/10">
-          <div class="flex items-center gap-3">
-            <img src="../assets/logo.png" alt="" class="w-10 h-10 rounded-full object-cover">
-            <div>
-              <p class="font-serif text-sm">Tilz Spa</p>
-              <p class="text-cream/40 text-xs">WhatsApp Automation</p>
-            </div>
-          </div>
+
+      <!-- SIDEBAR -->
+      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3C2415">
+        <div class="p-7 border-b border-cream/10">
+          <p class="eyebrow mb-2" style="color:rgba(196,168,130,0.7)">Tilz Spa</p>
+          <p class="font-serif text-cream text-lg" style="font-weight:400">WhatsApp</p>
         </div>
         <nav class="flex-1 p-4 space-y-1">
-          <button onclick="showSection('setup')" class="tab-btn active w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3" id="btn-setup">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            Setup Guide
+          <button onclick="showSection('setup')" class="nav-btn active w-full text-left" id="btn-setup">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Setup
           </button>
-          <button onclick="showSection('templates')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-templates">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h7"/></svg>
+          <button onclick="showSection('templates')" class="nav-btn w-full text-left" id="btn-templates">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h7"/></svg>
             Templates
           </button>
-          <button onclick="showSection('automation')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-automation">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            Automation Rules
+          <button onclick="showSection('automation')" class="nav-btn w-full text-left" id="btn-automation">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Rules
           </button>
-          <button onclick="showSection('log')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-log">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-            Message Log
+          <button onclick="showSection('log')" class="nav-btn w-full text-left" id="btn-log">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            Messages
           </button>
-          <button onclick="showSection('status')" class="tab-btn w-full text-left px-4 py-3 rounded-lg text-sm flex items-center gap-3 text-cream/70 hover:text-cream hover:bg-cream/10" id="btn-status">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            API Status
+          <button onclick="showSection('status')" class="nav-btn w-full text-left" id="btn-status">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Status
           </button>
         </nav>
-        <div class="p-4 border-t border-cream/10">
-          <a href="founder.html" class="text-xs text-cream/50 hover:text-cream transition-colors block mb-2">← Founder Dashboard</a>
-          <button onclick="logout()" class="text-xs text-cream/50 hover:text-cream transition-colors">Sign Out</button>
+        <div class="p-5 border-t border-cream/10 space-y-3">
+          <a href="founder.html" class="block text-[11px] text-cream/40 hover:text-cream/80 tracking-wide transition-colors">&larr; Founder Dashboard</a>
+          <button onclick="logout()" class="text-[11px] text-cream/40 hover:text-cream/80 tracking-wide transition-colors">Sign Out</button>
         </div>
       </aside>
 
-      <main class="lg:ml-64 flex-1 p-6">
+      <!-- MAIN -->
+      <main class="lg:ml-64 flex-1 px-6 md:px-10 py-10">
+
         <!-- Mobile nav -->
-        <div class="lg:hidden flex flex-wrap gap-2 mb-6">
-          <button onclick="showSection('setup')" class="px-3 py-1.5 bg-chocolate text-cream rounded-full text-xs">Setup</button>
-          <button onclick="showSection('templates')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Templates</button>
-          <button onclick="showSection('automation')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Rules</button>
-          <button onclick="showSection('log')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Log</button>
-          <button onclick="showSection('status')" class="px-3 py-1.5 bg-white border border-cappuccino/30 rounded-full text-xs">Status</button>
+        <div class="lg:hidden flex flex-wrap gap-2 mb-8 overflow-x-auto">
+          <button onclick="showSection('setup')" class="pill pill-choc">Setup</button>
+          <button onclick="showSection('templates')" class="pill pill-cap">Templates</button>
+          <button onclick="showSection('automation')" class="pill pill-cap">Rules</button>
+          <button onclick="showSection('log')" class="pill pill-cap">Messages</button>
+          <button onclick="showSection('status')" class="pill pill-cap">Status</button>
         </div>
 
         <!-- SETUP GUIDE -->
-        <div id="sec-setup" class="section active">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Setup Guide</h1>
-            <p class="text-warmgrey text-sm">7-step Meta Business API walkthrough</p>
+        <section id="sec-setup" class="section active">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Integration</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Setup Guide</h1>
+            <p class="text-grey text-sm">A seven-step walkthrough for the Meta Business WhatsApp API.</p>
           </div>
-          <div class="space-y-4 max-w-2xl">
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-sm font-bold flex-shrink-0">✓</div>
-              <div><p class="font-medium text-sm">Step 1 — Create Meta Business Account</p><p class="text-xs text-chocolate/60 mt-1">Go to business.facebook.com and create or link your business account for Tilz Spa.</p></div>
-            </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-sm font-bold flex-shrink-0">✓</div>
-              <div><p class="font-medium text-sm">Step 2 — Create a Meta App</p><p class="text-xs text-chocolate/60 mt-1">Visit developers.facebook.com → Create App → Select "Business" type → Name it "Tilz Spa".</p></div>
-            </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
-              <div><p class="font-medium text-sm">Step 3 — Add WhatsApp Product</p><p class="text-xs text-chocolate/60 mt-1">In your Meta App dashboard, click "Add Product" → Select "WhatsApp" → Follow the setup wizard.</p></div>
-            </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
-              <div><p class="font-medium text-sm">Step 4 — Verify Business Phone Number</p><p class="text-xs text-chocolate/60 mt-1">Add +234 916 769 8000 as your WhatsApp Business number and complete OTP verification.</p></div>
-            </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-sm font-bold flex-shrink-0">5</div>
-              <div><p class="font-medium text-sm">Step 5 — Configure Webhook</p><p class="text-xs text-chocolate/60 mt-1">Set webhook URL to receive incoming messages. Requires a server endpoint — contact HAMZURY to set this up.</p></div>
-            </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-sm font-bold flex-shrink-0">6</div>
-              <div><p class="font-medium text-sm">Step 6 — Submit Message Templates</p><p class="text-xs text-chocolate/60 mt-1">Submit your approved message templates (see Templates tab) to Meta for review. Approval takes 24–48 hours.</p></div>
-            </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-sm font-bold flex-shrink-0">7</div>
-              <div><p class="font-medium text-sm">Step 7 — Go Live</p><p class="text-xs text-chocolate/60 mt-1">Once templates are approved and webhook is live, enable automation rules in the Automation tab.</p></div>
-            </div>
-            <div class="bg-rosegold/10 border border-rosegold/30 rounded-xl p-5">
-              <p class="text-sm font-medium text-rosegold mb-1">Need help with setup?</p>
-              <p class="text-xs text-chocolate/60">Contact HAMZURY to complete the API integration and webhook configuration.</p>
-              <a href="https://wa.me/2348067149356" target="_blank" class="mt-3 inline-block bg-rosegold text-cream text-xs px-4 py-2 rounded-full hover:bg-chocolate transition-all">Contact HAMZURY</a>
+
+          <div class="card max-w-2xl overflow-hidden">
+            <div class="divide-y divide-cap/15">
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-done">&#10003;</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 1 &middot; Create Meta Business Account</p>
+                  <p class="text-xs text-grey leading-relaxed">Go to <span class="text-choc">business.facebook.com</span> and create or link a business account for Tilz Spa.</p>
+                </div>
+              </div>
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-done">&#10003;</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 2 &middot; Create a Meta App</p>
+                  <p class="text-xs text-grey leading-relaxed">Visit <span class="text-choc">developers.facebook.com</span>, choose Create App, select &ldquo;Business&rdquo; type, name it &ldquo;Tilz Spa&rdquo;.</p>
+                </div>
+              </div>
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-active">3</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 3 &middot; Add WhatsApp Product</p>
+                  <p class="text-xs text-grey leading-relaxed">In the Meta App dashboard, click Add Product, choose WhatsApp, and follow the setup wizard.</p>
+                </div>
+              </div>
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-active">4</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 4 &middot; Verify Business Number</p>
+                  <p class="text-xs text-grey leading-relaxed">Add <span class="text-choc">+234 916 769 8000</span> as the WhatsApp Business number and complete OTP verification.</p>
+                </div>
+              </div>
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-pending">5</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 5 &middot; Configure Webhook</p>
+                  <p class="text-xs text-grey leading-relaxed">Set a webhook URL to receive incoming messages. Requires a server endpoint &mdash; contact HAMZURY to set this up.</p>
+                </div>
+              </div>
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-pending">6</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 6 &middot; Submit Message Templates</p>
+                  <p class="text-xs text-grey leading-relaxed">Submit the templates in the Templates tab to Meta for review. Approval takes 24&ndash;48 hours.</p>
+                </div>
+              </div>
+              <div class="p-6 flex items-start gap-5">
+                <div class="step-num step-pending">7</div>
+                <div>
+                  <p class="font-medium text-sm mb-1">Step 7 &middot; Go Live</p>
+                  <p class="text-xs text-grey leading-relaxed">Once templates are approved and the webhook is live, enable automation rules in the Rules tab.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div class="card max-w-2xl mt-6 p-7" style="background:rgba(196,168,130,0.08)">
+            <p class="eyebrow mb-2">Support</p>
+            <h3 class="font-serif text-lg mb-2" style="font-weight:400">Need help with setup?</h3>
+            <p class="text-xs text-grey leading-relaxed mb-5">Contact HAMZURY to complete the API integration and webhook configuration.</p>
+            <a href="https://wa.me/2348067149356?text=Hello%20HAMZURY%2C%20I%20need%20help%20setting%20up%20the%20WhatsApp%20API%20for%20Tilz%20Spa" target="_blank" class="btn-primary">Contact HAMZURY</a>
+          </div>
+        </section>
 
         <!-- TEMPLATES -->
-        <div id="sec-templates" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Message Templates</h1>
-            <p class="text-warmgrey text-sm">5 editable templates for automated messages</p>
+        <section id="sec-templates" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Content</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Message Templates</h1>
+            <p class="text-grey text-sm">Five editable templates powering automated replies.</p>
           </div>
+
           <div class="space-y-5 max-w-2xl">
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center justify-between mb-3"><h3 class="font-medium">Welcome Message</h3><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Active</span></div>
-              <textarea class="w-full bg-ivory rounded-lg px-4 py-3 text-sm text-chocolate/70 border border-cappuccino/20 resize-none" rows="4">Hello {{client_name}}! 🌿 Welcome to Tilz Spa by Tilda. We're delighted to have you. How can we help you today? Reply with "BOOK" to schedule an appointment or "SERVICES" to see our full menu.</textarea>
+            <div class="card p-7">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-lg" style="font-weight:400">Welcome Message</h3>
+                <span class="pill pill-choc">Active</span>
+              </div>
+              <textarea class="tmpl" rows="4">Hello {{client_name}} 🌿 Welcome to Tilz Spa by Tilda. We're delighted to have you. How can we help you today? Reply with "BOOK" to schedule an appointment or "SERVICES" to see our full menu.</textarea>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center justify-between mb-3"><h3 class="font-medium">Booking Confirmation</h3><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Active</span></div>
-              <textarea class="w-full bg-ivory rounded-lg px-4 py-3 text-sm text-chocolate/70 border border-cappuccino/20 resize-none" rows="5">✦ Booking Confirmed — Tilz Spa by Tilda
+
+            <div class="card p-7">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-lg" style="font-weight:400">Booking Confirmation</h3>
+                <span class="pill pill-choc">Active</span>
+              </div>
+              <textarea class="tmpl" rows="7">✦ Booking Confirmed — Tilz Spa by Tilda
 
 Dear {{client_name}}, your appointment is confirmed:
 📅 {{date}} at {{time}}
 💆 {{service}}
 👩 Therapist: {{therapist}}
 
-We look forward to welcoming you. Wuse 2, Abuja.</textarea>
+We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Abuja.</textarea>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center justify-between mb-3"><h3 class="font-medium">24-Hour Reminder</h3><span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">Active</span></div>
-              <textarea class="w-full bg-ivory rounded-lg px-4 py-3 text-sm text-chocolate/70 border border-cappuccino/20 resize-none" rows="4">Hi {{client_name}} 🌸 A gentle reminder — your Tilz Spa appointment is tomorrow at {{time}} for {{service}}. We're looking forward to seeing you. Reply to confirm or reschedule.</textarea>
+
+            <div class="card p-7">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-lg" style="font-weight:400">24&#8209;Hour Reminder</h3>
+                <span class="pill pill-choc">Active</span>
+              </div>
+              <textarea class="tmpl" rows="4">Hi {{client_name}} 🌸 A gentle reminder — your Tilz Spa appointment is tomorrow at {{time}} for {{service}}. We're looking forward to seeing you. Reply to confirm or reschedule.</textarea>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center justify-between mb-3"><h3 class="font-medium">Post-Visit Thank You</h3><span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Inactive</span></div>
-              <textarea class="w-full bg-ivory rounded-lg px-4 py-3 text-sm text-chocolate/70 border border-cappuccino/20 resize-none" rows="4">Thank you for visiting Tilz Spa, {{client_name}} ✨ We hope you're feeling restored and renewed. We'd love to see you again soon. Book your next visit: wa.me/2349167698000</textarea>
+
+            <div class="card p-7">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-lg" style="font-weight:400">Post&#8209;Visit Thank You</h3>
+                <span class="pill pill-grey">Inactive</span>
+              </div>
+              <textarea class="tmpl" rows="4">Thank you for visiting Tilz Spa, {{client_name}} ✨ We hope you're feeling restored and renewed. We'd love to see you again soon. Book your next visit: wa.me/2349167698000</textarea>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
-              <div class="flex items-center justify-between mb-3"><h3 class="font-medium">Review Request</h3><span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Inactive</span></div>
-              <textarea class="w-full bg-ivory rounded-lg px-4 py-3 text-sm text-chocolate/70 border border-cappuccino/20 resize-none" rows="4">Hi {{client_name}}, we hope you enjoyed your experience at Tilz Spa 🌿 Your feedback means the world to us. Would you mind leaving a quick review on Instagram or Google? It takes just 2 minutes. Thank you! 💛</textarea>
+
+            <div class="card p-7">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-serif text-lg" style="font-weight:400">Review Request</h3>
+                <span class="pill pill-grey">Inactive</span>
+              </div>
+              <textarea class="tmpl" rows="4">Hi {{client_name}}, we hope you enjoyed your experience at Tilz Spa 🌿 Your feedback means the world to us. Would you mind leaving a quick review on Instagram or Google? It takes just 2 minutes. Thank you!</textarea>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- AUTOMATION RULES -->
-        <div id="sec-automation" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Automation Rules</h1>
-            <p class="text-warmgrey text-sm">Toggle automated message rules on or off</p>
+        <section id="sec-automation" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Rules</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Automation</h1>
+            <p class="text-grey text-sm">Toggle the automated message rules on or off.</p>
           </div>
-          <div class="space-y-4 max-w-2xl">
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
-              <div><p class="font-medium text-sm">Auto-Reply to New Messages</p><p class="text-xs text-chocolate/60 mt-1">Instantly reply to any new WhatsApp message with the welcome template</p></div>
+
+          <div class="card max-w-2xl divide-y divide-cap/15 overflow-hidden">
+            <div class="p-6 flex items-center justify-between gap-5">
+              <div>
+                <p class="font-medium text-sm mb-1">Auto&#8209;Reply to New Messages</p>
+                <p class="text-xs text-grey leading-relaxed">Instantly reply to any new WhatsApp message with the welcome template.</p>
+              </div>
               <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
-              <div><p class="font-medium text-sm">Booking Confirmations</p><p class="text-xs text-chocolate/60 mt-1">Send confirmation message when a new appointment is created</p></div>
+            <div class="p-6 flex items-center justify-between gap-5">
+              <div>
+                <p class="font-medium text-sm mb-1">Booking Confirmations</p>
+                <p class="text-xs text-grey leading-relaxed">Send a confirmation message when a new appointment is created.</p>
+              </div>
               <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
-              <div><p class="font-medium text-sm">24-Hour Reminders</p><p class="text-xs text-chocolate/60 mt-1">Send reminder 24 hours before each scheduled appointment</p></div>
+            <div class="p-6 flex items-center justify-between gap-5">
+              <div>
+                <p class="font-medium text-sm mb-1">24&#8209;Hour Reminders</p>
+                <p class="text-xs text-grey leading-relaxed">Send a reminder 24 hours before each scheduled appointment.</p>
+              </div>
               <label class="toggle"><input type="checkbox" checked><span class="slider"></span></label>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
-              <div><p class="font-medium text-sm">Post-Visit Follow-Up</p><p class="text-xs text-chocolate/60 mt-1">Send thank you message 2 hours after appointment is marked complete</p></div>
+            <div class="p-6 flex items-center justify-between gap-5">
+              <div>
+                <p class="font-medium text-sm mb-1">Post&#8209;Visit Follow&#8209;Up</p>
+                <p class="text-xs text-grey leading-relaxed">Send a thank you message two hours after an appointment is marked complete.</p>
+              </div>
               <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
-              <div><p class="font-medium text-sm">Review Request</p><p class="text-xs text-chocolate/60 mt-1">Request a review 24 hours after the post-visit follow-up</p></div>
+            <div class="p-6 flex items-center justify-between gap-5">
+              <div>
+                <p class="font-medium text-sm mb-1">Review Request</p>
+                <p class="text-xs text-grey leading-relaxed">Request a review 24 hours after the post&#8209;visit follow&#8209;up.</p>
+              </div>
               <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
             </div>
-            <div class="bg-white rounded-xl p-5 shadow-sm flex items-center justify-between">
-              <div><p class="font-medium text-sm">30-Day Reactivation</p><p class="text-xs text-chocolate/60 mt-1">Send a gentle re-engagement message to clients who haven't visited in 30 days</p></div>
+            <div class="p-6 flex items-center justify-between gap-5">
+              <div>
+                <p class="font-medium text-sm mb-1">30&#8209;Day Reactivation</p>
+                <p class="text-xs text-grey leading-relaxed">Send a gentle re&#8209;engagement message to clients who haven&rsquo;t visited in 30 days.</p>
+              </div>
               <label class="toggle"><input type="checkbox"><span class="slider"></span></label>
-            </div>
-            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-xs text-yellow-800">
-              <strong>Note:</strong> Automation rules require the WhatsApp Business API to be connected. Complete the Setup Guide first.
             </div>
           </div>
-        </div>
+
+          <div class="card max-w-2xl mt-6 p-5" style="background:rgba(212,175,111,0.08)">
+            <p class="text-xs text-grey leading-relaxed"><span class="text-choc" style="font-weight:500">Note &middot; </span>Automation rules require the WhatsApp Business API to be connected. Complete the Setup Guide first.</p>
+          </div>
+        </section>
 
         <!-- MESSAGE LOG -->
-        <div id="sec-log" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">Message Log</h1>
-            <p class="text-warmgrey text-sm">Recent inbound and outbound messages</p>
+        <section id="sec-log" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">Activity</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Messages</h1>
+            <p class="text-grey text-sm">Recent inbound and outbound activity.</p>
           </div>
-          <div class="space-y-3 max-w-2xl">
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-start gap-4">
-              <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full flex-shrink-0">Inbound</span>
-              <div class="flex-1"><p class="text-sm font-medium">Adaeze Okonkwo</p><p class="text-xs text-chocolate/60 mt-1">"I'd like to book a Signature Spa Treatment for today at 10am."</p></div>
-              <span class="text-xs text-warmgrey">9:15 AM</span>
+
+          <div class="card max-w-2xl divide-y divide-cap/15 overflow-hidden">
+            <div class="p-5 flex items-start gap-4">
+              <span class="pill pill-choc mt-0.5">In</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">Adaeze Okonkwo</p>
+                <p class="text-xs text-grey mt-1 leading-relaxed">&ldquo;I&rsquo;d like to book a Signature Spa Treatment for today at 10am.&rdquo;</p>
+              </div>
+              <span class="text-[11px] text-grey tracking-wide whitespace-nowrap">9:15 AM</span>
             </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-start gap-4">
-              <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full flex-shrink-0">Outbound</span>
-              <div class="flex-1"><p class="text-sm font-medium">→ Adaeze Okonkwo</p><p class="text-xs text-chocolate/60 mt-1">Booking Confirmation sent — Apr 10 at 10:00 AM, Signature Spa Treatment, Fatima</p></div>
-              <span class="text-xs text-warmgrey">9:16 AM</span>
+            <div class="p-5 flex items-start gap-4">
+              <span class="pill pill-cap mt-0.5">Out</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">&rarr; Adaeze Okonkwo</p>
+                <p class="text-xs text-grey mt-1 leading-relaxed">Booking Confirmation sent &mdash; Apr 10 at 10:00 AM, Signature Spa Treatment, Fatima.</p>
+              </div>
+              <span class="text-[11px] text-grey tracking-wide whitespace-nowrap">9:16 AM</span>
             </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-start gap-4">
-              <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full flex-shrink-0">Inbound</span>
-              <div class="flex-1"><p class="text-sm font-medium">New Client (0701 234 5678)</p><p class="text-xs text-chocolate/60 mt-1">"Good morning, please how much is the VIP barbing package?"</p></div>
-              <span class="text-xs text-warmgrey">10:02 AM</span>
+            <div class="p-5 flex items-start gap-4">
+              <span class="pill pill-choc mt-0.5">In</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">New Client &middot; 0701 234 5678</p>
+                <p class="text-xs text-grey mt-1 leading-relaxed">&ldquo;Good morning, please how much is the VIP barbing package?&rdquo;</p>
+              </div>
+              <span class="text-[11px] text-grey tracking-wide whitespace-nowrap">10:02 AM</span>
             </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-start gap-4">
-              <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full flex-shrink-0">Outbound</span>
-              <div class="flex-1"><p class="text-sm font-medium">→ New Client</p><p class="text-xs text-chocolate/60 mt-1">Auto-reply: Welcome message sent with service menu link</p></div>
-              <span class="text-xs text-warmgrey">10:02 AM</span>
+            <div class="p-5 flex items-start gap-4">
+              <span class="pill pill-cap mt-0.5">Out</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">&rarr; New Client</p>
+                <p class="text-xs text-grey mt-1 leading-relaxed">Auto&#8209;reply: Welcome message sent with service menu link.</p>
+              </div>
+              <span class="text-[11px] text-grey tracking-wide whitespace-nowrap">10:02 AM</span>
             </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-start gap-4">
-              <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full flex-shrink-0">Outbound</span>
-              <div class="flex-1"><p class="text-sm font-medium">→ Ngozi Adeleke</p><p class="text-xs text-chocolate/60 mt-1">24-Hour Reminder sent — Apr 10 at 11:00 AM, Luxury Bathing Ritual</p></div>
-              <span class="text-xs text-warmgrey">Yesterday 11:00 AM</span>
+            <div class="p-5 flex items-start gap-4">
+              <span class="pill pill-cap mt-0.5">Out</span>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">&rarr; Ngozi Adeleke</p>
+                <p class="text-xs text-grey mt-1 leading-relaxed">24&#8209;Hour Reminder sent &mdash; Apr 10 at 11:00 AM, Luxury Bathing Ritual.</p>
+              </div>
+              <span class="text-[11px] text-grey tracking-wide whitespace-nowrap">Yesterday</span>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- API STATUS -->
-        <div id="sec-status" class="section">
-          <div class="mb-8">
-            <h1 class="font-serif text-3xl mb-1">API Status</h1>
-            <p class="text-warmgrey text-sm">WhatsApp Business API connection status</p>
+        <section id="sec-status" class="section">
+          <div class="mb-10">
+            <p class="eyebrow mb-3">System</p>
+            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">API Status</h1>
+            <p class="text-grey text-sm">WhatsApp Business API connection state.</p>
           </div>
-          <div class="max-w-lg space-y-4">
-            <div class="bg-white rounded-xl p-6 shadow-sm">
+
+          <div class="max-w-lg space-y-5">
+            <div class="card p-7">
               <div class="flex items-center gap-3 mb-4">
-                <div class="w-3 h-3 rounded-full bg-yellow-400 animate-pulse"></div>
-                <p class="font-medium">WhatsApp Business API</p>
-                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full ml-auto">Not Connected</span>
+                <div class="dot"></div>
+                <p class="font-medium text-sm">WhatsApp Business API</p>
+                <span class="pill pill-gold ml-auto">Not Connected</span>
               </div>
-              <p class="text-xs text-chocolate/60">The WhatsApp Business API has not been connected yet. Complete the Setup Guide to activate automation.</p>
+              <p class="text-xs text-grey leading-relaxed">The WhatsApp Business API has not been connected yet. Complete the Setup Guide to activate automation.</p>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
+
+            <div class="card p-7">
               <div class="flex items-center gap-3 mb-4">
-                <div class="w-3 h-3 rounded-full bg-yellow-400 animate-pulse"></div>
-                <p class="font-medium">Webhook</p>
-                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full ml-auto">Pending Setup</span>
+                <div class="dot"></div>
+                <p class="font-medium text-sm">Webhook</p>
+                <span class="pill pill-gold ml-auto">Pending</span>
               </div>
-              <p class="text-xs text-chocolate/60">Webhook endpoint required to receive incoming messages. Contact HAMZURY to configure.</p>
+              <p class="text-xs text-grey leading-relaxed">Webhook endpoint required to receive incoming messages. Contact HAMZURY to configure.</p>
             </div>
-            <div class="bg-white rounded-xl p-6 shadow-sm">
+
+            <div class="card p-7">
               <div class="flex items-center gap-3 mb-4">
-                <div class="w-3 h-3 rounded-full bg-yellow-400 animate-pulse"></div>
-                <p class="font-medium">Message Templates</p>
-                <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full ml-auto">Pending Approval</span>
+                <div class="dot"></div>
+                <p class="font-medium text-sm">Message Templates</p>
+                <span class="pill pill-gold ml-auto">Awaiting Approval</span>
               </div>
-              <p class="text-xs text-chocolate/60">5 templates ready. Submit to Meta for approval (24–48 hours) before automation can go live.</p>
+              <p class="text-xs text-grey leading-relaxed">Five templates ready. Submit to Meta for approval (24&ndash;48 hours) before automation can go live.</p>
             </div>
-            <div class="bg-rosegold/10 border border-rosegold/30 rounded-xl p-5 text-sm">
-              <p class="font-medium text-rosegold mb-2">Ready to go live?</p>
-              <p class="text-xs text-chocolate/60 mb-3">Contact HAMZURY to complete the full WhatsApp Business API integration for Tilz Spa.</p>
-              <a href="https://wa.me/2348067149356?text=Hello%20HAMZURY%2C%20I%20need%20help%20setting%20up%20the%20WhatsApp%20API%20for%20Tilz%20Spa" target="_blank" class="inline-block bg-rosegold text-cream text-xs px-4 py-2 rounded-full hover:bg-chocolate transition-all">Contact HAMZURY</a>
+
+            <div class="card p-7" style="background:rgba(196,168,130,0.08)">
+              <p class="eyebrow mb-2">Go Live</p>
+              <h3 class="font-serif text-lg mb-2" style="font-weight:400">Ready to launch?</h3>
+              <p class="text-xs text-grey leading-relaxed mb-5">Contact HAMZURY to complete the full WhatsApp Business API integration for Tilz Spa.</p>
+              <a href="https://wa.me/2348067149356?text=Hello%20HAMZURY%2C%20I%20need%20help%20setting%20up%20the%20WhatsApp%20API%20for%20Tilz%20Spa" target="_blank" class="btn-primary">Contact HAMZURY</a>
             </div>
           </div>
-        </div>
+        </section>
 
       </main>
     </div>
@@ -307,10 +436,10 @@ We look forward to welcoming you. Wuse 2, Abuja.</textarea>
     }
     function showSection(id) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-cream/70'); });
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.getElementById('sec-' + id).classList.add('active');
       const btn = document.getElementById('btn-' + id);
-      if (btn) { btn.classList.add('active'); btn.classList.remove('text-cream/70'); }
+      if (btn) btn.classList.add('active');
     }
   </script>
 </body>
