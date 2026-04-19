@@ -102,10 +102,19 @@
       </aside>
 
       <!-- MAIN -->
-      <main class="lg:ml-64 flex-1 px-6 md:px-10 py-10">
+      <main class="lg:ml-64 flex-1 px-4 md:px-10 py-6 md:py-10">
 
         <!-- Mobile nav -->
-        <div class="lg:hidden flex flex-wrap gap-2 mb-8 overflow-x-auto">
+                <!-- Mobile header: brand + role + sign out (sidebar is hidden on mobile) -->
+        <div class="lg:hidden flex items-center justify-between mb-4 pb-4" style="border-bottom:1px solid rgba(184,122,92,0.18)">
+          <div>
+            <p class="eyebrow" style="margin-bottom:2px">Tilzspa</p>
+            <p class="font-serif text-lg" style="font-weight:400;color:#3B2A20;line-height:1">WhatsApp</p>
+          </div>
+          <button onclick="logout()" class="text-[11px] text-grey hover:text-choc tracking-wide transition-colors">Sign Out &rarr;</button>
+        </div>
+
+        <div class="lg:hidden flex gap-2 mb-6 overflow-x-auto pb-1 -mx-4 px-4">
           <button onclick="showSection('setup')" class="pill pill-choc">Setup</button>
           <button onclick="showSection('templates')" class="pill pill-cap">Templates</button>
           <button onclick="showSection('automation')" class="pill pill-cap">Rules</button>
@@ -117,7 +126,7 @@
         <section id="sec-setup" class="section active">
           <div class="mb-10">
             <p class="eyebrow mb-3">Integration</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Setup Guide</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Setup Guide</h1>
             <p class="text-grey text-sm">A seven-step walkthrough for the Meta Business WhatsApp API.</p>
           </div>
 
@@ -187,7 +196,7 @@
         <section id="sec-templates" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Content</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Message Templates</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Message Templates</h1>
             <p class="text-grey text-sm">Five editable templates powering automated replies.</p>
           </div>
 
@@ -245,7 +254,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
         <section id="sec-automation" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Rules</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Automation</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Automation</h1>
             <p class="text-grey text-sm">Toggle the automated message rules on or off.</p>
           </div>
 
@@ -303,7 +312,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
         <section id="sec-log" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Activity</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Messages</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Messages</h1>
             <p class="text-grey text-sm">Recent inbound and outbound activity.</p>
           </div>
 
@@ -355,7 +364,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
         <section id="sec-status" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">System</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">API Status</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">API Status</h1>
             <p class="text-grey text-sm">WhatsApp Business API connection state.</p>
           </div>
 

@@ -56,9 +56,10 @@
     .caltab.active{background:#3B2A20;color:#F5EDE1}
     .caltab:not(.active){background:transparent;color:#B8A590;border:1px solid rgba(184,122,92,0.3)}
     .caltab:not(.active):hover{color:#3B2A20;border-color:#B87A5C}
-    .cal-cell{height:70px;border-right:1px solid rgba(184,122,92,0.1);border-bottom:1px solid rgba(184,122,92,0.1);padding:6px 8px;cursor:pointer;transition:background .2s}
+    .cal-cell{height:52px;border-right:1px solid rgba(184,122,92,0.1);border-bottom:1px solid rgba(184,122,92,0.1);padding:6px 8px;cursor:pointer;transition:background .2s}
     .cal-cell:hover{background:rgba(184,122,92,0.05)}
     .cal-cell.today{background:rgba(184,122,92,0.12)}
+    @media (min-width: 768px) { .cal-cell{height:70px} }
     .milestone-row{padding:18px 24px;display:flex;align-items:flex-start;gap:16px;cursor:pointer;transition:background .2s;border-bottom:1px solid rgba(184,122,92,0.1)}
     .milestone-row:last-child{border-bottom:none}
     .milestone-row:hover{background:rgba(184,122,92,0.04)}
@@ -121,10 +122,19 @@
       </aside>
 
       <!-- MAIN -->
-      <main class="lg:ml-64 flex-1 px-6 md:px-10 py-10">
+      <main class="lg:ml-64 flex-1 px-4 md:px-10 py-6 md:py-10">
 
         <!-- Mobile nav -->
-        <div class="lg:hidden flex flex-wrap gap-2 mb-8 overflow-x-auto">
+                <!-- Mobile header: brand + role + sign out (sidebar is hidden on mobile) -->
+        <div class="lg:hidden flex items-center justify-between mb-4 pb-4" style="border-bottom:1px solid rgba(184,122,92,0.18)">
+          <div>
+            <p class="eyebrow" style="margin-bottom:2px">Tilzspa</p>
+            <p class="font-serif text-lg" style="font-weight:400;color:#3B2A20;line-height:1">Founder</p>
+          </div>
+          <button onclick="logout()" class="text-[11px] text-grey hover:text-choc tracking-wide transition-colors">Sign Out &rarr;</button>
+        </div>
+
+        <div class="lg:hidden flex gap-2 mb-6 overflow-x-auto pb-1 -mx-4 px-4">
           <button onclick="showSection('overview')" class="pill pill-choc">Overview</button>
           <button onclick="showSection('appointments')" class="pill pill-cap">Calendar</button>
           <button onclick="showSection('revenue')" class="pill pill-cap">Revenue</button>
@@ -137,7 +147,7 @@
         <section id="sec-overview" class="section active">
           <div class="mb-10">
             <p class="eyebrow mb-3">Morning Briefing</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Good morning, Tilda</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Good morning, Tilda</h1>
             <p class="text-grey text-sm">Your business at a glance &middot; <span id="todayDate"></span></p>
           </div>
 
@@ -210,7 +220,7 @@
         <section id="sec-appointments" class="section">
           <div class="mb-8">
             <p class="eyebrow mb-3">Schedule</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Calendar</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Calendar</h1>
             <p class="text-grey text-sm">Appointments, year roadmap, and social media plan.</p>
           </div>
 
@@ -222,7 +232,7 @@
 
           <!-- DATE MODAL -->
           <div id="dateModal" class="hidden fixed inset-0 z-50 flex items-center justify-center px-4" style="background:rgba(10,10,10,0.55)" onclick="if(event.target===this)closeDateModal()">
-            <div class="card w-full max-w-lg overflow-hidden" style="box-shadow:0 40px 100px rgba(0,0,0,0.3)">
+            <div class="card w-full max-w-lg mx-4 overflow-hidden" style="box-shadow:0 40px 100px rgba(0,0,0,0.3)">
               <div class="px-7 py-6 flex items-start justify-between gap-4" style="border-bottom:1px solid rgba(184,122,92,0.2)">
                 <div>
                   <p id="modalDate" class="eyebrow mb-1"></p>
@@ -353,15 +363,15 @@
         <section id="sec-revenue" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Financial</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Revenue</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Revenue</h1>
             <p class="text-grey text-sm">Performance by service category.</p>
           </div>
 
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
-            <div class="card p-7"><p class="eyebrow mb-4">This Month</p><p class="stat-num text-3xl">&#8358;1.08M</p></div>
-            <div class="card p-7"><p class="eyebrow mb-4">Last Month</p><p class="stat-num text-3xl">&#8358;1.87M</p></div>
-            <div class="card p-7"><p class="eyebrow mb-4">YTD Revenue</p><p class="stat-num text-3xl">&#8358;5.76M</p></div>
-            <div class="card p-7"><p class="eyebrow mb-4">Outstanding</p><p class="stat-num text-3xl">&#8358;45,000</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">This Month</p><p class="stat-num text-2xl md:text-3xl">&#8358;1.08M</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">Last Month</p><p class="stat-num text-2xl md:text-3xl">&#8358;1.87M</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">YTD Revenue</p><p class="stat-num text-2xl md:text-3xl">&#8358;5.76M</p></div>
+            <div class="card p-7"><p class="eyebrow mb-4">Outstanding</p><p class="stat-num text-2xl md:text-3xl">&#8358;45,000</p></div>
           </div>
 
           <div class="card p-8">
@@ -388,7 +398,7 @@
         <section id="sec-clients" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Directory</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Clients</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Clients</h1>
             <p class="text-grey text-sm">48 registered &middot; 12 VIP members.</p>
           </div>
           <div class="card overflow-x-auto">
@@ -421,7 +431,7 @@
         <section id="sec-staff" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Team</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Staff</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Staff</h1>
             <p class="text-grey text-sm">Five team members. Performance overview.</p>
           </div>
 
@@ -507,7 +517,7 @@
         <section id="sec-inventory" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Stock</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Inventory</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Inventory</h1>
             <p class="text-grey text-sm">Product stock levels and reorder alerts.</p>
           </div>
 

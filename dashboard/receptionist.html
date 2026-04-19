@@ -97,10 +97,19 @@
       </aside>
 
       <!-- MAIN -->
-      <main class="lg:ml-64 flex-1 px-6 md:px-10 py-10">
+      <main class="lg:ml-64 flex-1 px-4 md:px-10 py-6 md:py-10">
 
         <!-- Mobile nav -->
-        <div class="lg:hidden flex flex-wrap gap-2 mb-8 overflow-x-auto">
+                <!-- Mobile header: brand + role + sign out (sidebar is hidden on mobile) -->
+        <div class="lg:hidden flex items-center justify-between mb-4 pb-4" style="border-bottom:1px solid rgba(184,122,92,0.18)">
+          <div>
+            <p class="eyebrow" style="margin-bottom:2px">Tilzspa</p>
+            <p class="font-serif text-lg" style="font-weight:400;color:#3B2A20;line-height:1">Reception</p>
+          </div>
+          <button onclick="logout()" class="text-[11px] text-grey hover:text-choc tracking-wide transition-colors">Sign Out &rarr;</button>
+        </div>
+
+        <div class="lg:hidden flex gap-2 mb-6 overflow-x-auto pb-1 -mx-4 px-4">
           <button onclick="showSection('today')" class="pill pill-choc whitespace-nowrap">Today</button>
           <button onclick="showSection('checkin')" class="pill pill-cap whitespace-nowrap">Check&#8209;In</button>
           <button onclick="showSection('booking')" class="pill pill-cap whitespace-nowrap">Booking</button>
@@ -113,7 +122,7 @@
         <section id="sec-today" class="section active">
           <div class="mb-10">
             <p class="eyebrow mb-3">The Day Ahead</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Today&rsquo;s Schedule</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Today&rsquo;s Schedule</h1>
             <p class="text-grey text-sm" id="todayDate2"></p>
           </div>
 
@@ -205,7 +214,7 @@
         <section id="sec-checkin" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Arrivals</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Client Check&#8209;In</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Client Check&#8209;In</h1>
             <p class="text-grey text-sm">Mark clients as arrived to begin their treatment.</p>
           </div>
           <div class="card max-w-2xl divide-y divide-cap/15 overflow-hidden">
@@ -244,7 +253,7 @@
         <section id="sec-booking" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Schedule</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">New Booking</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">New Booking</h1>
             <p class="text-grey text-sm">Create an appointment for a client.</p>
           </div>
           <div class="card p-8 md:p-10 max-w-lg space-y-6">
@@ -308,7 +317,7 @@
         <section id="sec-walkins" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Unscheduled</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Walk&#8209;In Registration</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Walk&#8209;In Registration</h1>
             <p class="text-grey text-sm">Register a client who arrived without a prior booking.</p>
           </div>
           <div class="card p-8 md:p-10 max-w-lg space-y-6">
@@ -345,7 +354,7 @@
         <section id="sec-lookup" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Directory</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Clients</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Clients</h1>
             <p class="text-grey text-sm">History, preferences, and notes.</p>
           </div>
           <div class="mb-8 max-w-md">
@@ -419,7 +428,7 @@
         <section id="sec-messages" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Inbox</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">WhatsApp Messages</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">WhatsApp Messages</h1>
             <p class="text-grey text-sm">Five unread conversations.</p>
           </div>
           <div class="space-y-4 max-w-2xl">

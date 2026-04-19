@@ -94,10 +94,19 @@
       </aside>
 
       <!-- MAIN -->
-      <main class="lg:ml-64 flex-1 px-6 md:px-10 py-10">
+      <main class="lg:ml-64 flex-1 px-4 md:px-10 py-6 md:py-10">
 
         <!-- Mobile nav -->
-        <div class="lg:hidden flex flex-wrap gap-2 mb-8">
+                <!-- Mobile header: brand + role + sign out (sidebar is hidden on mobile) -->
+        <div class="lg:hidden flex items-center justify-between mb-4 pb-4" style="border-bottom:1px solid rgba(184,122,92,0.18)">
+          <div>
+            <p class="eyebrow" style="margin-bottom:2px">Tilzspa</p>
+            <p class="font-serif text-lg" style="font-weight:400;color:#3B2A20;line-height:1">Accounts</p>
+          </div>
+          <button onclick="logout()" class="text-[11px] text-grey hover:text-choc tracking-wide transition-colors">Sign Out &rarr;</button>
+        </div>
+
+        <div class="lg:hidden flex gap-2 mb-6 overflow-x-auto pb-1 -mx-4 px-4">
           <button onclick="showSection('overview')" class="pill pill-choc">Overview</button>
           <button onclick="showSection('transactions')" class="pill pill-cap">Transactions</button>
           <button onclick="showSection('analytics')" class="pill pill-cap">Analytics</button>
@@ -109,7 +118,7 @@
         <section id="sec-overview" class="section active">
           <div class="mb-10">
             <p class="eyebrow mb-3">April 2026</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Finance Overview</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Finance Overview</h1>
             <p class="text-grey text-sm">Tilzspa.</p>
           </div>
 
@@ -170,7 +179,7 @@
         <section id="sec-transactions" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Ledger</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Transactions</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Transactions</h1>
             <p class="text-grey text-sm">12 transactions this month.</p>
           </div>
           <div class="card overflow-x-auto">
@@ -203,7 +212,7 @@
         <section id="sec-analytics" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Patterns</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Analytics</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Analytics</h1>
             <p class="text-grey text-sm">Revenue trends and category breakdown.</p>
           </div>
           <div class="grid md:grid-cols-2 gap-6">
@@ -254,7 +263,7 @@
         <section id="sec-expenses" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Outflows</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Expenses</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Expenses</h1>
             <p class="text-grey text-sm">April 2026 &middot; Total &#8358;680,000</p>
           </div>
           <div class="card overflow-x-auto">
@@ -284,7 +293,7 @@
         <section id="sec-reports" class="section">
           <div class="mb-10">
             <p class="eyebrow mb-3">Statement</p>
-            <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Profit &amp; Loss</h1>
+            <h1 class="font-serif text-3xl md:text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Profit &amp; Loss</h1>
             <p class="text-grey text-sm">April 2026 summary.</p>
           </div>
           <div class="card p-10 max-w-2xl">
@@ -328,7 +337,7 @@
             <div class="mt-8 pt-6" style="border-top:1px solid #B87A5C">
               <div class="flex justify-between items-baseline mb-2">
                 <span class="eyebrow">Net Profit</span>
-                <span class="stat-num text-3xl">&#8358;401,000</span>
+                <span class="stat-num text-2xl md:text-3xl">&#8358;401,000</span>
               </div>
               <div class="flex justify-between items-baseline">
                 <span class="text-xs text-grey tracking-wide">Margin</span>
