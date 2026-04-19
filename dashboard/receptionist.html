@@ -3,61 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reception &mdash; Tilz Spa by Tilda</title>
+  <title>Reception &mdash; Tilzspar</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            choc:'#3C2415',cap:'#C4A882',rg:'#B76E79',
-            gold:'#D4AF6F',rose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',grey:'#9B8E82'
+            choc:'#3B2A20',cap:'#C9A96E',rg:'#C9A96E',
+            gold:'#C9A96E',rose:'#E8D4C1',cream:'#F5EDE1',ivory:'#FAF6F0',grey:'#B8A590'
           },
           fontFamily: {
             serif: ['Playfair Display','Georgia','serif'],
-            sans: ['Inter','system-ui','sans-serif']
+            sans: ['Montserrat','system-ui','sans-serif']
           }
         }
       }
     }
   </script>
   <style>
-    body{font-family:'Inter',system-ui,sans-serif;color:#1A1A1A;background:#FAFAF8;-webkit-font-smoothing:antialiased}
+    body{font-family:'Montserrat',system-ui,sans-serif;color:#1C1410;background:#F5EDE1;-webkit-font-smoothing:antialiased}
     h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
-    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,240,232,0.55)}
-    .nav-btn:hover{color:#F5F0E8;background:rgba(245,240,232,0.05)}
-    .nav-btn.active{background:#F5F0E8;color:#3C2415}
-    .nav-btn.active:hover{background:#F5F0E8}
+    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,237,225,0.55)}
+    .nav-btn:hover{color:#F5EDE1;background:rgba(245,237,225,0.05)}
+    .nav-btn.active{background:#F5EDE1;color:#3B2A20}
+    .nav-btn.active:hover{background:#F5EDE1}
     .section{display:none}.section.active{display:block}
-    .divider{width:40px;height:1px;background:#C4A882}
+    .divider{width:40px;height:1px;background:#C9A96E}
     .card{background:#fff;border-radius:20px;transition:transform .3s,box-shadow .3s}
-    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(60,36,21,.08)}
+    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(59,42,32,.08)}
     .pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase}
-    .pill-choc{background:rgba(60,36,21,0.08);color:#3C2415}
-    .pill-cap{background:rgba(196,168,130,0.18);color:#8A7456}
-    .pill-rg{background:rgba(183,110,121,0.15);color:#B76E79}
-    .pill-gold{background:rgba(212,175,111,0.18);color:#A8873F}
-    .pill-grey{background:rgba(155,142,130,0.15);color:#6B6159}
-    .input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(196,168,130,0.3);padding:12px 2px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
-    .input:focus{outline:none;border-color:#3C2415}
-    .input-box{width:100%;background:#fff;border:1px solid rgba(196,168,130,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
-    .input-box:focus{outline:none;border-color:#3C2415}
-    .btn-primary{background:#3C2415;color:#F5F0E8;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer}
-    .btn-primary:hover{background:#B76E79}
-    .btn-ghost{background:transparent;color:rgba(60,36,21,0.6);padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid rgba(196,168,130,0.4);cursor:pointer;transition:all .2s}
-    .btn-ghost:hover{color:#3C2415;border-color:#3C2415}
-    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C4A882}
-    .row-divider{border-bottom:1px solid rgba(196,168,130,0.15)}
+    .pill-choc{background:rgba(59,42,32,0.08);color:#3B2A20}
+    .pill-cap{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-rg{background:rgba(201,169,110,0.15);color:#C9A96E}
+    .pill-gold{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-grey{background:rgba(184,165,144,0.15);color:#6E6158}
+    .input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,0.3);padding:12px 2px;font-size:14px;color:#1C1410;transition:border-color .2s}
+    .input:focus{outline:none;border-color:#3B2A20}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
+    .input-box:focus{outline:none;border-color:#3B2A20}
+    .btn-primary{background:#3B2A20;color:#F5EDE1;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer}
+    .btn-primary:hover{background:#C9A96E}
+    .btn-ghost{background:transparent;color:rgba(59,42,32,0.6);padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;border:1px solid rgba(201,169,110,0.4);cursor:pointer;transition:all .2s}
+    .btn-ghost:hover{color:#3B2A20;border-color:#3B2A20}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E}
+    .row-divider{border-bottom:1px solid rgba(201,169,110,0.15)}
   </style>
 </head>
 <body class="min-h-screen">
 
   <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3C2415 0%,rgba(60,36,21,0.95) 100%)">
+  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 100%)">
     <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
-      <p class="eyebrow mb-4">Tilz Spa</p>
+      <p class="eyebrow mb-4">Tilzspar</p>
       <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Reception</h2>
       <div class="divider mx-auto my-5"></div>
       <p class="text-grey text-xs mb-8 tracking-wide">Front Desk &middot; Staff Access</p>
@@ -73,9 +73,9 @@
     <div class="flex min-h-screen">
 
       <!-- SIDEBAR -->
-      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3C2415">
+      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3B2A20">
         <div class="p-7 border-b border-cream/10">
-          <p class="eyebrow mb-2" style="color:rgba(196,168,130,0.7)">Tilz Spa</p>
+          <p class="eyebrow mb-2" style="color:rgba(201,169,110,0.7)">Tilzspar</p>
           <p class="font-serif text-cream text-lg" style="font-weight:400">Reception</p>
         </div>
         <nav class="flex-1 p-4 space-y-1">
@@ -102,7 +102,7 @@
           <button onclick="showSection('messages')" class="nav-btn w-full text-left" id="btn-messages">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
             Messages
-            <span class="ml-auto text-[10px] px-2 py-0.5 rounded-full" style="background:rgba(183,110,121,0.25);color:#E8C4C0">5</span>
+            <span class="ml-auto text-[10px] px-2 py-0.5 rounded-full" style="background:rgba(201,169,110,0.25);color:#E8D4C1">5</span>
           </button>
         </nav>
         <div class="p-5 border-t border-cream/10">
@@ -137,12 +137,12 @@
               <p class="font-serif text-4xl" style="font-weight:200;letter-spacing:-0.03em">10</p>
             </div>
             <div class="card p-6">
-              <p class="eyebrow mb-3" style="color:#8A7456">Arrived</p>
-              <p class="font-serif text-4xl" style="font-weight:200;letter-spacing:-0.03em;color:#3C2415">3</p>
+              <p class="eyebrow mb-3" style="color:#8F7846">Arrived</p>
+              <p class="font-serif text-4xl" style="font-weight:200;letter-spacing:-0.03em;color:#3B2A20">3</p>
             </div>
             <div class="card p-6">
-              <p class="eyebrow mb-3" style="color:#B76E79">Upcoming</p>
-              <p class="font-serif text-4xl" style="font-weight:200;letter-spacing:-0.03em;color:#3C2415">7</p>
+              <p class="eyebrow mb-3" style="color:#C9A96E">Upcoming</p>
+              <p class="font-serif text-4xl" style="font-weight:200;letter-spacing:-0.03em;color:#3B2A20">7</p>
             </div>
           </div>
 
@@ -228,28 +228,28 @@
                 <p class="font-medium text-sm">Ngozi Adeleke</p>
                 <p class="text-xs text-grey mt-0.5">11:00 AM &middot; Luxury Bathing Ritual &middot; Grace</p>
               </div>
-              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(60,36,21,0.08)'; this.style.color='#3C2415'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
+              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(59,42,32,0.08)'; this.style.color='#3B2A20'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
             </div>
             <div class="p-5 flex items-center justify-between gap-4">
               <div>
                 <p class="font-medium text-sm">Olumide Fashola</p>
                 <p class="text-xs text-grey mt-0.5">1:00 PM &middot; Sauna + Spa Combo &middot; Fatima</p>
               </div>
-              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(60,36,21,0.08)'; this.style.color='#3C2415'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
+              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(59,42,32,0.08)'; this.style.color='#3B2A20'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
             </div>
             <div class="p-5 flex items-center justify-between gap-4">
               <div>
                 <p class="font-medium text-sm">Amaka Eze</p>
                 <p class="text-xs text-grey mt-0.5">2:30 PM &middot; Medical&#8209;Grade Pedicure &middot; Blessing</p>
               </div>
-              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(60,36,21,0.08)'; this.style.color='#3C2415'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
+              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(59,42,32,0.08)'; this.style.color='#3B2A20'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
             </div>
             <div class="p-5 flex items-center justify-between gap-4">
               <div>
                 <p class="font-medium text-sm">Ifeoma Obiora</p>
                 <p class="text-xs text-grey mt-0.5">3:30 PM &middot; Infrared Sauna &middot; Aisha</p>
               </div>
-              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(60,36,21,0.08)'; this.style.color='#3C2415'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
+              <button onclick="this.textContent='\u2713 Arrived'; this.disabled=true; this.style.background='rgba(59,42,32,0.08)'; this.style.color='#3B2A20'" class="btn-primary" style="padding:10px 22px;font-size:12px">Check In</button>
             </div>
           </div>
         </section>
@@ -445,7 +445,7 @@
                 </div>
                 <span class="pill pill-choc whitespace-nowrap">Booking</span>
               </div>
-              <p class="text-sm text-choc/75 leading-relaxed">&ldquo;Hello Tilz Spa, I&rsquo;d like to book a Signature Spa Treatment for today at 10am. Is Fatima available?&rdquo;</p>
+              <p class="text-sm text-choc/75 leading-relaxed">&ldquo;Hello Tilzspar, I&rsquo;d like to book a Signature Spa Treatment for today at 10am. Is Fatima available?&rdquo;</p>
               <a href="https://wa.me/2348034567890" target="_blank" class="mt-4 inline-block text-xs text-choc hover:text-rg tracking-wide transition-colors">Reply on WhatsApp &rarr;</a>
             </div>
             <div class="card p-6">

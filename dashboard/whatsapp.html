@@ -3,70 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhatsApp &mdash; Tilz Spa by Tilda</title>
+  <title>WhatsApp &mdash; Tilzspar</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            choc:'#3C2415',cap:'#C4A882',rg:'#B76E79',
-            gold:'#D4AF6F',rose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',grey:'#9B8E82'
+            choc:'#3B2A20',cap:'#C9A96E',rg:'#C9A96E',
+            gold:'#C9A96E',rose:'#E8D4C1',cream:'#F5EDE1',ivory:'#FAF6F0',grey:'#B8A590'
           },
           fontFamily: {
             serif: ['Playfair Display','Georgia','serif'],
-            sans: ['Inter','system-ui','sans-serif']
+            sans: ['Montserrat','system-ui','sans-serif']
           }
         }
       }
     }
   </script>
   <style>
-    body{font-family:'Inter',system-ui,sans-serif;color:#1A1A1A;background:#FAFAF8;-webkit-font-smoothing:antialiased}
+    body{font-family:'Montserrat',system-ui,sans-serif;color:#1C1410;background:#F5EDE1;-webkit-font-smoothing:antialiased}
     h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
-    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,240,232,0.55)}
-    .nav-btn:hover{color:#F5F0E8;background:rgba(245,240,232,0.05)}
-    .nav-btn.active{background:#F5F0E8;color:#3C2415}
+    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,237,225,0.55)}
+    .nav-btn:hover{color:#F5EDE1;background:rgba(245,237,225,0.05)}
+    .nav-btn.active{background:#F5EDE1;color:#3B2A20}
     .section{display:none}.section.active{display:block}
-    .divider{width:40px;height:1px;background:#C4A882}
+    .divider{width:40px;height:1px;background:#C9A96E}
     .card{background:#fff;border-radius:20px;transition:transform .3s,box-shadow .3s}
-    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(60,36,21,.08)}
+    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(59,42,32,.08)}
     .pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
-    .pill-choc{background:rgba(60,36,21,0.08);color:#3C2415}
-    .pill-cap{background:rgba(196,168,130,0.18);color:#8A7456}
-    .pill-rg{background:rgba(183,110,121,0.15);color:#B76E79}
-    .pill-gold{background:rgba(212,175,111,0.18);color:#A8873F}
-    .pill-grey{background:rgba(155,142,130,0.15);color:#6B6159}
-    .input-box{width:100%;background:#fff;border:1px solid rgba(196,168,130,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
-    .input-box:focus{outline:none;border-color:#3C2415}
-    .tmpl{width:100%;background:#FAF7F2;border:1px solid rgba(196,168,130,0.2);border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.7;color:rgba(60,36,21,0.75);font-family:'Inter',sans-serif;resize:none;transition:border-color .2s}
-    .tmpl:focus{outline:none;border-color:#3C2415}
-    .btn-primary{background:#3C2415;color:#F5F0E8;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer;display:inline-block;text-decoration:none}
-    .btn-primary:hover{background:#B76E79}
-    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C4A882}
+    .pill-choc{background:rgba(59,42,32,0.08);color:#3B2A20}
+    .pill-cap{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-rg{background:rgba(201,169,110,0.15);color:#C9A96E}
+    .pill-gold{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-grey{background:rgba(184,165,144,0.15);color:#6E6158}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
+    .input-box:focus{outline:none;border-color:#3B2A20}
+    .tmpl{width:100%;background:#FAF6F0;border:1px solid rgba(201,169,110,0.2);border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.7;color:rgba(59,42,32,0.75);font-family:'Montserrat',sans-serif;resize:none;transition:border-color .2s}
+    .tmpl:focus{outline:none;border-color:#3B2A20}
+    .btn-primary{background:#3B2A20;color:#F5EDE1;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer;display:inline-block;text-decoration:none}
+    .btn-primary:hover{background:#C9A96E}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E}
     .step-num{width:36px;height:36px;border-radius:100px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;flex-shrink:0}
-    .step-done{background:rgba(60,36,21,0.08);color:#3C2415}
-    .step-active{background:rgba(196,168,130,0.2);color:#8A7456}
-    .step-pending{background:rgba(155,142,130,0.12);color:#9B8E82}
+    .step-done{background:rgba(59,42,32,0.08);color:#3B2A20}
+    .step-active{background:rgba(201,169,110,0.2);color:#8F7846}
+    .step-pending{background:rgba(184,165,144,0.12);color:#B8A590}
     /* Toggle switch — minimal */
     .toggle{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0}
     .toggle input{opacity:0;width:0;height:0}
-    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(155,142,130,0.3);border-radius:24px;transition:.3s}
+    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(184,165,144,0.3);border-radius:24px;transition:.3s}
     .slider:before{position:absolute;content:"";height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
-    input:checked+.slider{background:#3C2415}
+    input:checked+.slider{background:#3B2A20}
     input:checked+.slider:before{transform:translateX(20px)}
-    .dot{width:8px;height:8px;border-radius:100px;background:#D4AF6F;animation:pulse 2s ease-in-out infinite}
+    .dot{width:8px;height:8px;border-radius:100px;background:#C9A96E;animation:pulse 2s ease-in-out infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
   </style>
 </head>
 <body class="min-h-screen">
 
   <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3C2415 0%,rgba(60,36,21,0.95) 100%)">
+  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 100%)">
     <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
-      <p class="eyebrow mb-4">Tilz Spa</p>
+      <p class="eyebrow mb-4">Tilzspar</p>
       <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">WhatsApp</h2>
       <div class="divider mx-auto my-5"></div>
       <p class="text-grey text-xs mb-8 tracking-wide">Founder Access Only</p>
@@ -82,9 +82,9 @@
     <div class="flex min-h-screen">
 
       <!-- SIDEBAR -->
-      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3C2415">
+      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3B2A20">
         <div class="p-7 border-b border-cream/10">
-          <p class="eyebrow mb-2" style="color:rgba(196,168,130,0.7)">Tilz Spa</p>
+          <p class="eyebrow mb-2" style="color:rgba(201,169,110,0.7)">Tilzspar</p>
           <p class="font-serif text-cream text-lg" style="font-weight:400">WhatsApp</p>
         </div>
         <nav class="flex-1 p-4 space-y-1">
@@ -141,14 +141,14 @@
                 <div class="step-num step-done">&#10003;</div>
                 <div>
                   <p class="font-medium text-sm mb-1">Step 1 &middot; Create Meta Business Account</p>
-                  <p class="text-xs text-grey leading-relaxed">Go to <span class="text-choc">business.facebook.com</span> and create or link a business account for Tilz Spa.</p>
+                  <p class="text-xs text-grey leading-relaxed">Go to <span class="text-choc">business.facebook.com</span> and create or link a business account for Tilzspar.</p>
                 </div>
               </div>
               <div class="p-6 flex items-start gap-5">
                 <div class="step-num step-done">&#10003;</div>
                 <div>
                   <p class="font-medium text-sm mb-1">Step 2 &middot; Create a Meta App</p>
-                  <p class="text-xs text-grey leading-relaxed">Visit <span class="text-choc">developers.facebook.com</span>, choose Create App, select &ldquo;Business&rdquo; type, name it &ldquo;Tilz Spa&rdquo;.</p>
+                  <p class="text-xs text-grey leading-relaxed">Visit <span class="text-choc">developers.facebook.com</span>, choose Create App, select &ldquo;Business&rdquo; type, name it &ldquo;Tilzspar&rdquo;.</p>
                 </div>
               </div>
               <div class="p-6 flex items-start gap-5">
@@ -189,7 +189,7 @@
             </div>
           </div>
 
-          <div class="card max-w-2xl mt-6 p-7" style="background:rgba(196,168,130,0.08)">
+          <div class="card max-w-2xl mt-6 p-7" style="background:rgba(201,169,110,0.08)">
             <p class="eyebrow mb-2">Support</p>
             <h3 class="font-serif text-lg mb-2" style="font-weight:400">Need help with setup?</h3>
             <p class="text-xs text-grey leading-relaxed mb-5">Contact HAMZURY to complete the API integration and webhook configuration.</p>
@@ -211,7 +211,7 @@
                 <h3 class="font-serif text-lg" style="font-weight:400">Welcome Message</h3>
                 <span class="pill pill-choc">Active</span>
               </div>
-              <textarea class="tmpl" rows="4">Hello {{client_name}} 🌿 Welcome to Tilz Spa by Tilda. We're delighted to have you. How can we help you today? Reply with "BOOK" to schedule an appointment or "SERVICES" to see our full menu.</textarea>
+              <textarea class="tmpl" rows="4">Hello {{client_name}} 🌿 Welcome to Tilzspar. We're delighted to have you. How can we help you today? Reply with "BOOK" to schedule an appointment or "SERVICES" to see our full menu.</textarea>
             </div>
 
             <div class="card p-7">
@@ -219,7 +219,7 @@
                 <h3 class="font-serif text-lg" style="font-weight:400">Booking Confirmation</h3>
                 <span class="pill pill-choc">Active</span>
               </div>
-              <textarea class="tmpl" rows="7">✦ Booking Confirmed — Tilz Spa by Tilda
+              <textarea class="tmpl" rows="7">✦ Booking Confirmed — Tilzspar
 
 Dear {{client_name}}, your appointment is confirmed:
 📅 {{date}} at {{time}}
@@ -234,7 +234,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
                 <h3 class="font-serif text-lg" style="font-weight:400">24&#8209;Hour Reminder</h3>
                 <span class="pill pill-choc">Active</span>
               </div>
-              <textarea class="tmpl" rows="4">Hi {{client_name}} 🌸 A gentle reminder — your Tilz Spa appointment is tomorrow at {{time}} for {{service}}. We're looking forward to seeing you. Reply to confirm or reschedule.</textarea>
+              <textarea class="tmpl" rows="4">Hi {{client_name}} 🌸 A gentle reminder — your Tilzspar appointment is tomorrow at {{time}} for {{service}}. We're looking forward to seeing you. Reply to confirm or reschedule.</textarea>
             </div>
 
             <div class="card p-7">
@@ -242,7 +242,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
                 <h3 class="font-serif text-lg" style="font-weight:400">Post&#8209;Visit Thank You</h3>
                 <span class="pill pill-grey">Inactive</span>
               </div>
-              <textarea class="tmpl" rows="4">Thank you for visiting Tilz Spa, {{client_name}} ✨ We hope you're feeling restored and renewed. We'd love to see you again soon. Book your next visit: wa.me/2349167698000</textarea>
+              <textarea class="tmpl" rows="4">Thank you for visiting Tilzspar, {{client_name}} ✨ We hope you're feeling restored and renewed. We'd love to see you again soon. Book your next visit: wa.me/2349167698000</textarea>
             </div>
 
             <div class="card p-7">
@@ -250,7 +250,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
                 <h3 class="font-serif text-lg" style="font-weight:400">Review Request</h3>
                 <span class="pill pill-grey">Inactive</span>
               </div>
-              <textarea class="tmpl" rows="4">Hi {{client_name}}, we hope you enjoyed your experience at Tilz Spa 🌿 Your feedback means the world to us. Would you mind leaving a quick review on Instagram or Google? It takes just 2 minutes. Thank you!</textarea>
+              <textarea class="tmpl" rows="4">Hi {{client_name}}, we hope you enjoyed your experience at Tilzspar 🌿 Your feedback means the world to us. Would you mind leaving a quick review on Instagram or Google? It takes just 2 minutes. Thank you!</textarea>
             </div>
           </div>
         </section>
@@ -308,7 +308,7 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
             </div>
           </div>
 
-          <div class="card max-w-2xl mt-6 p-5" style="background:rgba(212,175,111,0.08)">
+          <div class="card max-w-2xl mt-6 p-5" style="background:rgba(201,169,110,0.08)">
             <p class="text-xs text-grey leading-relaxed"><span class="text-choc" style="font-weight:500">Note &middot; </span>Automation rules require the WhatsApp Business API to be connected. Complete the Setup Guide first.</p>
           </div>
         </section>
@@ -401,10 +401,10 @@ We look forward to welcoming you. No 4 Casablanca St, Off Nairobi St, Wuse 2, Ab
               <p class="text-xs text-grey leading-relaxed">Five templates ready. Submit to Meta for approval (24&ndash;48 hours) before automation can go live.</p>
             </div>
 
-            <div class="card p-7" style="background:rgba(196,168,130,0.08)">
+            <div class="card p-7" style="background:rgba(201,169,110,0.08)">
               <p class="eyebrow mb-2">Go Live</p>
               <h3 class="font-serif text-lg mb-2" style="font-weight:400">Ready to launch?</h3>
-              <p class="text-xs text-grey leading-relaxed mb-5">Contact HAMZURY to complete the full WhatsApp Business API integration for Tilz Spa.</p>
+              <p class="text-xs text-grey leading-relaxed mb-5">Contact HAMZURY to complete the full WhatsApp Business API integration for Tilzspar.</p>
               <a href="https://wa.me/2348067149356?text=Hello%20HAMZURY%2C%20I%20need%20help%20setting%20up%20the%20WhatsApp%20API%20for%20Tilz%20Spa" target="_blank" class="btn-primary">Contact HAMZURY</a>
             </div>
           </div>

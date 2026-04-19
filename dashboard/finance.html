@@ -3,63 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accounts &mdash; Tilz Spa by Tilda</title>
+  <title>Accounts &mdash; Tilzspar</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            choc:'#3C2415',cap:'#C4A882',rg:'#B76E79',
-            gold:'#D4AF6F',rose:'#E8C4C0',cream:'#F5F0E8',ivory:'#FAF7F2',grey:'#9B8E82'
+            choc:'#3B2A20',cap:'#C9A96E',rg:'#C9A96E',
+            gold:'#C9A96E',rose:'#E8D4C1',cream:'#F5EDE1',ivory:'#FAF6F0',grey:'#B8A590'
           },
           fontFamily: {
             serif: ['Playfair Display','Georgia','serif'],
-            sans: ['Inter','system-ui','sans-serif']
+            sans: ['Montserrat','system-ui','sans-serif']
           }
         }
       }
     }
   </script>
   <style>
-    body{font-family:'Inter',system-ui,sans-serif;color:#1A1A1A;background:#FAFAF8;-webkit-font-smoothing:antialiased}
+    body{font-family:'Montserrat',system-ui,sans-serif;color:#1C1410;background:#F5EDE1;-webkit-font-smoothing:antialiased}
     h1,h2,h3{font-family:'Playfair Display',Georgia,serif}
-    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,240,232,0.55)}
-    .nav-btn:hover{color:#F5F0E8;background:rgba(245,240,232,0.05)}
-    .nav-btn.active{background:#F5F0E8;color:#3C2415}
+    .nav-btn{transition:all .25s;border-radius:100px;padding:10px 18px;font-size:13px;font-weight:400;letter-spacing:0.01em;display:flex;align-items:center;gap:12px;color:rgba(245,237,225,0.55)}
+    .nav-btn:hover{color:#F5EDE1;background:rgba(245,237,225,0.05)}
+    .nav-btn.active{background:#F5EDE1;color:#3B2A20}
     .section{display:none}.section.active{display:block}
-    .divider{width:40px;height:1px;background:#C4A882}
+    .divider{width:40px;height:1px;background:#C9A96E}
     .card{background:#fff;border-radius:20px;transition:transform .3s,box-shadow .3s}
-    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(60,36,21,.08)}
+    .card:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(59,42,32,.08)}
     .pill{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap}
-    .pill-choc{background:rgba(60,36,21,0.08);color:#3C2415}
-    .pill-cap{background:rgba(196,168,130,0.18);color:#8A7456}
-    .pill-rg{background:rgba(183,110,121,0.15);color:#B76E79}
-    .pill-gold{background:rgba(212,175,111,0.18);color:#A8873F}
-    .pill-grey{background:rgba(155,142,130,0.15);color:#6B6159}
-    .input-box{width:100%;background:#fff;border:1px solid rgba(196,168,130,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1A1A1A;transition:border-color .2s}
-    .input-box:focus{outline:none;border-color:#3C2415}
-    .btn-primary{background:#3C2415;color:#F5F0E8;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer}
-    .btn-primary:hover{background:#B76E79}
-    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C4A882}
-    .stat-num{font-family:'Playfair Display',Georgia,serif;font-weight:200;letter-spacing:-0.03em;color:#1A1A1A}
-    .bar{height:3px;border-radius:100px;background:rgba(196,168,130,0.15);overflow:hidden}
-    .bar>span{display:block;height:100%;background:#C4A882;border-radius:100px}
+    .pill-choc{background:rgba(59,42,32,0.08);color:#3B2A20}
+    .pill-cap{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-rg{background:rgba(201,169,110,0.15);color:#C9A96E}
+    .pill-gold{background:rgba(201,169,110,0.18);color:#8F7846}
+    .pill-grey{background:rgba(184,165,144,0.15);color:#6E6158}
+    .input-box{width:100%;background:#fff;border:1px solid rgba(201,169,110,0.3);border-radius:12px;padding:12px 16px;font-size:14px;color:#1C1410;transition:border-color .2s}
+    .input-box:focus{outline:none;border-color:#3B2A20}
+    .btn-primary{background:#3B2A20;color:#F5EDE1;padding:12px 28px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s;border:none;cursor:pointer}
+    .btn-primary:hover{background:#C9A96E}
+    .eyebrow{font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E}
+    .stat-num{font-family:'Playfair Display',Georgia,serif;font-weight:200;letter-spacing:-0.03em;color:#1C1410}
+    .bar{height:3px;border-radius:100px;background:rgba(201,169,110,0.15);overflow:hidden}
+    .bar>span{display:block;height:100%;background:#C9A96E;border-radius:100px}
     .tbl{width:100%;border-collapse:collapse;font-size:13px}
-    .tbl th{text-align:left;padding:18px 24px;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C4A882;border-bottom:1px solid rgba(196,168,130,0.2)}
-    .tbl td{padding:18px 24px;border-bottom:1px solid rgba(196,168,130,0.12);color:#1A1A1A}
+    .tbl th{text-align:left;padding:18px 24px;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#C9A96E;border-bottom:1px solid rgba(201,169,110,0.2)}
+    .tbl td{padding:18px 24px;border-bottom:1px solid rgba(201,169,110,0.12);color:#1C1410}
     .tbl tr:last-child td{border-bottom:none}
-    .tbl tr:hover td{background:rgba(196,168,130,0.04)}
+    .tbl tr:hover td{background:rgba(201,169,110,0.04)}
   </style>
 </head>
 <body class="min-h-screen">
 
   <!-- LOGIN GATE -->
-  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3C2415 0%,rgba(60,36,21,0.95) 100%)">
+  <div id="loginGate" class="fixed inset-0 z-50 flex items-center justify-center" style="background:linear-gradient(135deg,#3B2A20 0%,rgba(59,42,32,0.95) 100%)">
     <div class="bg-cream rounded-[20px] px-10 py-12 w-full max-w-sm text-center" style="box-shadow:0 30px 80px rgba(0,0,0,0.25)">
-      <p class="eyebrow mb-4">Tilz Spa</p>
+      <p class="eyebrow mb-4">Tilzspar</p>
       <h2 class="font-serif text-2xl mb-2" style="font-weight:400;letter-spacing:-0.02em">Accounts</h2>
       <div class="divider mx-auto my-5"></div>
       <p class="text-grey text-xs mb-8 tracking-wide">Finance &middot; Staff Access</p>
@@ -76,9 +76,9 @@
     <div class="flex min-h-screen">
 
       <!-- SIDEBAR -->
-      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3C2415">
+      <aside class="w-64 fixed top-0 left-0 h-full flex-col z-40 hidden lg:flex" style="background:#3B2A20">
         <div class="p-7 border-b border-cream/10">
-          <p class="eyebrow mb-2" style="color:rgba(196,168,130,0.7)">Tilz Spa</p>
+          <p class="eyebrow mb-2" style="color:rgba(201,169,110,0.7)">Tilzspar</p>
           <p class="font-serif text-cream text-lg" style="font-weight:400">Accounts</p>
         </div>
         <nav class="flex-1 p-4 space-y-1">
@@ -125,7 +125,7 @@
           <div class="mb-10">
             <p class="eyebrow mb-3">April 2026</p>
             <h1 class="font-serif text-4xl mb-2" style="font-weight:300;letter-spacing:-0.02em">Finance Overview</h1>
-            <p class="text-grey text-sm">Tilz Spa by Tilda.</p>
+            <p class="text-grey text-sm">Tilzspar.</p>
           </div>
 
           <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
@@ -168,14 +168,14 @@
                   <p class="text-sm text-grey">Cash</p>
                   <p class="stat-num text-2xl">24%</p>
                 </div>
-                <div class="bar"><span style="width:24%;background:#D4AF6F"></span></div>
+                <div class="bar"><span style="width:24%;background:#C9A96E"></span></div>
               </div>
               <div>
                 <div class="flex justify-between items-baseline mb-3">
                   <p class="text-sm text-grey">POS</p>
                   <p class="stat-num text-2xl">14%</p>
                 </div>
-                <div class="bar"><span style="width:14%;background:#3C2415"></span></div>
+                <div class="bar"><span style="width:14%;background:#3B2A20"></span></div>
               </div>
             </div>
           </div>
@@ -254,11 +254,11 @@
                 </div>
                 <div>
                   <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Sauna Sessions</span><span class="stat-num text-xl">26%</span></div>
-                  <div class="bar"><span style="width:26%;background:#D4AF6F"></span></div>
+                  <div class="bar"><span style="width:26%;background:#C9A96E"></span></div>
                 </div>
                 <div>
                   <div class="flex justify-between items-baseline mb-2"><span class="text-sm">Barbing Salon</span><span class="stat-num text-xl">22%</span></div>
-                  <div class="bar"><span style="width:22%;background:#3C2415"></span></div>
+                  <div class="bar"><span style="width:22%;background:#3B2A20"></span></div>
                 </div>
               </div>
             </div>
@@ -303,35 +303,35 @@
             <p class="text-grey text-sm">April 2026 summary.</p>
           </div>
           <div class="card p-10 max-w-2xl">
-            <div class="flex items-start justify-between mb-8 pb-6" style="border-bottom:1px solid rgba(196,168,130,0.2)">
+            <div class="flex items-start justify-between mb-8 pb-6" style="border-bottom:1px solid rgba(201,169,110,0.2)">
               <div>
                 <p class="eyebrow mb-2">Month Close</p>
                 <h3 class="font-serif text-2xl" style="font-weight:400">April 2026</h3>
               </div>
-              <p class="text-xs text-grey tracking-wide">Tilz Spa by Tilda</p>
+              <p class="text-xs text-grey tracking-wide">Tilzspar</p>
             </div>
             <div class="space-y-0">
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(196,168,130,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
                 <span class="text-sm">Total Revenue</span>
                 <span class="stat-num text-lg">+ &#8358;1,081,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(196,168,130,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
                 <span class="text-sm text-grey">Rent</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;350,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(196,168,130,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
                 <span class="text-sm text-grey">Salaries</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;480,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(196,168,130,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
                 <span class="text-sm text-grey">Utilities</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;85,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(196,168,130,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
                 <span class="text-sm text-grey">Products &amp; Supplies</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;65,000</span>
               </div>
-              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(196,168,130,0.1)">
+              <div class="flex justify-between items-baseline py-3" style="border-bottom:1px solid rgba(201,169,110,0.1)">
                 <span class="text-sm text-grey">Marketing</span>
                 <span class="text-sm text-choc/70">&minus; &#8358;45,000</span>
               </div>
@@ -340,7 +340,7 @@
                 <span class="text-sm text-choc/70">&minus; &#8358;35,000</span>
               </div>
             </div>
-            <div class="mt-8 pt-6" style="border-top:1px solid #C4A882">
+            <div class="mt-8 pt-6" style="border-top:1px solid #C9A96E">
               <div class="flex justify-between items-baseline mb-2">
                 <span class="eyebrow">Net Profit</span>
                 <span class="stat-num text-3xl">&#8358;401,000</span>
